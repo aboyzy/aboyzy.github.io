@@ -9,7 +9,7 @@
     <meta name="description" content="图片存储迁移前言更新一下博客的图片使用的存储方式 最开始的时候博客使用的是GitHub+vercel提供加速的方式,但是vercel偶尔容易在国内死掉 所以迁移到了GitHub + jsDelivr CDN + PicGo的方式,但是jsDelivr 遭到了 DNS 污染，被大陆封锁，以至于我的博客图片在很长一段时间完全无法加载。而且依赖于Github算是一种滥用 。后来看到風雪城写的关于百度的图">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Cloudflare-r2">
-<meta property="og:url" content="http://example.com/2024/11/13/%E6%95%99%E7%A8%8B/Cloudflare-r2/index.html">
+<meta property="og:url" content="https://blog.aboyzy.top/2024/11/13/%E6%95%99%E7%A8%8B/Cloudflare-r2/index.html">
 <meta property="og:site_name" content="稚的小窝">
 <meta property="og:description" content="图片存储迁移前言更新一下博客的图片使用的存储方式 最开始的时候博客使用的是GitHub+vercel提供加速的方式,但是vercel偶尔容易在国内死掉 所以迁移到了GitHub + jsDelivr CDN + PicGo的方式,但是jsDelivr 遭到了 DNS 污染，被大陆封锁，以至于我的博客图片在很长一段时间完全无法加载。而且依赖于Github算是一种滥用 。后来看到風雪城写的关于百度的图">
 <meta property="og:locale" content="zh_CN">
@@ -67,7 +67,7 @@
 
     <!-- Waline Comments -->
     
-        <link rel="stylesheet" href="http://s4.zstatic.net/npm/@waline/client@v2/dist/waline.css"/>
+        <link rel="stylesheet" href="https://s4.zstatic.net/npm/@waline/client@v2/dist/waline.css"/>
     
 <meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/rss2.xml" title="稚的小窝" type="application/rss+xml">
 </head>
@@ -116,7 +116,7 @@
     <br/>
     <div id="share" style="display: none">
       <ul>
-  <li><a class="icon" href="mailto:?subject=Cloudflare-r2&body=Check out this article: http://example.com/2024/11/13/%E6%95%99%E7%A8%8B/Cloudflare-r2/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Cloudflare-r2&body=Check out this article: https://blog.aboyzy.top/2024/11/13/%E6%95%99%E7%A8%8B/Cloudflare-r2/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
  </ul>
 
     </div>
@@ -176,7 +176,7 @@
 
   <div class="content e-content" itemprop="articleBody">
     <h1 id="图片存储迁移"><a href="#图片存储迁移" class="headerlink" title="图片存储迁移"></a>图片存储迁移</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>更新一下博客的图片使用的存储方式</p>
-<p>最开始的时候博客使用的是GitHub+vercel提供加速的方式,但是vercel偶尔容易在国内死掉 所以迁移到了GitHub + jsDelivr CDN + PicGo的方式,但是jsDelivr 遭到了 DNS 污染，被大陆封锁，以至于我的博客图片在很长一段时间完全无法加载。而且依赖于Github算是一种滥用 。后来看到<a target="_blank" rel="noopener" href="https://blog.chyk.ink/">風雪城</a>写的关于百度的图床用法，写了一篇文章<a target="_blank" rel="noopener" href="https://blog.aboyzy.top/2024/08/15/baidu_cdn/">白嫖某度CDN当博客图床</a>没用几天图片全部无法访问了出现了参数错误 估计百度修复这个bug了吧 。最后想了一下还是决定使用oss存储 。之前就一致在用cloudfile的服务 忽然想到它有一个R2存储还是10G每月免费 而且我还有一个eu.org的免费域名于是想到了Cloudflare R2 + WebP Cloud + Piclist的方式</p>
+<p>最开始的时候博客使用的是GitHub+vercel提供加速的方式,但是vercel偶尔容易在国内死掉 所以迁移到了GitHub + jsDelivr CDN + PicGo的方式,但是jsDelivr 遭到了 DNS 污染，被大陆封锁，以至于我的博客图片在很长一段时间完全无法加载。而且依赖于Github算是一种滥用 。后来看到<a target="_blank" rel="noopener" href="https://blog.chyk.ink/">風雪城</a>写的关于百度的图床用法，写了一篇文章<a href="https://blog.aboyzy.top/2024/08/15/baidu_cdn/">白嫖某度CDN当博客图床</a>没用几天图片全部无法访问了出现了参数错误 估计百度修复这个bug了吧 。最后想了一下还是决定使用oss存储 。之前就一致在用cloudfile的服务 忽然想到它有一个R2存储还是10G每月免费 而且我还有一个eu.org的免费域名于是想到了Cloudflare R2 + WebP Cloud + Piclist的方式</p>
 <h2 id="Cloudflare-R2-WebP-Cloud-PicList"><a href="#Cloudflare-R2-WebP-Cloud-PicList" class="headerlink" title="Cloudflare R2 + WebP Cloud + PicList"></a>Cloudflare R2 + WebP Cloud + PicList</h2><p><img src="https://524524d.webp.li/photo/2024_11_13_202411132132819.webp"></p>
 <p>为了优化用户的访问，又使用了一个「<a target="_blank" rel="noopener" href="https://webp.se/">WebP Cloud</a>」服务对 R2 的图片进行代理，在代理层面进一步减小图片体积，虽然对于国内用户来说速度肯定还是比不上阿里云 OSS 这种线路，但是在不用备案、稳定且免费的综合条件下，这是我能想到的最好的方案了。</p>
 <h3 id="搭建说明"><a href="#搭建说明" class="headerlink" title="搭建说明"></a>搭建说明</h3><p>R2 是 Cloudflare 推出的免费对象存储服务，需要免费注册一个 Cloudflare 账号才能使用，注册登录后，点击左侧边栏的 R2 访问服务，但需要注意的是开通 R2 服务需要绑定信用卡（国内外主流信用卡皆可），但并不会扣费，主要是为了验证用户身份使用。</p>
@@ -255,7 +255,7 @@
 
     <div id="share-footer" style="display: none">
       <ul>
-  <li><a class="icon" href="mailto:?subject=Cloudflare-r2&body=Check out this article: http://example.com/2024/11/13/%E6%95%99%E7%A8%8B/Cloudflare-r2/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Cloudflare-r2&body=Check out this article: https://blog.aboyzy.top/2024/11/13/%E6%95%99%E7%A8%8B/Cloudflare-r2/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
  </ul>
 
     </div>
@@ -359,7 +359,7 @@
 <!-- Waline Comments -->
 
 <script type="module">
-    import { init } from 'http://s4.zstatic.net/npm/@waline/client@v2/dist/waline.mjs';
+    import { init } from 'https://s4.zstatic.net/npm/@waline/client@v2/dist/waline.mjs';
 
     var EMOJI = ['//unpkg.com/@waline/emojis@1.2.0/qq']
     var META = ['nick', 'mail', 'link'];

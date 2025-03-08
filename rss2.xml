@@ -4,9 +4,9 @@
   xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>稚的小窝</title>
-    <link>http://example.com/</link>
+    <link>https://blog.aboyzy.top/</link>
     
-    <atom:link href="http://example.com/rss2.xml" rel="self" type="application/rss+xml"/>
+    <atom:link href="https://blog.aboyzy.top/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description></description>
     <pubDate>Sat, 08 Mar 2025 10:01:23 GMT</pubDate>
@@ -14,8 +14,8 @@
     
     <item>
       <title>博客文章推荐</title>
-      <link>http://example.com/5210/05/21/blog/</link>
-      <guid>http://example.com/5210/05/21/blog/</guid>
+      <link>https://blog.aboyzy.top/5210/05/21/blog/</link>
+      <guid>https://blog.aboyzy.top/5210/05/21/blog/</guid>
       <pubDate>Fri, 21 May 5210 05:36:01 GMT</pubDate>
       
       
@@ -27,8 +27,8 @@
     
     <item>
       <title>2024年终总结</title>
-      <link>http://example.com/2024/12/28/%E8%AF%B4%E8%AF%B4/2024/</link>
-      <guid>http://example.com/2024/12/28/%E8%AF%B4%E8%AF%B4/2024/</guid>
+      <link>https://blog.aboyzy.top/2024/12/28/%E8%AF%B4%E8%AF%B4/2024/</link>
+      <guid>https://blog.aboyzy.top/2024/12/28/%E8%AF%B4%E8%AF%B4/2024/</guid>
       <pubDate>Sat, 28 Dec 2024 05:09:56 GMT</pubDate>
       
         
@@ -42,18 +42,18 @@
       
       
       
-      <category domain="http://example.com/categories/%E8%AF%B4%E8%AF%B4/">说说</category>
+      <category domain="https://blog.aboyzy.top/categories/%E8%AF%B4%E8%AF%B4/">说说</category>
       
       
       
-      <comments>http://example.com/2024/12/28/%E8%AF%B4%E8%AF%B4/2024/#disqus_thread</comments>
+      <comments>https://blog.aboyzy.top/2024/12/28/%E8%AF%B4%E8%AF%B4/2024/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>服务器升级</title>
-      <link>http://example.com/2024/11/30/%E6%95%99%E7%A8%8B/server/</link>
-      <guid>http://example.com/2024/11/30/%E6%95%99%E7%A8%8B/server/</guid>
+      <link>https://blog.aboyzy.top/2024/11/30/%E6%95%99%E7%A8%8B/server/</link>
+      <guid>https://blog.aboyzy.top/2024/11/30/%E6%95%99%E7%A8%8B/server/</guid>
       <pubDate>Sat, 30 Nov 2024 11:33:58 GMT</pubDate>
       
         
@@ -67,18 +67,18 @@
       
       
       
-      <category domain="http://example.com/categories/%E6%95%99%E7%A8%8B/">教程</category>
+      <category domain="https://blog.aboyzy.top/categories/%E6%95%99%E7%A8%8B/">教程</category>
       
       
       
-      <comments>http://example.com/2024/11/30/%E6%95%99%E7%A8%8B/server/#disqus_thread</comments>
+      <comments>https://blog.aboyzy.top/2024/11/30/%E6%95%99%E7%A8%8B/server/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>一觉醒来天塌了😭</title>
-      <link>http://example.com/2024/11/16/%E8%AF%B4%E8%AF%B4/synology-yingpanboom/</link>
-      <guid>http://example.com/2024/11/16/%E8%AF%B4%E8%AF%B4/synology-yingpanboom/</guid>
+      <link>https://blog.aboyzy.top/2024/11/16/%E8%AF%B4%E8%AF%B4/synology-yingpanboom/</link>
+      <guid>https://blog.aboyzy.top/2024/11/16/%E8%AF%B4%E8%AF%B4/synology-yingpanboom/</guid>
       <pubDate>Sat, 16 Nov 2024 03:13:40 GMT</pubDate>
       
         
@@ -93,18 +93,18 @@
       
       
       
-      <category domain="http://example.com/categories/%E8%AF%B4%E8%AF%B4/">说说</category>
+      <category domain="https://blog.aboyzy.top/categories/%E8%AF%B4%E8%AF%B4/">说说</category>
       
       
       
-      <comments>http://example.com/2024/11/16/%E8%AF%B4%E8%AF%B4/synology-yingpanboom/#disqus_thread</comments>
+      <comments>https://blog.aboyzy.top/2024/11/16/%E8%AF%B4%E8%AF%B4/synology-yingpanboom/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>HCIE 实验</title>
-      <link>http://example.com/2024/11/14/HCIE/Hcie/</link>
-      <guid>http://example.com/2024/11/14/HCIE/Hcie/</guid>
+      <link>https://blog.aboyzy.top/2024/11/14/HCIE/Hcie/</link>
+      <guid>https://blog.aboyzy.top/2024/11/14/HCIE/Hcie/</guid>
       <pubDate>Thu, 14 Nov 2024 05:41:17 GMT</pubDate>
       
       <description>有东西被加密了, 请输入密码查看.</description>
@@ -112,7 +112,7 @@
       
       
       
-      <category domain="http://example.com/categories/HCIE/">HCIE</category>
+      <category domain="https://blog.aboyzy.top/categories/HCIE/">HCIE</category>
       
       
       
@@ -120,8 +120,8 @@
     
     <item>
       <title>Cloudflare-r2</title>
-      <link>http://example.com/2024/11/13/%E6%95%99%E7%A8%8B/Cloudflare-r2/</link>
-      <guid>http://example.com/2024/11/13/%E6%95%99%E7%A8%8B/Cloudflare-r2/</guid>
+      <link>https://blog.aboyzy.top/2024/11/13/%E6%95%99%E7%A8%8B/Cloudflare-r2/</link>
+      <guid>https://blog.aboyzy.top/2024/11/13/%E6%95%99%E7%A8%8B/Cloudflare-r2/</guid>
       <pubDate>Wed, 13 Nov 2024 05:50:03 GMT</pubDate>
       
         
@@ -135,18 +135,18 @@
       
       
       
-      <category domain="http://example.com/categories/%E6%95%99%E7%A8%8B/">教程</category>
+      <category domain="https://blog.aboyzy.top/categories/%E6%95%99%E7%A8%8B/">教程</category>
       
       
       
-      <comments>http://example.com/2024/11/13/%E6%95%99%E7%A8%8B/Cloudflare-r2/#disqus_thread</comments>
+      <comments>https://blog.aboyzy.top/2024/11/13/%E6%95%99%E7%A8%8B/Cloudflare-r2/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>群晖人脸识别补丁和缩略图补丁</title>
-      <link>http://example.com/2024/09/16/%E7%BE%A4%E6%99%96/synology-face/</link>
-      <guid>http://example.com/2024/09/16/%E7%BE%A4%E6%99%96/synology-face/</guid>
+      <link>https://blog.aboyzy.top/2024/09/16/%E7%BE%A4%E6%99%96/synology-face/</link>
+      <guid>https://blog.aboyzy.top/2024/09/16/%E7%BE%A4%E6%99%96/synology-face/</guid>
       <pubDate>Mon, 16 Sep 2024 05:51:11 GMT</pubDate>
       
         
@@ -161,18 +161,18 @@
       
       
       
-      <category domain="http://example.com/categories/%E7%BE%A4%E6%99%96/">群晖</category>
+      <category domain="https://blog.aboyzy.top/categories/%E7%BE%A4%E6%99%96/">群晖</category>
       
       
       
-      <comments>http://example.com/2024/09/16/%E7%BE%A4%E6%99%96/synology-face/#disqus_thread</comments>
+      <comments>https://blog.aboyzy.top/2024/09/16/%E7%BE%A4%E6%99%96/synology-face/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>群晖AME开启脚本</title>
-      <link>http://example.com/2024/09/10/%E7%BE%A4%E6%99%96/synology-ame/</link>
-      <guid>http://example.com/2024/09/10/%E7%BE%A4%E6%99%96/synology-ame/</guid>
+      <link>https://blog.aboyzy.top/2024/09/10/%E7%BE%A4%E6%99%96/synology-ame/</link>
+      <guid>https://blog.aboyzy.top/2024/09/10/%E7%BE%A4%E6%99%96/synology-ame/</guid>
       <pubDate>Tue, 10 Sep 2024 06:18:52 GMT</pubDate>
       
         
@@ -187,18 +187,18 @@
       
       
       
-      <category domain="http://example.com/categories/%E7%BE%A4%E6%99%96/">群晖</category>
+      <category domain="https://blog.aboyzy.top/categories/%E7%BE%A4%E6%99%96/">群晖</category>
       
       
       
-      <comments>http://example.com/2024/09/10/%E7%BE%A4%E6%99%96/synology-ame/#disqus_thread</comments>
+      <comments>https://blog.aboyzy.top/2024/09/10/%E7%BE%A4%E6%99%96/synology-ame/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>IPsec VPN 搭建</title>
-      <link>http://example.com/2024/09/05/%E6%95%99%E7%A8%8B/IPsec/</link>
-      <guid>http://example.com/2024/09/05/%E6%95%99%E7%A8%8B/IPsec/</guid>
+      <link>https://blog.aboyzy.top/2024/09/05/%E6%95%99%E7%A8%8B/IPsec/</link>
+      <guid>https://blog.aboyzy.top/2024/09/05/%E6%95%99%E7%A8%8B/IPsec/</guid>
       <pubDate>Thu, 05 Sep 2024 06:19:41 GMT</pubDate>
       
       <description>有东西被加密了, 请输入密码查看.</description>
@@ -206,7 +206,7 @@
       
       
       
-      <category domain="http://example.com/categories/%E6%95%99%E7%A8%8B/">教程</category>
+      <category domain="https://blog.aboyzy.top/categories/%E6%95%99%E7%A8%8B/">教程</category>
       
       
       
@@ -214,8 +214,8 @@
     
     <item>
       <title>一些脚本和加速链接</title>
-      <link>http://example.com/2024/08/15/jiasu/</link>
-      <guid>http://example.com/2024/08/15/jiasu/</guid>
+      <link>https://blog.aboyzy.top/2024/08/15/jiasu/</link>
+      <guid>https://blog.aboyzy.top/2024/08/15/jiasu/</guid>
       <pubDate>Thu, 15 Aug 2024 08:16:25 GMT</pubDate>
       
         
@@ -232,14 +232,14 @@
       
       
       
-      <comments>http://example.com/2024/08/15/jiasu/#disqus_thread</comments>
+      <comments>https://blog.aboyzy.top/2024/08/15/jiasu/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>白嫖某度CDN当博客图床[已失效]</title>
-      <link>http://example.com/2024/08/15/%E6%95%99%E7%A8%8B/baiduCDN/</link>
-      <guid>http://example.com/2024/08/15/%E6%95%99%E7%A8%8B/baiduCDN/</guid>
+      <link>https://blog.aboyzy.top/2024/08/15/%E6%95%99%E7%A8%8B/baiduCDN/</link>
+      <guid>https://blog.aboyzy.top/2024/08/15/%E6%95%99%E7%A8%8B/baiduCDN/</guid>
       <pubDate>Thu, 15 Aug 2024 08:15:07 GMT</pubDate>
       
         
@@ -255,18 +255,18 @@
       
       
       
-      <category domain="http://example.com/categories/%E6%95%99%E7%A8%8B/">教程</category>
+      <category domain="https://blog.aboyzy.top/categories/%E6%95%99%E7%A8%8B/">教程</category>
       
       
       
-      <comments>http://example.com/2024/08/15/%E6%95%99%E7%A8%8B/baiduCDN/#disqus_thread</comments>
+      <comments>https://blog.aboyzy.top/2024/08/15/%E6%95%99%E7%A8%8B/baiduCDN/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>Sublime Text汉化以及激活</title>
-      <link>http://example.com/2024/08/13/%E6%95%99%E7%A8%8B/Sublime-Text/</link>
-      <guid>http://example.com/2024/08/13/%E6%95%99%E7%A8%8B/Sublime-Text/</guid>
+      <link>https://blog.aboyzy.top/2024/08/13/%E6%95%99%E7%A8%8B/Sublime-Text/</link>
+      <guid>https://blog.aboyzy.top/2024/08/13/%E6%95%99%E7%A8%8B/Sublime-Text/</guid>
       <pubDate>Tue, 13 Aug 2024 08:17:09 GMT</pubDate>
       
         
@@ -281,18 +281,18 @@
       
       
       
-      <category domain="http://example.com/categories/%E6%95%99%E7%A8%8B/">教程</category>
+      <category domain="https://blog.aboyzy.top/categories/%E6%95%99%E7%A8%8B/">教程</category>
       
       
       
-      <comments>http://example.com/2024/08/13/%E6%95%99%E7%A8%8B/Sublime-Text/#disqus_thread</comments>
+      <comments>https://blog.aboyzy.top/2024/08/13/%E6%95%99%E7%A8%8B/Sublime-Text/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>群晖硬盘&#39;勘用&#39;</title>
-      <link>http://example.com/2024/08/05/%E8%AF%B4%E8%AF%B4/synology-boom/</link>
-      <guid>http://example.com/2024/08/05/%E8%AF%B4%E8%AF%B4/synology-boom/</guid>
+      <link>https://blog.aboyzy.top/2024/08/05/%E8%AF%B4%E8%AF%B4/synology-boom/</link>
+      <guid>https://blog.aboyzy.top/2024/08/05/%E8%AF%B4%E8%AF%B4/synology-boom/</guid>
       <pubDate>Mon, 05 Aug 2024 08:18:16 GMT</pubDate>
       
         
@@ -306,18 +306,18 @@
       
       
       
-      <category domain="http://example.com/categories/%E8%AF%B4%E8%AF%B4/">说说</category>
+      <category domain="https://blog.aboyzy.top/categories/%E8%AF%B4%E8%AF%B4/">说说</category>
       
       
       
-      <comments>http://example.com/2024/08/05/%E8%AF%B4%E8%AF%B4/synology-boom/#disqus_thread</comments>
+      <comments>https://blog.aboyzy.top/2024/08/05/%E8%AF%B4%E8%AF%B4/synology-boom/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>安阳工学院宽带更新自动更新脚本[可能已失效]</title>
-      <link>http://example.com/2024/07/06/%E6%95%99%E7%A8%8B/ayit-network/</link>
-      <guid>http://example.com/2024/07/06/%E6%95%99%E7%A8%8B/ayit-network/</guid>
+      <link>https://blog.aboyzy.top/2024/07/06/%E6%95%99%E7%A8%8B/ayit-network/</link>
+      <guid>https://blog.aboyzy.top/2024/07/06/%E6%95%99%E7%A8%8B/ayit-network/</guid>
       <pubDate>Sat, 06 Jul 2024 08:20:04 GMT</pubDate>
       
         
@@ -331,18 +331,18 @@
       
       
       
-      <category domain="http://example.com/categories/%E6%95%99%E7%A8%8B/">教程</category>
+      <category domain="https://blog.aboyzy.top/categories/%E6%95%99%E7%A8%8B/">教程</category>
       
       
       
-      <comments>http://example.com/2024/07/06/%E6%95%99%E7%A8%8B/ayit-network/#disqus_thread</comments>
+      <comments>https://blog.aboyzy.top/2024/07/06/%E6%95%99%E7%A8%8B/ayit-network/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>Jetbrains系列激活</title>
-      <link>http://example.com/2024/06/21/%E6%95%99%E7%A8%8B/Jetbrains/</link>
-      <guid>http://example.com/2024/06/21/%E6%95%99%E7%A8%8B/Jetbrains/</guid>
+      <link>https://blog.aboyzy.top/2024/06/21/%E6%95%99%E7%A8%8B/Jetbrains/</link>
+      <guid>https://blog.aboyzy.top/2024/06/21/%E6%95%99%E7%A8%8B/Jetbrains/</guid>
       <pubDate>Fri, 21 Jun 2024 08:23:14 GMT</pubDate>
       
         
@@ -359,18 +359,18 @@
       
       
       
-      <category domain="http://example.com/categories/%E6%95%99%E7%A8%8B/">教程</category>
+      <category domain="https://blog.aboyzy.top/categories/%E6%95%99%E7%A8%8B/">教程</category>
       
       
       
-      <comments>http://example.com/2024/06/21/%E6%95%99%E7%A8%8B/Jetbrains/#disqus_thread</comments>
+      <comments>https://blog.aboyzy.top/2024/06/21/%E6%95%99%E7%A8%8B/Jetbrains/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>Python 复现RSA算法</title>
-      <link>http://example.com/2024/06/06/%E8%87%AA%E6%90%93%E4%BB%A3%E7%A0%81/python-rsa/</link>
-      <guid>http://example.com/2024/06/06/%E8%87%AA%E6%90%93%E4%BB%A3%E7%A0%81/python-rsa/</guid>
+      <link>https://blog.aboyzy.top/2024/06/06/%E8%87%AA%E6%90%93%E4%BB%A3%E7%A0%81/python-rsa/</link>
+      <guid>https://blog.aboyzy.top/2024/06/06/%E8%87%AA%E6%90%93%E4%BB%A3%E7%A0%81/python-rsa/</guid>
       <pubDate>Thu, 06 Jun 2024 09:27:19 GMT</pubDate>
       
         
@@ -385,18 +385,18 @@
       
       
       
-      <category domain="http://example.com/categories/%E8%87%AA%E6%90%93%E4%BB%A3%E7%A0%81/">自搓代码</category>
+      <category domain="https://blog.aboyzy.top/categories/%E8%87%AA%E6%90%93%E4%BB%A3%E7%A0%81/">自搓代码</category>
       
       
       
-      <comments>http://example.com/2024/06/06/%E8%87%AA%E6%90%93%E4%BB%A3%E7%A0%81/python-rsa/#disqus_thread</comments>
+      <comments>https://blog.aboyzy.top/2024/06/06/%E8%87%AA%E6%90%93%E4%BB%A3%E7%A0%81/python-rsa/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>仿BiliBili前端网页制作</title>
-      <link>http://example.com/2024/06/06/%E8%87%AA%E6%90%93%E4%BB%A3%E7%A0%81/bilibili/</link>
-      <guid>http://example.com/2024/06/06/%E8%87%AA%E6%90%93%E4%BB%A3%E7%A0%81/bilibili/</guid>
+      <link>https://blog.aboyzy.top/2024/06/06/%E8%87%AA%E6%90%93%E4%BB%A3%E7%A0%81/bilibili/</link>
+      <guid>https://blog.aboyzy.top/2024/06/06/%E8%87%AA%E6%90%93%E4%BB%A3%E7%A0%81/bilibili/</guid>
       <pubDate>Thu, 06 Jun 2024 08:23:59 GMT</pubDate>
       
         
@@ -411,18 +411,18 @@
       
       
       
-      <category domain="http://example.com/categories/%E8%87%AA%E6%90%93%E4%BB%A3%E7%A0%81/">自搓代码</category>
+      <category domain="https://blog.aboyzy.top/categories/%E8%87%AA%E6%90%93%E4%BB%A3%E7%A0%81/">自搓代码</category>
       
       
       
-      <comments>http://example.com/2024/06/06/%E8%87%AA%E6%90%93%E4%BB%A3%E7%A0%81/bilibili/#disqus_thread</comments>
+      <comments>https://blog.aboyzy.top/2024/06/06/%E8%87%AA%E6%90%93%E4%BB%A3%E7%A0%81/bilibili/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>Typora 序列号造假</title>
-      <link>http://example.com/2024/03/05/%E6%95%99%E7%A8%8B/Typora-free/</link>
-      <guid>http://example.com/2024/03/05/%E6%95%99%E7%A8%8B/Typora-free/</guid>
+      <link>https://blog.aboyzy.top/2024/03/05/%E6%95%99%E7%A8%8B/Typora-free/</link>
+      <guid>https://blog.aboyzy.top/2024/03/05/%E6%95%99%E7%A8%8B/Typora-free/</guid>
       <pubDate>Tue, 05 Mar 2024 08:25:12 GMT</pubDate>
       
         
@@ -436,18 +436,18 @@
       
       
       
-      <category domain="http://example.com/categories/%E6%95%99%E7%A8%8B/">教程</category>
+      <category domain="https://blog.aboyzy.top/categories/%E6%95%99%E7%A8%8B/">教程</category>
       
       
       
-      <comments>http://example.com/2024/03/05/%E6%95%99%E7%A8%8B/Typora-free/#disqus_thread</comments>
+      <comments>https://blog.aboyzy.top/2024/03/05/%E6%95%99%E7%A8%8B/Typora-free/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>2023年终随笔</title>
-      <link>http://example.com/2023/12/23/%E8%AF%B4%E8%AF%B4/2023/</link>
-      <guid>http://example.com/2023/12/23/%E8%AF%B4%E8%AF%B4/2023/</guid>
+      <link>https://blog.aboyzy.top/2023/12/23/%E8%AF%B4%E8%AF%B4/2023/</link>
+      <guid>https://blog.aboyzy.top/2023/12/23/%E8%AF%B4%E8%AF%B4/2023/</guid>
       <pubDate>Sat, 23 Dec 2023 05:16:37 GMT</pubDate>
       
         
@@ -461,18 +461,18 @@
       
       
       
-      <category domain="http://example.com/categories/%E8%AF%B4%E8%AF%B4/">说说</category>
+      <category domain="https://blog.aboyzy.top/categories/%E8%AF%B4%E8%AF%B4/">说说</category>
       
       
       
-      <comments>http://example.com/2023/12/23/%E8%AF%B4%E8%AF%B4/2023/#disqus_thread</comments>
+      <comments>https://blog.aboyzy.top/2023/12/23/%E8%AF%B4%E8%AF%B4/2023/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>python实现邮件收发</title>
-      <link>http://example.com/2023/12/07/%E8%87%AA%E6%90%93%E4%BB%A3%E7%A0%81/python-mail/</link>
-      <guid>http://example.com/2023/12/07/%E8%87%AA%E6%90%93%E4%BB%A3%E7%A0%81/python-mail/</guid>
+      <link>https://blog.aboyzy.top/2023/12/07/%E8%87%AA%E6%90%93%E4%BB%A3%E7%A0%81/python-mail/</link>
+      <guid>https://blog.aboyzy.top/2023/12/07/%E8%87%AA%E6%90%93%E4%BB%A3%E7%A0%81/python-mail/</guid>
       <pubDate>Thu, 07 Dec 2023 14:51:42 GMT</pubDate>
       
         
@@ -487,11 +487,11 @@
       
       
       
-      <category domain="http://example.com/categories/%E8%87%AA%E6%90%93%E4%BB%A3%E7%A0%81/">自搓代码</category>
+      <category domain="https://blog.aboyzy.top/categories/%E8%87%AA%E6%90%93%E4%BB%A3%E7%A0%81/">自搓代码</category>
       
       
       
-      <comments>http://example.com/2023/12/07/%E8%87%AA%E6%90%93%E4%BB%A3%E7%A0%81/python-mail/#disqus_thread</comments>
+      <comments>https://blog.aboyzy.top/2023/12/07/%E8%87%AA%E6%90%93%E4%BB%A3%E7%A0%81/python-mail/#disqus_thread</comments>
       
     </item>
     
