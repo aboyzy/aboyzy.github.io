@@ -9,20 +9,58 @@
     <atom:link href="http://example.com/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description></description>
-    <pubDate>Fri, 07 Mar 2025 12:37:03 GMT</pubDate>
+    <pubDate>Sat, 08 Mar 2025 10:01:23 GMT</pubDate>
     <generator>http://hexo.io/</generator>
     
     <item>
-      <title>markdown 语法</title>
-      <link>http://example.com/2025/03/07/%E6%95%99%E7%A8%8B/markdown%E8%AF%AD%E6%B3%95/</link>
-      <guid>http://example.com/2025/03/07/%E6%95%99%E7%A8%8B/markdown%E8%AF%AD%E6%B3%95/</guid>
-      <pubDate>Fri, 07 Mar 2025 11:33:58 GMT</pubDate>
+      <title>博客文章推荐</title>
+      <link>http://example.com/5210/05/21/blog/</link>
+      <guid>http://example.com/5210/05/21/blog/</guid>
+      <pubDate>Fri, 21 May 5210 05:36:01 GMT</pubDate>
+      
+      
+      
+      
+      
+      
+    </item>
+    
+    <item>
+      <title>2024年终总结</title>
+      <link>http://example.com/2024/12/28/%E8%AF%B4%E8%AF%B4/2024/</link>
+      <guid>http://example.com/2024/12/28/%E8%AF%B4%E8%AF%B4/2024/</guid>
+      <pubDate>Sat, 28 Dec 2024 05:09:56 GMT</pubDate>
       
         
         
           
           
-      <description>&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt;</description>
+      <description>&lt;h1 id=&quot;2024-年终感想&quot;&gt;&lt;a href=&quot;#2024-年终感想&quot; class=&quot;headerlink&quot; title=&quot;2024 年终感想&quot;&gt;&lt;/a&gt;2024 年终感想&lt;/h1&gt;&lt;p&gt;时间过的真快啊</description>
+          
+        
+      
+      
+      
+      
+      <category domain="http://example.com/categories/%E8%AF%B4%E8%AF%B4/">说说</category>
+      
+      
+      
+      <comments>http://example.com/2024/12/28/%E8%AF%B4%E8%AF%B4/2024/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>服务器升级</title>
+      <link>http://example.com/2024/11/30/%E6%95%99%E7%A8%8B/server/</link>
+      <guid>http://example.com/2024/11/30/%E6%95%99%E7%A8%8B/server/</guid>
+      <pubDate>Sat, 30 Nov 2024 11:33:58 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;之前使用的服务器配置没有在活动的时候搞 然后配置低还贵 &amp;#x2F;(ㄒoㄒ)&amp;#x2F;~~ 所以这次趁着活动换了一台服务器</description>
           
         
       
@@ -33,26 +71,427 @@
       
       
       
-      <comments>http://example.com/2025/03/07/%E6%95%99%E7%A8%8B/markdown%E8%AF%AD%E6%B3%95/#disqus_thread</comments>
+      <comments>http://example.com/2024/11/30/%E6%95%99%E7%A8%8B/server/#disqus_thread</comments>
       
     </item>
     
     <item>
-      <title>password</title>
-      <link>http://example.com/2025/03/07/password/</link>
-      <guid>http://example.com/2025/03/07/password/</guid>
-      <pubDate>Fri, 07 Mar 2025 09:18:59 GMT</pubDate>
+      <title>一觉醒来天塌了😭</title>
+      <link>http://example.com/2024/11/16/%E8%AF%B4%E8%AF%B4/synology-yingpanboom/</link>
+      <guid>http://example.com/2024/11/16/%E8%AF%B4%E8%AF%B4/synology-yingpanboom/</guid>
+      <pubDate>Sat, 16 Nov 2024 03:13:40 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;p&gt;read0的数据盘死掉了 才一年多 破！！！&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://524524d.webp.li/photo/2024_11_17_202411171512963.webp&quot;</description>
+          
+        
+      
+      
+      
+      
+      <category domain="http://example.com/categories/%E8%AF%B4%E8%AF%B4/">说说</category>
+      
+      
+      
+      <comments>http://example.com/2024/11/16/%E8%AF%B4%E8%AF%B4/synology-yingpanboom/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>HCIE 实验</title>
+      <link>http://example.com/2024/11/14/HCIE/Hcie/</link>
+      <guid>http://example.com/2024/11/14/HCIE/Hcie/</guid>
+      <pubDate>Thu, 14 Nov 2024 05:41:17 GMT</pubDate>
       
       <description>有东西被加密了, 请输入密码查看.</description>
       
       
       
       
-      <category domain="http://example.com/categories/%E6%96%87%E7%AB%A0/">文章</category>
+      <category domain="http://example.com/categories/HCIE/">HCIE</category>
       
       
       
-      <comments>http://example.com/2025/03/07/password/#disqus_thread</comments>
+    </item>
+    
+    <item>
+      <title>Cloudflare-r2</title>
+      <link>http://example.com/2024/11/13/%E6%95%99%E7%A8%8B/Cloudflare-r2/</link>
+      <guid>http://example.com/2024/11/13/%E6%95%99%E7%A8%8B/Cloudflare-r2/</guid>
+      <pubDate>Wed, 13 Nov 2024 05:50:03 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h1 id=&quot;图片存储迁移&quot;&gt;&lt;a href=&quot;#图片存储迁移&quot; class=&quot;headerlink&quot; title=&quot;图片存储迁移&quot;&gt;&lt;/a&gt;图片存储迁移&lt;/h1&gt;&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot;</description>
+          
+        
+      
+      
+      
+      
+      <category domain="http://example.com/categories/%E6%95%99%E7%A8%8B/">教程</category>
+      
+      
+      
+      <comments>http://example.com/2024/11/13/%E6%95%99%E7%A8%8B/Cloudflare-r2/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>群晖人脸识别补丁和缩略图补丁</title>
+      <link>http://example.com/2024/09/16/%E7%BE%A4%E6%99%96/synology-face/</link>
+      <guid>http://example.com/2024/09/16/%E7%BE%A4%E6%99%96/synology-face/</guid>
+      <pubDate>Mon, 16 Sep 2024 05:51:11 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;p&gt;使用的是黑群晖synology photo 没有办法进行人脸识别而且视频没有办法生成缩略图 所以需要使用相关脚本 &lt;code&gt;注意：执行脚本前请先停用Synology photo套件&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id=&quot;人脸识别&quot;&gt;&lt;a href=&quot;#人脸识别&quot;</description>
+          
+        
+      
+      
+      
+      
+      <category domain="http://example.com/categories/%E7%BE%A4%E6%99%96/">群晖</category>
+      
+      
+      
+      <comments>http://example.com/2024/09/16/%E7%BE%A4%E6%99%96/synology-face/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>群晖AME开启脚本</title>
+      <link>http://example.com/2024/09/10/%E7%BE%A4%E6%99%96/synology-ame/</link>
+      <guid>http://example.com/2024/09/10/%E7%BE%A4%E6%99%96/synology-ame/</guid>
+      <pubDate>Tue, 10 Sep 2024 06:18:52 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;p&gt;使用群晖AME可以解析IPhone的HEVC高效编码文件 在IPhone中录视频4k60帧只能为高效模式HEVC编码  而且高效模式的图片也无法显示 当安装AME之后会自动将HEVC格式编码转为JPG&lt;/p&gt;
+&lt;h2 id=&quot;结果&quot;&gt;&lt;a href=&quot;#结果&quot;</description>
+          
+        
+      
+      
+      
+      
+      <category domain="http://example.com/categories/%E7%BE%A4%E6%99%96/">群晖</category>
+      
+      
+      
+      <comments>http://example.com/2024/09/10/%E7%BE%A4%E6%99%96/synology-ame/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>IPsec VPN 搭建</title>
+      <link>http://example.com/2024/09/05/%E6%95%99%E7%A8%8B/IPsec/</link>
+      <guid>http://example.com/2024/09/05/%E6%95%99%E7%A8%8B/IPsec/</guid>
+      <pubDate>Thu, 05 Sep 2024 06:19:41 GMT</pubDate>
+      
+      <description>有东西被加密了, 请输入密码查看.</description>
+      
+      
+      
+      
+      <category domain="http://example.com/categories/%E6%95%99%E7%A8%8B/">教程</category>
+      
+      
+      
+    </item>
+    
+    <item>
+      <title>一些脚本和加速链接</title>
+      <link>http://example.com/2024/08/15/jiasu/</link>
+      <guid>http://example.com/2024/08/15/jiasu/</guid>
+      <pubDate>Thu, 15 Aug 2024 08:16:25 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;p&gt;一些之前写的和加速镜像链接&lt;/p&gt;
+&lt;h2 id=&quot;脚本&quot;&gt;&lt;a href=&quot;#脚本&quot; class=&quot;headerlink&quot; title=&quot;脚本&quot;&gt;&lt;/a&gt;脚本&lt;/h2&gt;&lt;h3 id=&quot;python&quot;&gt;&lt;a href=&quot;#python&quot;</description>
+          
+        
+      
+      
+      
+      
+      
+      
+      <comments>http://example.com/2024/08/15/jiasu/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>白嫖某度CDN当博客图床[已失效]</title>
+      <link>http://example.com/2024/08/15/%E6%95%99%E7%A8%8B/baiduCDN/</link>
+      <guid>http://example.com/2024/08/15/%E6%95%99%E7%A8%8B/baiduCDN/</guid>
+      <pubDate>Thu, 15 Aug 2024 08:15:07 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;p&gt;某度的首页存在一个 bug，「自定义换肤」上传的图片会留在云端不删除，并且图片直链不会鉴定 cookie 和 referer。&lt;/p&gt;
+&lt;p&gt;可以直接使用百度来做图床存储图片 (安全性未知) 但是速度快啊:sunglasses:&lt;/p&gt;
+&lt;h1 id=&quot;思路&quot;&gt;&lt;a</description>
+          
+        
+      
+      
+      
+      
+      <category domain="http://example.com/categories/%E6%95%99%E7%A8%8B/">教程</category>
+      
+      
+      
+      <comments>http://example.com/2024/08/15/%E6%95%99%E7%A8%8B/baiduCDN/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>Sublime Text汉化以及激活</title>
+      <link>http://example.com/2024/08/13/%E6%95%99%E7%A8%8B/Sublime-Text/</link>
+      <guid>http://example.com/2024/08/13/%E6%95%99%E7%A8%8B/Sublime-Text/</guid>
+      <pubDate>Tue, 13 Aug 2024 08:17:09 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h2 id=&quot;汉化&quot;&gt;&lt;a href=&quot;#汉化&quot; class=&quot;headerlink&quot; title=&quot;汉化&quot;&gt;&lt;/a&gt;汉化&lt;/h2&gt;&lt;p&gt;点击 tools -&amp;gt;Install Package Control&lt;/p&gt;
+&lt;p&gt;&lt;img</description>
+          
+        
+      
+      
+      
+      
+      <category domain="http://example.com/categories/%E6%95%99%E7%A8%8B/">教程</category>
+      
+      
+      
+      <comments>http://example.com/2024/08/13/%E6%95%99%E7%A8%8B/Sublime-Text/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>群晖硬盘&#39;勘用&#39;</title>
+      <link>http://example.com/2024/08/05/%E8%AF%B4%E8%AF%B4/synology-boom/</link>
+      <guid>http://example.com/2024/08/05/%E8%AF%B4%E8%AF%B4/synology-boom/</guid>
+      <pubDate>Mon, 05 Aug 2024 08:18:16 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;p&gt;前几天的时候群晖给报了一个硬盘勘用的警告，我一月份刚换的硬盘两块紫盘做的read1有一块硬盘无法识别了首先先登录了系统然后再数据存储上边查找原因，在网上照的解决方法都是可以识别出来原因而且盘还在，但是我的硬盘直接读取不出来了。因为我在异地无法物理查看硬盘，我先进行了重启</description>
+          
+        
+      
+      
+      
+      
+      <category domain="http://example.com/categories/%E8%AF%B4%E8%AF%B4/">说说</category>
+      
+      
+      
+      <comments>http://example.com/2024/08/05/%E8%AF%B4%E8%AF%B4/synology-boom/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>安阳工学院宽带更新自动更新脚本[可能已失效]</title>
+      <link>http://example.com/2024/07/06/%E6%95%99%E7%A8%8B/ayit-network/</link>
+      <guid>http://example.com/2024/07/06/%E6%95%99%E7%A8%8B/ayit-network/</guid>
+      <pubDate>Sat, 06 Jul 2024 08:20:04 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;p&gt;七月五号的时候ayit更新了dr.com的认证方式，更换了Portal认证的方式，原来的脚本没有办法使用了。又抓了下包分析了一波，还好是网页认证比较好搞。以前的时候是直接发post包就可以了，现在需要&lt;code&gt;1.1.1.1&lt;/code&gt;重定向给你分配&lt;code&gt;wlan</description>
+          
+        
+      
+      
+      
+      
+      <category domain="http://example.com/categories/%E6%95%99%E7%A8%8B/">教程</category>
+      
+      
+      
+      <comments>http://example.com/2024/07/06/%E6%95%99%E7%A8%8B/ayit-network/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>Jetbrains系列激活</title>
+      <link>http://example.com/2024/06/21/%E6%95%99%E7%A8%8B/Jetbrains/</link>
+      <guid>http://example.com/2024/06/21/%E6%95%99%E7%A8%8B/Jetbrains/</guid>
+      <pubDate>Fri, 21 Jun 2024 08:23:14 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;blockquote&gt;
+&lt;p&gt;做个激活攻略方便分享&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;下载软件&quot;&gt;&lt;a href=&quot;#下载软件&quot; class=&quot;headerlink&quot; title=&quot;下载软件&quot;&gt;&lt;/a&gt;下载软件&lt;/h2&gt;&lt;p&gt;这个就不用说了吧直接去官网 &lt;a</description>
+          
+        
+      
+      
+      
+      
+      <category domain="http://example.com/categories/%E6%95%99%E7%A8%8B/">教程</category>
+      
+      
+      
+      <comments>http://example.com/2024/06/21/%E6%95%99%E7%A8%8B/Jetbrains/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>Python 复现RSA算法</title>
+      <link>http://example.com/2024/06/06/%E8%87%AA%E6%90%93%E4%BB%A3%E7%A0%81/python-rsa/</link>
+      <guid>http://example.com/2024/06/06/%E8%87%AA%E6%90%93%E4%BB%A3%E7%A0%81/python-rsa/</guid>
+      <pubDate>Thu, 06 Jun 2024 09:27:19 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;p&gt;ayit期末设计刚好密码学的和信息管理的都可以用rsa算法于是就写了一份信息管理的需要有界面所以使用了pyqt5来做界面&lt;/p&gt;
+&lt;h1 id=&quot;Python-复现RSA算法&quot;&gt;&lt;a href=&quot;#Python-复现RSA算法&quot; class=&quot;headerlink&quot;</description>
+          
+        
+      
+      
+      
+      
+      <category domain="http://example.com/categories/%E8%87%AA%E6%90%93%E4%BB%A3%E7%A0%81/">自搓代码</category>
+      
+      
+      
+      <comments>http://example.com/2024/06/06/%E8%87%AA%E6%90%93%E4%BB%A3%E7%A0%81/python-rsa/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>仿BiliBili前端网页制作</title>
+      <link>http://example.com/2024/06/06/%E8%87%AA%E6%90%93%E4%BB%A3%E7%A0%81/bilibili/</link>
+      <guid>http://example.com/2024/06/06/%E8%87%AA%E6%90%93%E4%BB%A3%E7%A0%81/bilibili/</guid>
+      <pubDate>Thu, 06 Jun 2024 08:23:59 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;p&gt;期末的前端开发大作业仿照着BiliBili和参考大佬的开源项目制作了这个网站 虽然很low&lt;/p&gt;
+&lt;h1 id=&quot;仿BiliBili前端网页制作&quot;&gt;&lt;a href=&quot;#仿BiliBili前端网页制作&quot; class=&quot;headerlink&quot;</description>
+          
+        
+      
+      
+      
+      
+      <category domain="http://example.com/categories/%E8%87%AA%E6%90%93%E4%BB%A3%E7%A0%81/">自搓代码</category>
+      
+      
+      
+      <comments>http://example.com/2024/06/06/%E8%87%AA%E6%90%93%E4%BB%A3%E7%A0%81/bilibili/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>Typora 序列号造假</title>
+      <link>http://example.com/2024/03/05/%E6%95%99%E7%A8%8B/Typora-free/</link>
+      <guid>http://example.com/2024/03/05/%E6%95%99%E7%A8%8B/Typora-free/</guid>
+      <pubDate>Tue, 05 Mar 2024 08:25:12 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h1 id=&quot;生成假的typora序列号&quot;&gt;&lt;a href=&quot;#生成假的typora序列号&quot; class=&quot;headerlink&quot;</description>
+          
+        
+      
+      
+      
+      
+      <category domain="http://example.com/categories/%E6%95%99%E7%A8%8B/">教程</category>
+      
+      
+      
+      <comments>http://example.com/2024/03/05/%E6%95%99%E7%A8%8B/Typora-free/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>2023年终随笔</title>
+      <link>http://example.com/2023/12/23/%E8%AF%B4%E8%AF%B4/2023/</link>
+      <guid>http://example.com/2023/12/23/%E8%AF%B4%E8%AF%B4/2023/</guid>
+      <pubDate>Sat, 23 Dec 2023 05:16:37 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;p&gt;转眼间我的网站建立一年了，起初最开始的时候只是想记录一下搞过的一些东西防止忘记，现在更多的是给我的朋友们分享一些东西。方便共享今天躺在床上没有事情做想着把网站优化一下然后emm 搞了四五个小时。胡思乱想了很久然后忽然发现已经建立网站快一年了 感觉过的好快啊  我丢</description>
+          
+        
+      
+      
+      
+      
+      <category domain="http://example.com/categories/%E8%AF%B4%E8%AF%B4/">说说</category>
+      
+      
+      
+      <comments>http://example.com/2023/12/23/%E8%AF%B4%E8%AF%B4/2023/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>python实现邮件收发</title>
+      <link>http://example.com/2023/12/07/%E8%87%AA%E6%90%93%E4%BB%A3%E7%A0%81/python-mail/</link>
+      <guid>http://example.com/2023/12/07/%E8%87%AA%E6%90%93%E4%BB%A3%E7%A0%81/python-mail/</guid>
+      <pubDate>Thu, 07 Dec 2023 14:51:42 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;p&gt;课程设计周互联网协议分析课程需要写一个与协议相关的程序 我们小组挑选到了邮件收发器 刚好顺便练习一下&lt;code&gt;python&lt;/code&gt;&lt;/p&gt;
+&lt;h1 id=&quot;程序代码&quot;&gt;&lt;a href=&quot;#程序代码&quot; class=&quot;headerlink&quot;</description>
+          
+        
+      
+      
+      
+      
+      <category domain="http://example.com/categories/%E8%87%AA%E6%90%93%E4%BB%A3%E7%A0%81/">自搓代码</category>
+      
+      
+      
+      <comments>http://example.com/2023/12/07/%E8%87%AA%E6%90%93%E4%BB%A3%E7%A0%81/python-mail/#disqus_thread</comments>
       
     </item>
     

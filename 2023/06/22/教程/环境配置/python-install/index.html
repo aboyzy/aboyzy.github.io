@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="python安装与配置下载打开官网Welcome to Python.org  直接下载最新版 如果想要其他版本可以直接点击windows那一栏会跳转 阿里云镜像下载 https:&#x2F;&#x2F;mirrors.aliyun.com&#x2F;python-release&#x2F; 推荐👍 安装其实可以 直接install now 但是我为了演示还是选择下边那个分步   下一步  点击安装  安装完成点击close 换源cm">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Windows python 下载以及配置">
+<meta property="og:url" content="http://example.com/2023/06/22/%E6%95%99%E7%A8%8B/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/python-install/index.html">
+<meta property="og:site_name" content="稚的小窝">
+<meta property="og:description" content="python安装与配置下载打开官网Welcome to Python.org  直接下载最新版 如果想要其他版本可以直接点击windows那一栏会跳转 阿里云镜像下载 https:&#x2F;&#x2F;mirrors.aliyun.com&#x2F;python-release&#x2F; 推荐👍 安装其实可以 直接install now 但是我为了演示还是选择下边那个分步   下一步  点击安装  安装完成点击close 换源cm">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://npm.elemecdn.com/aboyzy_blogstatic/img/202306222017935.webp">
+<meta property="og:image" content="https://npm.elemecdn.com/aboyzy_blogstatic/img/202306222018217.webp">
+<meta property="og:image" content="https://npm.elemecdn.com/aboyzy_blogstatic/img/202306222018252.webp">
+<meta property="og:image" content="https://npm.elemecdn.com/aboyzy_blogstatic/img/202306222018665.webp">
+<meta property="og:image" content="https://npm.elemecdn.com/aboyzy_blogstatic/img/202306222018873.webp">
+<meta property="og:image" content="https://npm.elemecdn.com/aboyzy_blogstatic/img/202306222018188.webp">
+<meta property="og:image" content="https://npm.elemecdn.com/aboyzy_blogstatic/img/202306222018075.webp">
+<meta property="og:image" content="https://npm.elemecdn.com/aboyzy_blogstatic/img/202306222018734.webp">
+<meta property="og:image" content="https://npm.elemecdn.com/aboyzy_blogstatic/img/202306222018049.webp">
+<meta property="og:image" content="https://npm.elemecdn.com/aboyzy_blogstatic/img/202306222018922.webp">
+<meta property="og:image" content="https://npm.elemecdn.com/aboyzy_blogstatic/img/202306222018087.webp">
+<meta property="og:image" content="https://npm.elemecdn.com/aboyzy_blogstatic/img/202306222019032.webp">
+<meta property="og:image" content="https://npm.elemecdn.com/aboyzy_blogstatic/img/202306222019204.webp">
+<meta property="og:image" content="https://npm.elemecdn.com/aboyzy_blogstatic/img/202306222019524.webp">
+<meta property="og:image" content="https://npm.elemecdn.com/aboyzy_blogstatic/img/202306222019053.webp">
+<meta property="og:image" content="https://npm.elemecdn.com/aboyzy_blogstatic/img/202306222019702.webp">
+<meta property="og:image" content="https://npm.elemecdn.com/aboyzy_blogstatic/img/202306222019787.webp">
+<meta property="article:published_time" content="2023-06-22T10:07:00.000Z">
+<meta property="article:modified_time" content="2025-03-08T10:09:08.092Z">
+<meta property="article:author" content="稚">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://npm.elemecdn.com/aboyzy_blogstatic/img/202306222017935.webp">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="https://npm.elemecdn.com/aboyzy_blogstatic/img/%E5%A4%B4%E5%83%8F.webp">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="https://npm.elemecdn.com/aboyzy_blogstatic/img/%E5%A4%B4%E5%83%8F.webp" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="https://npm.elemecdn.com/aboyzy_blogstatic/img/%E5%A4%B4%E5%83%8F.webp">
+        
+      
+    
+    <!-- title -->
+    <title>Windows python 下载以及配置</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+
+    <!-- Waline Comments -->
+    
+        <link rel="stylesheet" href="http://s4.zstatic.net/npm/@waline/client@v2/dist/waline.css"/>
+    
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/rss2.xml" title="稚的小窝" type="application/rss+xml">
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="顶部" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/categories/%E8%AF%B4%E8%AF%B4/">说说</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a href="/pages/">导航</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="/search/">搜索</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="上一篇" href="/2023/06/22/%E6%95%99%E7%A8%8B/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/git/"><i class="fa-solid fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="下一篇" href="/2023/06/22/%E6%95%99%E7%A8%8B/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/java/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="返回顶部" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="分享文章" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="mailto:?subject=Windows python 下载以及配置&body=Check out this article: http://example.com/2023/06/22/%E6%95%99%E7%A8%8B/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/python-install/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+ </ul>
+
+    </div>
+<!--    -->
+<!--    -->
+<!--      <div id="toc">-->
+<!--        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#python%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE"><span class="toc-number">1.</span> <span class="toc-text">python安装与配置</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD"><span class="toc-number">1.1.</span> <span class="toc-text">下载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85"><span class="toc-number">1.2.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8D%A2%E6%BA%90"><span class="toc-number">1.3.</span> <span class="toc-text">换源</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Anaconda"><span class="toc-number">2.</span> <span class="toc-text">Anaconda</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD-1"><span class="toc-number">2.1.</span> <span class="toc-text">下载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85-1"><span class="toc-number">2.2.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83"><span class="toc-number">2.3.</span> <span class="toc-text">配置环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8D%A2%E6%BA%90-1"><span class="toc-number">2.4.</span> <span class="toc-text">换源</span></a></li></ol></li></ol>-->
+<!--      </div>-->
+<!--    -->
+    <div id="toc">
+  <div id="toc-div" class="toc-article" >
+    
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#python%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE"><span class="toc-number">1.</span> <span class="toc-text">python安装与配置</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD"><span class="toc-number">1.1.</span> <span class="toc-text">下载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85"><span class="toc-number">1.2.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8D%A2%E6%BA%90"><span class="toc-number">1.3.</span> <span class="toc-text">换源</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Anaconda"><span class="toc-number">2.</span> <span class="toc-text">Anaconda</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD-1"><span class="toc-number">2.1.</span> <span class="toc-text">下载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85-1"><span class="toc-number">2.2.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83"><span class="toc-number">2.3.</span> <span class="toc-text">配置环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8D%A2%E6%BA%90-1"><span class="toc-number">2.4.</span> <span class="toc-text">换源</span></a></li></ol></li></ol>
+    
+  </div>
+</div>
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        Windows python 下载以及配置
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">稚</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2023-06-22T10:07:00.000Z" class="dt-published" itemprop="datePublished">2023-06-22</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fa-solid fa-archive"></i>
+        <a class="category-link" href="/categories/%E6%95%99%E7%A8%8B/">教程</a> › <a class="category-link" href="/categories/%E6%95%99%E7%A8%8B/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">环境配置</a>
+    </div>
+
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <h1 id="python安装与配置"><a href="#python安装与配置" class="headerlink" title="python安装与配置"></a>python安装与配置</h1><h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><p>打开官网<a target="_blank" rel="noopener" href="https://www.python.org/">Welcome to Python.org</a></p>
+<p><img src="https://npm.elemecdn.com/aboyzy_blogstatic/img/202306222017935.webp" alt="image-20230622191127997"></p>
+<p>直接下载最新版 如果想要其他版本可以直接点击windows那一栏会跳转</p>
+<p>阿里云镜像下载 <a target="_blank" rel="noopener" href="https://mirrors.aliyun.com/python-release/">https://mirrors.aliyun.com/python-release/</a> 推荐👍</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>其实可以 <code>直接install now </code>但是我为了演示还是选择下边那个分步</p>
+<p><img src="https://npm.elemecdn.com/aboyzy_blogstatic/img/202306222018217.webp" alt="image-20230622191611151"></p>
+<p><img src="https://npm.elemecdn.com/aboyzy_blogstatic/img/202306222018252.webp" alt="image-20230622191957896"></p>
+<p>下一步</p>
+<p><img src="https://npm.elemecdn.com/aboyzy_blogstatic/img/202306222018665.webp" alt="image-20230622192115711"></p>
+<p>点击安装</p>
+<p><img src="https://npm.elemecdn.com/aboyzy_blogstatic/img/202306222018873.webp" alt="image-20230622192332836"></p>
+<p>安装完成点击close</p>
+<h2 id="换源"><a href="#换源" class="headerlink" title="换源"></a>换源</h2><p><code>cmd</code>执行</p>
+<div class="highlight-wrap" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple</span><br></pre></td></tr></table></figure></div>
+
+<p><img src="https://npm.elemecdn.com/aboyzy_blogstatic/img/202306222018188.webp" alt="image-20230622192700916"></p>
+<p>升级pip</p>
+<div class="highlight-wrap" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python -m pip install --upgrade pip</span><br></pre></td></tr></table></figure></div>
+
+<h1 id="Anaconda"><a href="#Anaconda" class="headerlink" title="Anaconda"></a>Anaconda</h1><h2 id="下载-1"><a href="#下载-1" class="headerlink" title="下载"></a>下载</h2><p>官网 <a target="_blank" rel="noopener" href="https://www.anaconda.com/">https://www.anaconda.com/</a> (非常不建议) 清华源： <a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/">查看</a> 强烈推荐👍  下载所需版本</p>
+<p><img src="https://npm.elemecdn.com/aboyzy_blogstatic/img/202306222018075.webp" alt="image-20230622194100505"></p>
+<h2 id="安装-1"><a href="#安装-1" class="headerlink" title="安装"></a>安装</h2><ol>
+<li><p>开始安装</p>
+<p><img src="https://npm.elemecdn.com/aboyzy_blogstatic/img/202306222018734.webp" alt="image-20230622194206889"></p>
+</li>
+<li><p>用户协议</p>
+<p><img src="https://npm.elemecdn.com/aboyzy_blogstatic/img/202306222018049.webp" alt="image-20230622194307932"></p>
+</li>
+<li><p>安装用户</p>
+<p><img src="https://npm.elemecdn.com/aboyzy_blogstatic/img/202306222018922.webp" alt="image-20230622194336555"></p>
+</li>
+<li><p>选择安装目录</p>
+<blockquote>
+<p>路径中不要出现中文字符</p>
+</blockquote>
+<p><img src="https://npm.elemecdn.com/aboyzy_blogstatic/img/202306222018087.webp" alt="image-20230622194418000"></p>
+</li>
+<li><p>高级安装选项 自定义Anaconda3如何与Windows集成</p>
+<p><img src="https://npm.elemecdn.com/aboyzy_blogstatic/img/202306222019032.webp" alt="image-20230622194629324"></p>
+<ul>
+<li>创建开始菜单快捷方式（仅支持软件包)</li>
+<li>注册Ancanda3为pythan3.10</li>
+<li>完成后清除包缓存</li>
+</ul>
+</li>
+<li><p>安装完成</p>
+<p><img src="https://npm.elemecdn.com/aboyzy_blogstatic/img/202306222019204.webp" alt="image-20230622195400154"></p>
+<p><img src="https://npm.elemecdn.com/aboyzy_blogstatic/img/202306222019524.webp" alt="image-20230622195426044"></p>
+</li>
+</ol>
+<h2 id="配置环境"><a href="#配置环境" class="headerlink" title="配置环境"></a>配置环境</h2><p>添加新的环境变量 <code>ANACONDA_HOME</code> 值为安装的目录</p>
+<p><img src="https://npm.elemecdn.com/aboyzy_blogstatic/img/202306222019053.webp" alt="image-20230622200155576"></p>
+<p>在 <code>path</code>中添加以下内容</p>
+<div class="highlight-wrap" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">%ANACONDA_HOME%</span><br><span class="line">%ANACONDA_HOME%\Scripts</span><br><span class="line">%ANACONDA_HOME%\Library\bin</span><br><span class="line">%ANACONDA_HOME%\Library\mingw-w64\bin</span><br></pre></td></tr></table></figure></div>
+
+<p><img src="https://npm.elemecdn.com/aboyzy_blogstatic/img/202306222019702.webp" alt="image-20230622200644189"></p>
+<p>验证安装成功</p>
+<div class="highlight-wrap" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># cmd输入</span><br><span class="line">conda --version</span><br></pre></td></tr></table></figure></div>
+
+<p><img src="https://npm.elemecdn.com/aboyzy_blogstatic/img/202306222019787.webp" alt="image-20230622200812091"></p>
+<h2 id="换源-1"><a href="#换源-1" class="headerlink" title="换源"></a>换源</h2><p><code>cmd</code>输入以下内容换为清华源</p>
+<div class="highlight-wrap" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/</span><br><span class="line">conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/</span><br><span class="line">conda config --set show_channel_urls yes</span><br></pre></td></tr></table></figure></div>
+
+<p>查看源</p>
+<div class="highlight-wrap" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda config --show</span><br></pre></td></tr></table></figure></div>
+
+<p>恢复默认源</p>
+<div class="highlight-wrap" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda config --remove-key channels</span><br></pre></td></tr></table></figure></div>
+
+  </div>
+</article>
+
+
+
+    <div class="blog-post-comments">
+        <div id="waline_thread"></div>
+    </div>
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">首页</a></li>
+        
+          <li><a href="/categories/%E8%AF%B4%E8%AF%B4/">说说</a></li>
+        
+          <li><a href="/archives/">归档</a></li>
+        
+          <li><a href="/pages/">导航</a></li>
+        
+          <li><a href="/about/">关于</a></li>
+        
+          <li><a href="/search/">搜索</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#python%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE"><span class="toc-number">1.</span> <span class="toc-text">python安装与配置</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD"><span class="toc-number">1.1.</span> <span class="toc-text">下载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85"><span class="toc-number">1.2.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8D%A2%E6%BA%90"><span class="toc-number">1.3.</span> <span class="toc-text">换源</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Anaconda"><span class="toc-number">2.</span> <span class="toc-text">Anaconda</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD-1"><span class="toc-number">2.1.</span> <span class="toc-text">下载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85-1"><span class="toc-number">2.2.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83"><span class="toc-number">2.3.</span> <span class="toc-text">配置环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8D%A2%E6%BA%90-1"><span class="toc-number">2.4.</span> <span class="toc-text">换源</span></a></li></ol></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="mailto:?subject=Windows python 下载以及配置&body=Check out this article: http://example.com/2023/06/22/%E6%95%99%E7%A8%8B/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/python-install/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+ </ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2022-2025
+    稚
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/categories/%E8%AF%B4%E8%AF%B4/">说说</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a href="/pages/">导航</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="/search/">搜索</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://s4.zstatic.net/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://s4.zstatic.net/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板！\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功！");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+
+<!-- Waline Comments -->
+
+<script type="module">
+    import { init } from 'http://s4.zstatic.net/npm/@waline/client@v2/dist/waline.mjs';
+
+    var EMOJI = ['//unpkg.com/@waline/emojis@1.2.0/qq']
+    var META = ['nick', 'mail', 'link'];
+    var REQUIREDFIELDS = ['nick', 'mail', 'link'];
+
+    var emoji = 'https://npm.elemecdn.com/@waline/emojis@1.2.0/bilibili'.split(',').filter(function(item){
+        return item !== ''; // filter()返回满足不为空item
+    });
+    emoji = emoji.length == 0 ? EMOJI : emoji;
+
+    var meta = 'nick,mail,link'.split(',').filter(function(item){
+        return META.indexOf(item) > -1; // filter()返回满足META.indexOf(item) > -1为true的item
+    });
+    meta = meta.length == 0 ? META : meta;
+
+    var requiredFields = 'nick,mail'.split(',').filter(function(item){
+        return REQUIREDFIELDS.indexOf(item) > -1; // filter()返回满足META.indexOf(item) > -1为true的item
+    });
+    requiredFields = requiredFields.length == 0 ? REQUIREDFIELDS : requiredFields;
+
+    document.addEventListener('DOMContentLoaded', function () {
+
+        const walineElement = document.getElementById('waline_thread');
+
+        if (walineElement) {
+            init({
+                el: '#waline_thread',
+                serverURL: 'https://waline.aboyzy.top/', // Waline 的服务端地址
+                path: '' == '' ? window.location.pathname : '', // 当前文章页路径，用于区分不同的文章页，以保证正确读取该文章页下的评论列表
+                lang: 'zh-CN' == '' ? 'zh-CN' : 'zh-CN', // 多语言支持，未设置默认英文
+                emoji: emoji,
+                dark: '', // 暗黑模式适配
+                commentSorting: '' == '' ? 'latest' : '', // 评论列表排序方式
+                meta: meta, // 评论者相关属性
+                requiredFields: requiredFields, // 设置必填项，默认匿名
+                login: '', // 登录模式状态
+                wordLimit: '', // 评论字数限制
+                pageSize: '10' == '' ? 10 : '10', // 评论列表分页，每页条数
+                imageUploader: '', // 自定义图片上传方法
+                highlighter: '', // 代码高亮
+                placeholder: '',
+                avatar: 'mm',
+                visitor: 'false',
+                comment_count: 'false',
+            });
+        }
+    });
+</script>
+
+</body>
+</html>

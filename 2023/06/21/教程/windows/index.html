@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="前言因为电脑文件太多东西太复杂配置文件搞得很混乱所以准备重装顺便理一下思路并为以后重装做一下教程  所有蓝奏网盘需要密码的都为 xztx 奶牛快传的密码看提示或者无密码  系统下载 微软官方镜像 HelloWindows  激活系统在 pawershell 输入以下命令 1irm https:&#x2F;&#x2F;massgrave.dev&#x2F;get | iex  如果出现错误则多输入几次  输入数字 1进行数字激活">
+<meta property="og:type" content="article">
+<meta property="og:title" content="windows重装系统记录">
+<meta property="og:url" content="http://example.com/2023/06/21/%E6%95%99%E7%A8%8B/windows/index.html">
+<meta property="og:site_name" content="稚的小窝">
+<meta property="og:description" content="前言因为电脑文件太多东西太复杂配置文件搞得很混乱所以准备重装顺便理一下思路并为以后重装做一下教程  所有蓝奏网盘需要密码的都为 xztx 奶牛快传的密码看提示或者无密码  系统下载 微软官方镜像 HelloWindows  激活系统在 pawershell 输入以下命令 1irm https:&#x2F;&#x2F;massgrave.dev&#x2F;get | iex  如果出现错误则多输入几次  输入数字 1进行数字激活">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://npm.elemecdn.com/aboyzy_blogstatic/img/202306210022596.webp">
+<meta property="og:image" content="https://npm.elemecdn.com/aboyzy_blogstatic/img/202306210022703.webp">
+<meta property="og:image" content="https://npm.elemecdn.com/aboyzy_blogstatic/img/202306210022985.webp">
+<meta property="article:published_time" content="2023-06-21T08:39:30.000Z">
+<meta property="article:modified_time" content="2025-03-08T08:40:02.318Z">
+<meta property="article:author" content="稚">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://npm.elemecdn.com/aboyzy_blogstatic/img/202306210022596.webp">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="https://npm.elemecdn.com/aboyzy_blogstatic/img/%E5%A4%B4%E5%83%8F.webp">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="https://npm.elemecdn.com/aboyzy_blogstatic/img/%E5%A4%B4%E5%83%8F.webp" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="https://npm.elemecdn.com/aboyzy_blogstatic/img/%E5%A4%B4%E5%83%8F.webp">
+        
+      
+    
+    <!-- title -->
+    <title>windows重装系统记录</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+
+    <!-- Waline Comments -->
+    
+        <link rel="stylesheet" href="http://s4.zstatic.net/npm/@waline/client@v2/dist/waline.css"/>
+    
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/rss2.xml" title="稚的小窝" type="application/rss+xml">
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="顶部" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/categories/%E8%AF%B4%E8%AF%B4/">说说</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a href="/pages/">导航</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="/search/">搜索</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="上一篇" href="/2023/06/22/%E6%95%99%E7%A8%8B/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/java/"><i class="fa-solid fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="下一篇" href="/2023/06/21/%E6%95%99%E7%A8%8B/Adobe/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="返回顶部" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="分享文章" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="mailto:?subject=windows重装系统记录&body=Check out this article: http://example.com/2023/06/21/%E6%95%99%E7%A8%8B/windows/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+ </ul>
+
+    </div>
+<!--    -->
+<!--    -->
+<!--      <div id="toc">-->
+<!--        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E4%B8%8B%E8%BD%BD"><span class="toc-number">2.</span> <span class="toc-text">系统下载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%BF%80%E6%B4%BB%E7%B3%BB%E7%BB%9F"><span class="toc-number">3.</span> <span class="toc-text">激活系统</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#office"><span class="toc-number">4.</span> <span class="toc-text">office</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A9%B1%E5%8A%A8"><span class="toc-number">5.</span> <span class="toc-text">驱动</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BF%85%E5%A4%87%E5%B7%A5%E5%85%B7"><span class="toc-number">6.</span> <span class="toc-text">必备工具</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BF%85%E5%A4%87"><span class="toc-number">6.1.</span> <span class="toc-text">必备</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E7%94%A8"><span class="toc-number">6.2.</span> <span class="toc-text">实用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8"><span class="toc-number">7.</span> <span class="toc-text">浏览器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E5%85%A8"><span class="toc-number">8.</span> <span class="toc-text">安全</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A4%BE%E4%BA%A4"><span class="toc-number">9.</span> <span class="toc-text">社交</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#adobe%E7%B3%BB%E5%88%97"><span class="toc-number">10.</span> <span class="toc-text">adobe系列</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%80%E5%8F%91%E8%BD%AF%E4%BB%B6"><span class="toc-number">11.</span> <span class="toc-text">开发软件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BF%85%E5%A4%87%E6%8F%92%E4%BB%B6"><span class="toc-number">11.0.1.</span> <span class="toc-text">必备插件</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BE%A4%E6%99%96%E7%B3%BB%E5%88%97%E8%BD%AF%E4%BB%B6"><span class="toc-number">12.</span> <span class="toc-text">群晖系列软件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E8%BD%AF%E4%BB%B6"><span class="toc-number">13.</span> <span class="toc-text">其他软件</span></a></li></ol>-->
+<!--      </div>-->
+<!--    -->
+    <div id="toc">
+  <div id="toc-div" class="toc-article" >
+    
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E4%B8%8B%E8%BD%BD"><span class="toc-number">2.</span> <span class="toc-text">系统下载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%BF%80%E6%B4%BB%E7%B3%BB%E7%BB%9F"><span class="toc-number">3.</span> <span class="toc-text">激活系统</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#office"><span class="toc-number">4.</span> <span class="toc-text">office</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A9%B1%E5%8A%A8"><span class="toc-number">5.</span> <span class="toc-text">驱动</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BF%85%E5%A4%87%E5%B7%A5%E5%85%B7"><span class="toc-number">6.</span> <span class="toc-text">必备工具</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BF%85%E5%A4%87"><span class="toc-number">6.1.</span> <span class="toc-text">必备</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E7%94%A8"><span class="toc-number">6.2.</span> <span class="toc-text">实用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8"><span class="toc-number">7.</span> <span class="toc-text">浏览器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E5%85%A8"><span class="toc-number">8.</span> <span class="toc-text">安全</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A4%BE%E4%BA%A4"><span class="toc-number">9.</span> <span class="toc-text">社交</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#adobe%E7%B3%BB%E5%88%97"><span class="toc-number">10.</span> <span class="toc-text">adobe系列</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%80%E5%8F%91%E8%BD%AF%E4%BB%B6"><span class="toc-number">11.</span> <span class="toc-text">开发软件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BF%85%E5%A4%87%E6%8F%92%E4%BB%B6"><span class="toc-number">11.0.1.</span> <span class="toc-text">必备插件</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BE%A4%E6%99%96%E7%B3%BB%E5%88%97%E8%BD%AF%E4%BB%B6"><span class="toc-number">12.</span> <span class="toc-text">群晖系列软件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E8%BD%AF%E4%BB%B6"><span class="toc-number">13.</span> <span class="toc-text">其他软件</span></a></li></ol>
+    
+  </div>
+</div>
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        windows重装系统记录
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">稚</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2023-06-21T08:39:30.000Z" class="dt-published" itemprop="datePublished">2023-06-21</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fa-solid fa-archive"></i>
+        <a class="category-link" href="/categories/%E6%95%99%E7%A8%8B/">教程</a>
+    </div>
+
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>因为电脑文件太多东西太复杂配置文件搞得很混乱所以准备重装顺便理一下思路并为以后重装做一下教程</p>
+<blockquote>
+<p>所有蓝奏网盘需要密码的都为 <code>xztx</code> 奶牛快传的密码看提示或者无密码</p>
+</blockquote>
+<h2 id="系统下载"><a href="#系统下载" class="headerlink" title="系统下载"></a>系统下载</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://www.microsoft.com/zh-cn/software-download/windows11">微软官方镜像</a></li>
+<li><a target="_blank" rel="noopener" href="https://hellowindows.cn/?ref=www.tboxn.com">HelloWindows</a></li>
+</ul>
+<h2 id="激活系统"><a href="#激活系统" class="headerlink" title="激活系统"></a>激活系统</h2><p>在 <code>pawershell</code> 输入以下命令</p>
+<div class="highlight-wrap" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">irm https://massgrave.dev/get | iex</span><br></pre></td></tr></table></figure></div>
+
+<p>如果出现错误则多输入几次</p>
+<p><img src="https://npm.elemecdn.com/aboyzy_blogstatic/img/202306210022596.webp"></p>
+<p>输入数字 <code>1</code>进行数字激活出现以下式样则为成功</p>
+<p><img src="https://npm.elemecdn.com/aboyzy_blogstatic/img/202306210022703.webp" alt="image-20230620223114803"></p>
+<p>如果不是专业版想换成专业版或其他版本的可以执行 <code>6</code>然后执行 <code>1</code>然后选择想要更换的版本</p>
+<p><img src="https://npm.elemecdn.com/aboyzy_blogstatic/img/202306210022985.webp" alt="image-20230620223715308"></p>
+<p>项目地址：<a target="_blank" rel="noopener" href="https://github.com/massgravel/Microsoft-Activation-Scripts">Github</a></p>
+<h2 id="office"><a href="#office" class="headerlink" title="office"></a>office</h2><p>因为我有office 365 不需要激活就不说了 激活的话可以使用office tools</p>
+<ul>
+<li>官方office ：<a target="_blank" rel="noopener" href="https://c2rsetup.officeapps.live.com/c2r/download.aspx?productReleaseID=O365HomePremRetail&platform=X64&language=zh-cn">下载</a></li>
+<li>csdn下载链接 ： <a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43381677/article/details/114559654">查看</a></li>
+<li>office tools ：<a target="_blank" rel="noopener" href="https://otp.landian.vip/zh-cn/">查看</a></li>
+<li>kms list : <a target="_blank" rel="noopener" href="https://www.coolhub.top/tech-articles/kms_list.html">查看</a></li>
+</ul>
+<h2 id="驱动"><a href="#驱动" class="headerlink" title="驱动"></a>驱动</h2><ul>
+<li>我的电脑的驱动 ：<a target="_blank" rel="noopener" href="https://xiaozoutx.lanzouy.com/b00r69j4b">下载</a></li>
+<li>n卡驱动：<a target="_blank" rel="noopener" href="https://www.nvidia.cn/geforce/drivers/">查看</a></li>
+<li>amd显卡驱动： <a target="_blank" rel="noopener" href="https://www.amd.com/zh-hans/support">查看</a></li>
+</ul>
+<h2 id="必备工具"><a href="#必备工具" class="headerlink" title="必备工具"></a>必备工具</h2><h3 id="必备"><a href="#必备" class="headerlink" title="必备"></a>必备</h3><ul>
+<li>解压缩7-zip：<a target="_blank" rel="noopener" href="https://www.7-zip.org/">下载</a></li>
+<li>截图工具： <a target="_blank" rel="noopener" href="https://www.snipaste.com/">snipaste</a> 备用下载链接：<a target="_blank" rel="noopener" href="https://xiaozoutx.lanzouy.com/iFehA0znarcd">下载</a></li>
+<li>PowerToys: <a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/windows/powertoys/install">查看</a> 备用下载：<a target="_blank" rel="noopener" href="https://cowtransfer.com/s/944a37afedae41">下载</a></li>
+</ul>
+<p>[collapse title&#x3D;”推荐开启功能”]</p>
+<ul>
+<li><p>始终置顶</p>
+</li>
+<li><p>唤醒 （我一般使用无期限保持唤醒）</p>
+</li>
+<li><p>粘贴为纯文本</p>
+</li>
+<li><p>速览</p>
+</li>
+<li><p>PowerToys Run（很好用但是最好把全屏响应给关掉防止打游戏）</p>
+<blockquote>
+<p>其他我一般都为关闭</p>
+</blockquote>
+</li>
+</ul>
+<p>[&#x2F;collapse]</p>
+<ul>
+<li>下载神器IDM: <a target="_blank" rel="noopener" href="https://www.internetdownloadmanager.com/">下载</a> 破解插件：<a target="_blank" rel="noopener" href="https://blog.aboyzy.top/2024/02/18/idm_active/">下载</a></li>
+<li>umi-ocr文本识别工具： <a target="_blank" rel="noopener" href="https://kgithub.com/hiroi-sora/Umi-OCR">查看</a> <a target="_blank" rel="noopener" href="https://hiroi-sora.lanzoul.com/s/umi-ocr">下载</a></li>
+</ul>
+<h3 id="实用"><a href="#实用" class="headerlink" title="实用"></a>实用</h3><ul>
+<li>录屏软件obs： <a target="_blank" rel="noopener" href="https://obsproject.com/">下载</a></li>
+<li>视频播放软件 potplayer：<a target="_blank" rel="noopener" href="https://t1.daumcdn.net/potplayer/PotPlayer/Version/Latest/PotPlayerSetup64.exe">下载</a> 备用下载：<a target="_blank" rel="noopener" href="https://xiaozoutx.lanzouy.com/iX8YJ0zo9p1a">下载</a>  配置教程 有时间再写</li>
+<li>终端软件： 这个自带了 我想要把他美化所以就写上来了 <a target="_blank" rel="noopener" href="https://aka.ms/terminal">下载</a></li>
+<li>gif软件screentogif：<a target="_blank" rel="noopener" href="https://www.screentogif.com/">下载</a></li>
+<li>远控软件todesk <a target="_blank" rel="noopener" href="https://www.todesk.com/">下载</a></li>
+<li>网易有道翻译 <a target="_blank" rel="noopener" href="https://fanyi.youdao.com/download-Windows">下载</a></li>
+<li>xmind <a target="_blank" rel="noopener" href="https://xmind.cn/">下载</a> <a target="_blank" rel="noopener" href="https://xiaozoutx.lanzouy.com/i4YDQ1yyprcj">激活插件</a></li>
+</ul>
+<h2 id="浏览器"><a href="#浏览器" class="headerlink" title="浏览器"></a>浏览器</h2><ul>
+<li>Chrome：<a target="_blank" rel="noopener" href="https://www.google.cn/intl/zh-CN/chrome/">下载</a> <a target="_blank" rel="noopener" href="https://xiaozoutx.lanzouy.com/iYYQ60zn9vod">备用</a></li>
+</ul>
+<p>[collapse title&#x3D;”插件”]</p>
+<p>crx下载地址 ：<a target="_blank" rel="noopener" href="https://www.crxsoso.com/">crx搜搜</a></p>
+<ol>
+<li><p>AdGuard 广告拦截器</p>
+</li>
+<li><p>IDM Integration Module</p>
+</li>
+<li><p>Tampermonkey</p>
+</li>
+<li><p>Sider: ChatGPT 侧边栏, GPT-4, 联网</p>
+<blockquote>
+<p>设置 通用配置 使用openAI api key</p>
+<p>使用自己的网址</p>
+<p><code>https://api.chatanywhere.com.cn</code></p>
+<p>点击以下链接获取免费api <a target="_blank" rel="noopener" href="https://api.chatanywhere.cn/v1/oauth/free/github/render">点击这里</a></p>
+<p>将免费key填入就可以使用了</p>
+</blockquote>
+</li>
+</ol>
+<blockquote>
+</blockquote>
+<ol start="5">
+<li><p>bitwarden <a target="_blank" rel="noopener" href="https://github.com/bitwarden/clients/releases/tag/browser-v2022.10.1">下载</a> <a target="_blank" rel="noopener" href="https://xiaozoutx.lanzouy.com/b00r9yqah">备用</a></p>
+</li>
+<li><p>tampermonkey</p>
+<blockquote>
+<ol>
+<li>CSDN广告完全过滤、人性化脚本优化 <a target="_blank" rel="noopener" href="https://greasyfork.org/scripts/378351">下载</a></li>
+<li>Github 增强 - 高速下载 <a target="_blank" rel="noopener" href="https://greasyfork.org/scripts/412245">下载</a></li>
+<li>GitHub 中文化插件 <a target="_blank" rel="noopener" href="https://greasyfork.org/scripts/435208">下载</a></li>
+<li>百度网盘千千下载助手 <a target="_blank" rel="noopener" href="https://greasyfork.org/scripts/463171">下载</a></li>
+<li>知乎增强 <a target="_blank" rel="noopener" href="https://greasyfork.org/scripts/419081">下载</a></li>
+</ol>
+</blockquote>
+</li>
+</ol>
+<blockquote>
+</blockquote>
+<p>[&#x2F;collapse]</p>
+<ul>
+<li>Edge： 自带了</li>
+</ul>
+<h2 id="安全"><a href="#安全" class="headerlink" title="安全"></a>安全</h2><ul>
+<li>火绒： <a target="_blank" rel="noopener" href="https://www.huorong.cn/">查看</a></li>
+</ul>
+<h2 id="社交"><a href="#社交" class="headerlink" title="社交"></a>社交</h2><ul>
+<li>QQ： <a target="_blank" rel="noopener" href="https://im.qq.com/index/">查看</a></li>
+<li>微信：<a target="_blank" rel="noopener" href="https://weixin.qq.com/">查看</a></li>
+<li>钉钉：<a target="_blank" rel="noopener" href="https://www.dingtalk.com/">查看</a></li>
+</ul>
+<h2 id="adobe系列"><a href="#adobe系列" class="headerlink" title="adobe系列"></a>adobe系列</h2><p>[showcard icon&#x3D;”fa-regular fa-bookmark” title&#x3D;”adobe激活” img&#x3D;”<a target="_blank" rel="noopener" href="https://imgsrc.baidu.com/forum/pic/item/a71ea8d3fd1f41347056b75f631f95cad1c85eaa.jpg">https://imgsrc.baidu.com/forum/pic/item/a71ea8d3fd1f41347056b75f631f95cad1c85eaa.jpg</a>“ color&#x3D;”#cce1eb”]<a target="_blank" rel="noopener" href="https://blog.aboyzy.top/2023/06/21/adobe/[/showcard]">https://blog.aboyzy.top/2023/06/21/adobe/[/showcard]</a> </p>
+<h2 id="开发软件"><a href="#开发软件" class="headerlink" title="开发软件"></a>开发软件</h2><ul>
+<li><p>Jetbrains系列</p>
+<ul>
+<li>IDEA <a target="_blank" rel="noopener" href="https://www.jetbrains.com/zh-cn/idea/">下载</a></li>
+<li>Pycharm <a target="_blank" rel="noopener" href="https://www.jetbrains.com/zh-cn/pycharm/">下载</a></li>
+</ul>
+<p>[showcard icon&#x3D;”fa-regular fa-bookmark” title&#x3D;”adobe激活” img&#x3D;”<a target="_blank" rel="noopener" href="https://blog.aboyzy.top/wp-content/uploads/2024/06/1722162708-jetbrains.png">https://blog.aboyzy.top/wp-content/uploads/2024/06/1722162708-jetbrains.png</a>“ color&#x3D;”#cce1eb”]<a target="_blank" rel="noopener" href="https://blog.aboyzy.top/2024/06/21/jetbrains_jihuo/[/showcard]">https://blog.aboyzy.top/2024/06/21/jetbrains_jihuo/[/showcard]</a></p>
+</li>
+</ul>
+<h4 id="必备插件"><a href="#必备插件" class="headerlink" title="必备插件"></a>必备插件</h4><ol>
+<li>Translation</li>
+<li>Chinese (Simplified) LanguagePack／中文语言包</li>
+</ol>
+<ul>
+<li><p>虚拟机vmware <a target="_blank" rel="noopener" href="https://www.vmware.com/cn/products/workstation-pro/workstation-pro-evaluation.html">下载</a> <a target="_blank" rel="noopener" href="https://zhizy-my.sharepoint.com/:f:/g/personal/xiaozoutx_zhizy_onmicrosoft_com/EnDrJONKwD9Hvize7mZdR6cBHEjw43iCRihdy0_WxvaErg?e=IHEJaU">onedrive</a></p>
+<ul>
+<li><p>17pro激活密钥</p>
+<div class="highlight-wrap" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NZ4RR-FTK5H-H81C1-Q30QH-1V2LA</span><br></pre></td></tr></table></figure></div></li>
+<li><p>16pro激活密钥</p>
+<div class="highlight-wrap" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ZF3R0-FHED2-M80TY-8QYGC-NPKYF</span><br></pre></td></tr></table></figure></div></li>
+</ul>
+</li>
+<li><p>vscode</p>
+<p>自动保存</p>
+<blockquote>
+<p>打开设置搜索 <code>auto save</code>  选择 <code>onFocusChange</code>鼠标不在VSCode里面时自动保存</p>
+</blockquote>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=MS-CEINTL.vscode-language-pack-zh-hans">Chinese (Simplified) (简体中文) Language Pack for Visual Studio Code</a></li>
+<li><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=redjue.git-commit-plugin">git-commit-plugin</a></li>
+<li><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh">Remote - SSH</a></li>
+<li><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=PKief.material-icon-theme">Material Icon Theme</a></li>
+<li><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=shalldie.background">background</a></li>
+<li><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=alefragnani.project-manager">Project Manager</a></li>
+</ol>
+</li>
+<li><p>博客系列</p>
+<ul>
+<li><p>Typora <a target="_blank" rel="noopener" href="https://typoraio.cn/">下载</a> <a target="_blank" rel="noopener" href="https://blog.aboyzy.top/2024/03/05/typora-xuliehaozaojia/">激活</a><br>主题下载链接 ：<a target="_blank" rel="noopener" href="https://github.com/liangjingkanji/DrakeTyporaTheme">下载</a> 备用下载：<a target="_blank" rel="noopener" href="https://xiaozoutx.lanzouy.com/i9XQL0zowa7e">下载</a></p>
+<p>通过文件-&gt; 偏好设置 -&gt; 外观 -&gt; 打开主题文件夹打开theme目录</p>
+<p>复制解压后目录内的所有文件到theme目录下然后重启, 选择菜单栏 -&gt; 主题即可 我用的是dark vue3.</p>
+</li>
+</ul>
+<p>  文件</p>
+<blockquote>
+<p>启动选项-&gt; 打开指定文件夹</p>
+<p>自动保存开启</p>
+</blockquote>
+<p>  图像</p>
+<blockquote>
+<p>插入图片时-&gt; 复制到指定路径</p>
+<p>使用相对路径 加.&#x2F; 转义</p>
+<p>上传服务picgo</p>
+</blockquote>
+</li>
+<li><p>picgo <a target="_blank" rel="noopener" href="https://picgo.github.io/PicGo-Doc/zh/guide/#%E4%B8%8B%E8%BD%BD%E5%AE%89%E8%A3%85">下载</a></p>
+<blockquote>
+<p>打开 上传前重命名 时间戳重命名 和上传后自动复制url</p>
+</blockquote>
+<p>  插件配置</p>
+<p>  下载 picgo-plugin-compress-webp-lossless <a target="_blank" rel="noopener" href="https://xiaozoutx.lanzouy.com/ipjHs0zox8fg">下载</a>或者在软件自带的插件里搜索下载</p>
+</li>
+<li><p>ssh连接软件：MobaXterm_Personal中文版 <a target="_blank" rel="noopener" href="https://github.com/RipplePiam/MobaXterm-Chinese-Simplified">下载</a> 备用：<a target="_blank" rel="noopener" href="https://xiaozoutx.lanzouy.com/iwOsI0zoxnhi">下载</a></p>
+</li>
+</ul>
+<p>破解插件：<a target="_blank" rel="noopener" href="https://xiaozoutx.lanzouy.com/ip2tP0zoy6af">下载</a> 下载之后解压到MobaXterm的文件夹内就可以了</p>
+<h2 id="群晖系列软件"><a href="#群晖系列软件" class="headerlink" title="群晖系列软件"></a>群晖系列软件</h2><ul>
+<li>同步软件Synology Drive Client <a target="_blank" rel="noopener" href="https://cndl.synology.cn/download/Utility/SynologyDriveClient/3.3.0-15082/Windows/Installer/Synology%20Drive%20Client-3.3.0-15082.exe?model=DS918+&bays=4&dsm_version=7.1.1&build_number=42962">下载</a></li>
+<li>笔记软件Synology Note Station Client <a target="_blank" rel="noopener" href="https://cndl.synology.cn/download/Utility/NoteStationClient/2.2.2-609/Windows/x86_64/synology-note-station-client-2.2.2-609-win-x64-Setup.exe?model=DS918+&bays=4&dsm_version=7.1.1&build_number=42962">下载</a></li>
+<li>其他 <a target="_blank" rel="noopener" href="https://www.synology.cn/zh-cn/support/download/DS918+?version=7.1#utilities">链接</a></li>
+<li>群晖邮件软件 <a target="_blank" rel="noopener" href="https://www.synology.cn/zh-cn/dsm/feature/mailplus">Synology MailPlus</a></li>
+</ul>
+<h2 id="其他软件"><a href="#其他软件" class="headerlink" title="其他软件"></a>其他软件</h2><ul>
+<li>压缩视频软件：小丸工具箱 <a target="_blank" rel="noopener" href="https://cowtransfer.com/s/b46095afa9ae46">下载</a></li>
+<li>代理工具<ol>
+<li>v2rayn  <a target="_blank" rel="noopener" href="https://github.com/2dust/v2rayN">https://github.com/2dust/v2rayN</a></li>
+<li>clash <a target="_blank" rel="noopener" href="https://github.com/Fndroid/clash_for_windows_pkg">https://github.com/Fndroid/clash_for_windows_pkg</a> 备用： <a target="_blank" rel="noopener" href="https://xiaozoutx.lanzouy.com/iiKcD0zp4l4f">下载</a> 汉化:  <a target="_blank" rel="noopener" href="https://github.com/BoyceLig/Clash_Chinese_Patch">https://github.com/BoyceLig/Clash_Chinese_Patch</a>(已不可用)</li>
+<li>clash verge <a target="_blank" rel="noopener" href="https://github.com/zzzgydi/clash-verge/releases">https://github.com/zzzgydi/clash-verge/releases</a></li>
+</ol>
+</li>
+<li>QQ音乐: <a target="_blank" rel="noopener" href="https://y.qq.com/download/download.html">下载</a></li>
+<li>网易云音乐 ：<a target="_blank" rel="noopener" href="https://music.163.com/#/download">下载</a></li>
+</ul>
+
+  </div>
+</article>
+
+
+
+    <div class="blog-post-comments">
+        <div id="waline_thread"></div>
+    </div>
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">首页</a></li>
+        
+          <li><a href="/categories/%E8%AF%B4%E8%AF%B4/">说说</a></li>
+        
+          <li><a href="/archives/">归档</a></li>
+        
+          <li><a href="/pages/">导航</a></li>
+        
+          <li><a href="/about/">关于</a></li>
+        
+          <li><a href="/search/">搜索</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E4%B8%8B%E8%BD%BD"><span class="toc-number">2.</span> <span class="toc-text">系统下载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%BF%80%E6%B4%BB%E7%B3%BB%E7%BB%9F"><span class="toc-number">3.</span> <span class="toc-text">激活系统</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#office"><span class="toc-number">4.</span> <span class="toc-text">office</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A9%B1%E5%8A%A8"><span class="toc-number">5.</span> <span class="toc-text">驱动</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BF%85%E5%A4%87%E5%B7%A5%E5%85%B7"><span class="toc-number">6.</span> <span class="toc-text">必备工具</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BF%85%E5%A4%87"><span class="toc-number">6.1.</span> <span class="toc-text">必备</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E7%94%A8"><span class="toc-number">6.2.</span> <span class="toc-text">实用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8"><span class="toc-number">7.</span> <span class="toc-text">浏览器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E5%85%A8"><span class="toc-number">8.</span> <span class="toc-text">安全</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A4%BE%E4%BA%A4"><span class="toc-number">9.</span> <span class="toc-text">社交</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#adobe%E7%B3%BB%E5%88%97"><span class="toc-number">10.</span> <span class="toc-text">adobe系列</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%80%E5%8F%91%E8%BD%AF%E4%BB%B6"><span class="toc-number">11.</span> <span class="toc-text">开发软件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BF%85%E5%A4%87%E6%8F%92%E4%BB%B6"><span class="toc-number">11.0.1.</span> <span class="toc-text">必备插件</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BE%A4%E6%99%96%E7%B3%BB%E5%88%97%E8%BD%AF%E4%BB%B6"><span class="toc-number">12.</span> <span class="toc-text">群晖系列软件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E8%BD%AF%E4%BB%B6"><span class="toc-number">13.</span> <span class="toc-text">其他软件</span></a></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="mailto:?subject=windows重装系统记录&body=Check out this article: http://example.com/2023/06/21/%E6%95%99%E7%A8%8B/windows/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+ </ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2022-2025
+    稚
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/categories/%E8%AF%B4%E8%AF%B4/">说说</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a href="/pages/">导航</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="/search/">搜索</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://s4.zstatic.net/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://s4.zstatic.net/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板！\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功！");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+
+<!-- Waline Comments -->
+
+<script type="module">
+    import { init } from 'http://s4.zstatic.net/npm/@waline/client@v2/dist/waline.mjs';
+
+    var EMOJI = ['//unpkg.com/@waline/emojis@1.2.0/qq']
+    var META = ['nick', 'mail', 'link'];
+    var REQUIREDFIELDS = ['nick', 'mail', 'link'];
+
+    var emoji = 'https://npm.elemecdn.com/@waline/emojis@1.2.0/bilibili'.split(',').filter(function(item){
+        return item !== ''; // filter()返回满足不为空item
+    });
+    emoji = emoji.length == 0 ? EMOJI : emoji;
+
+    var meta = 'nick,mail,link'.split(',').filter(function(item){
+        return META.indexOf(item) > -1; // filter()返回满足META.indexOf(item) > -1为true的item
+    });
+    meta = meta.length == 0 ? META : meta;
+
+    var requiredFields = 'nick,mail'.split(',').filter(function(item){
+        return REQUIREDFIELDS.indexOf(item) > -1; // filter()返回满足META.indexOf(item) > -1为true的item
+    });
+    requiredFields = requiredFields.length == 0 ? REQUIREDFIELDS : requiredFields;
+
+    document.addEventListener('DOMContentLoaded', function () {
+
+        const walineElement = document.getElementById('waline_thread');
+
+        if (walineElement) {
+            init({
+                el: '#waline_thread',
+                serverURL: 'https://waline.aboyzy.top/', // Waline 的服务端地址
+                path: '' == '' ? window.location.pathname : '', // 当前文章页路径，用于区分不同的文章页，以保证正确读取该文章页下的评论列表
+                lang: 'zh-CN' == '' ? 'zh-CN' : 'zh-CN', // 多语言支持，未设置默认英文
+                emoji: emoji,
+                dark: '', // 暗黑模式适配
+                commentSorting: '' == '' ? 'latest' : '', // 评论列表排序方式
+                meta: meta, // 评论者相关属性
+                requiredFields: requiredFields, // 设置必填项，默认匿名
+                login: '', // 登录模式状态
+                wordLimit: '', // 评论字数限制
+                pageSize: '10' == '' ? 10 : '10', // 评论列表分页，每页条数
+                imageUploader: '', // 自定义图片上传方法
+                highlighter: '', // 代码高亮
+                placeholder: '',
+                avatar: 'mm',
+                visitor: 'false',
+                comment_count: 'false',
+            });
+        }
+    });
+</script>
+
+</body>
+</html>

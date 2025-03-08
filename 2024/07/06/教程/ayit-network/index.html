@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="七月五号的时候ayit更新了dr.com的认证方式，更换了Portal认证的方式，原来的脚本没有办法使用了。又抓了下包分析了一波，还好是网页认证比较好搞。以前的时候是直接发post包就可以了，现在需要1.1.1.1重定向给你分配wlanuserip地址然后向这个指定地址进行发送数据,发送的参数也进行了改变。新版的需要携带cookie信息进行校验 其实跟原来的差不多只不过多了一次重定向 python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="安阳工学院宽带更新自动更新脚本[可能已失效]">
+<meta property="og:url" content="http://example.com/2024/07/06/%E6%95%99%E7%A8%8B/ayit-network/index.html">
+<meta property="og:site_name" content="稚的小窝">
+<meta property="og:description" content="七月五号的时候ayit更新了dr.com的认证方式，更换了Portal认证的方式，原来的脚本没有办法使用了。又抓了下包分析了一波，还好是网页认证比较好搞。以前的时候是直接发post包就可以了，现在需要1.1.1.1重定向给你分配wlanuserip地址然后向这个指定地址进行发送数据,发送的参数也进行了改变。新版的需要携带cookie信息进行校验 其实跟原来的差不多只不过多了一次重定向 python">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-07-06T08:20:04.000Z">
+<meta property="article:modified_time" content="2025-03-08T08:22:10.228Z">
+<meta property="article:author" content="稚">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="https://npm.elemecdn.com/aboyzy_blogstatic/img/%E5%A4%B4%E5%83%8F.webp">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="https://npm.elemecdn.com/aboyzy_blogstatic/img/%E5%A4%B4%E5%83%8F.webp" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="https://npm.elemecdn.com/aboyzy_blogstatic/img/%E5%A4%B4%E5%83%8F.webp">
+        
+      
+    
+    <!-- title -->
+    <title>安阳工学院宽带更新自动更新脚本[可能已失效]</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+
+    <!-- Waline Comments -->
+    
+        <link rel="stylesheet" href="http://s4.zstatic.net/npm/@waline/client@v2/dist/waline.css"/>
+    
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/rss2.xml" title="稚的小窝" type="application/rss+xml">
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="顶部" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/categories/%E8%AF%B4%E8%AF%B4/">说说</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a href="/pages/">导航</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="/search/">搜索</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="上一篇" href="/2024/08/05/%E8%AF%B4%E8%AF%B4/synology-boom/"><i class="fa-solid fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="下一篇" href="/2024/06/21/%E6%95%99%E7%A8%8B/Jetbrains/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="返回顶部" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="分享文章" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="mailto:?subject=安阳工学院宽带更新自动更新脚本[可能已失效]&body=Check out this article: http://example.com/2024/07/06/%E6%95%99%E7%A8%8B/ayit-network/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+ </ul>
+
+    </div>
+<!--    -->
+<!--    -->
+<!--      <div id="toc">-->
+<!--        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#python%E8%84%9A%E6%9C%AC"><span class="toc-number">1.</span> <span class="toc-text">python脚本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Liunx%E7%8E%AF%E5%A2%83shell%E8%84%9A%E6%9C%AC"><span class="toc-number">2.</span> <span class="toc-text">Liunx环境shell脚本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%87%AA%E5%8A%A8%E5%8C%96%E8%84%9A%E6%9C%AC%E8%87%AA%E5%8A%A8%E6%89%A7%E8%A1%8C"><span class="toc-number">3.</span> <span class="toc-text">自动化脚本自动执行</span></a></li></ol>-->
+<!--      </div>-->
+<!--    -->
+    <div id="toc">
+  <div id="toc-div" class="toc-article" >
+    
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#python%E8%84%9A%E6%9C%AC"><span class="toc-number">1.</span> <span class="toc-text">python脚本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Liunx%E7%8E%AF%E5%A2%83shell%E8%84%9A%E6%9C%AC"><span class="toc-number">2.</span> <span class="toc-text">Liunx环境shell脚本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%87%AA%E5%8A%A8%E5%8C%96%E8%84%9A%E6%9C%AC%E8%87%AA%E5%8A%A8%E6%89%A7%E8%A1%8C"><span class="toc-number">3.</span> <span class="toc-text">自动化脚本自动执行</span></a></li></ol>
+    
+  </div>
+</div>
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        安阳工学院宽带更新自动更新脚本[可能已失效]
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">稚</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2024-07-06T08:20:04.000Z" class="dt-published" itemprop="datePublished">2024-07-06</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fa-solid fa-archive"></i>
+        <a class="category-link" href="/categories/%E6%95%99%E7%A8%8B/">教程</a>
+    </div>
+
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <p>七月五号的时候ayit更新了dr.com的认证方式，更换了Portal认证的方式，原来的脚本没有办法使用了。又抓了下包分析了一波，还好是网页认证比较好搞。以前的时候是直接发post包就可以了，现在需要<code>1.1.1.1</code>重定向给你分配<code>wlanuserip</code>地址然后向这个指定地址进行发送数据,发送的参数也进行了改变。新版的需要携带cookie信息进行校验</p>
+<p>其实跟原来的差不多只不过多了一次重定向</p>
+<h2 id="python脚本"><a href="#python脚本" class="headerlink" title="python脚本"></a>python脚本</h2><p>[task] 填写xuehao，passwd，IP [&#x2F;task]</p>
+<div class="highlight-wrap" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line">xuehao = <span class="string">&quot;&quot;</span> <span class="comment"># 你的学号</span></span><br><span class="line">passwd = <span class="string">&quot;&quot;</span>     <span class="comment"># 密码</span></span><br><span class="line">ip = <span class="string">&quot;172.19.75.100&quot;</span> <span class="comment"># 你要申请的ip</span></span><br><span class="line"></span><br><span class="line">url = <span class="string">&quot;http://1.1.1.1/&quot;</span></span><br><span class="line">headers = &#123;</span><br><span class="line">    <span class="string">&quot;Accept&quot;</span>: <span class="string">&quot;text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7&quot;</span>,</span><br><span class="line">    <span class="string">&quot;Accept-Language&quot;</span>: <span class="string">&quot;zh-CN,zh;q=0.9,en;q=0.8,tr;q=0.7,ee;q=0.6&quot;</span>,</span><br><span class="line">    <span class="string">&quot;Cache-Control&quot;</span>: <span class="string">&quot;no-cache&quot;</span>,</span><br><span class="line">    <span class="string">&quot;Connection&quot;</span>: <span class="string">&quot;keep-alive&quot;</span>,</span><br><span class="line">    <span class="string">&quot;DNT&quot;</span>: <span class="string">&quot;1&quot;</span>,</span><br><span class="line">    <span class="string">&quot;Pragma&quot;</span>: <span class="string">&quot;no-cache&quot;</span>,</span><br><span class="line">    <span class="string">&quot;Referer&quot;</span>: <span class="string">&quot;http://172.168.254.4/&quot;</span>,</span><br><span class="line">    <span class="string">&quot;Upgrade-Insecure-Requests&quot;</span>: <span class="string">&quot;1&quot;</span>,</span><br><span class="line">    <span class="string">&quot;User-Agent&quot;</span>: <span class="string">&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">response = requests.get(url, headers=headers, verify=<span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line">pattern = <span class="string">r&#x27;wlanuserip=(.*?)&amp;&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">match</span> = re.search(pattern, <span class="built_in">str</span>(response.url))</span><br><span class="line"></span><br><span class="line">wlanuserip = <span class="keyword">match</span>.group(<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;wlanuserip 的值是:&quot;</span>, wlanuserip)</span><br><span class="line"></span><br><span class="line">session = requests.Session()</span><br><span class="line"></span><br><span class="line">session.headers.update(&#123;</span><br><span class="line">    <span class="string">&quot;User-Agent&quot;</span>: <span class="string">&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36&quot;</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Add cookies to the session</span></span><br><span class="line">cookies = &#123;</span><br><span class="line">    <span class="string">&quot;program&quot;</span>: <span class="string">&quot;aygxy1807&quot;</span>,</span><br><span class="line">    <span class="string">&quot;vlan&quot;</span>: <span class="string">&quot;0&quot;</span>,</span><br><span class="line">    <span class="string">&quot;ssid&quot;</span>: <span class="string">&quot;null&quot;</span>,</span><br><span class="line">    <span class="string">&quot;areaID&quot;</span>: <span class="string">&quot;null&quot;</span>,</span><br><span class="line">    <span class="string">&quot;ISP_select&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">    <span class="string">&quot;md5_login2&quot;</span>: <span class="string">f&quot;%2C0%2C<span class="subst">&#123;xuehao&#125;</span>%7C<span class="subst">&#123;passwd&#125;</span>&quot;</span>,</span><br><span class="line">    <span class="string">&quot;ip&quot;</span>: <span class="string">f&quot;<span class="subst">&#123;ip&#125;</span>&quot;</span>  </span><br><span class="line">&#125;</span><br><span class="line">session.cookies.update(cookies)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Set headers</span></span><br><span class="line">headers = &#123;</span><br><span class="line">    <span class="string">&quot;Accept&quot;</span>: <span class="string">&quot;*/*&quot;</span>,</span><br><span class="line">    <span class="string">&quot;Accept-Encoding&quot;</span>: <span class="string">&quot;gzip, deflate&quot;</span>,</span><br><span class="line">    <span class="string">&quot;Accept-Language&quot;</span>: <span class="string">&quot;zh-CN,zh;q=0.9,en;q=0.8,tr;q=0.7,ee;q=0.6&quot;</span>,</span><br><span class="line">    <span class="string">&quot;Cache-Control&quot;</span>: <span class="string">&quot;no-cache&quot;</span>,</span><br><span class="line">    <span class="string">&quot;DNT&quot;</span>: <span class="string">&quot;1&quot;</span>,</span><br><span class="line">    <span class="string">&quot;Pragma&quot;</span>: <span class="string">&quot;no-cache&quot;</span>,</span><br><span class="line">    <span class="string">&quot;Referer&quot;</span>: <span class="string">&quot;http://172.168.254.4/&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">url = <span class="string">&quot;http://172.168.254.4:801/eportal/portal/login?callback=dr1003&amp;login_method=1&amp;user_account=%2C0%2C&quot;</span>+<span class="built_in">str</span>(xuehao)+<span class="string">&quot;&amp;user_password=&quot;</span>+<span class="built_in">str</span>(passwd)+<span class="string">&quot;&amp;wlan_user_ip=&quot;</span>+<span class="built_in">str</span>(wlanuserip)+<span class="string">&quot;&amp;wlan_user_ipv6=&amp;wlan_user_mac=000000000000&amp;wlan_ac_ip=172.168.254.100&amp;wlan_ac_name=&amp;jsVersion=4.2.1&amp;terminal_type=1&amp;lang=zh-cn&amp;v=1540&amp;lang=zh&quot;</span></span><br><span class="line"></span><br><span class="line">response = session.get(url, headers=headers)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(response.text)</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
+
+<h2 id="Liunx环境shell脚本"><a href="#Liunx环境shell脚本" class="headerlink" title="Liunx环境shell脚本"></a>Liunx环境shell脚本</h2><p>如果你想要在linux环境下进行使用可以使用以下脚本</p>
+<p>[warning]<br>正则部分可能部分Linux不支持请查看帮助替换指定的参数 如：我在路由器中使用 ‘-oE’ [&#x2F;warning]</p>
+<div class="highlight-wrap" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">!/bin/bash</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">定义变量</span></span><br><span class="line">XUEHAO=&quot;&quot;  # 你的学号</span><br><span class="line">PASSWD=&quot;&quot;      # 密码</span><br><span class="line">IP=&quot;172.19.75.100&quot; # 你要申请的ip</span><br><span class="line">URL=&quot;http://1.1.1.1/&quot;</span><br><span class="line">REFERER=&quot;http://172.168.254.4/&quot;</span><br><span class="line">USER_AGENT=&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36&quot;</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">发起第一次请求并获取响应的 URL</span></span><br><span class="line">RESPONSE_URL=$(curl -s -L -H &quot;Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7&quot; \</span><br><span class="line">-H &quot;Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,tr;q=0.7,ee;q=0.6&quot; \</span><br><span class="line">-H &quot;Cache-Control: no-cache&quot; \</span><br><span class="line">-H &quot;Connection: keep-alive&quot; \</span><br><span class="line">-H &quot;DNT: 1&quot; \</span><br><span class="line">-H &quot;Pragma: no-cache&quot; \</span><br><span class="line">-H &quot;Referer: $REFERER&quot; \</span><br><span class="line">-H &quot;Upgrade-Insecure-Requests: 1&quot; \</span><br><span class="line">-H &quot;User-Agent: $USER_AGENT&quot; \</span><br><span class="line"><span class="meta prompt_">$</span><span class="language-bash">URL)</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">提取 wlanuserip 值</span></span><br><span class="line">WLANUSERIP=$(echo $RESPONSE_URL | grep -oP &#x27;wlanuserip=\K[^&amp;]+&#x27; -q)</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">使用会话 Cookie 和头信息发起第二次请求</span></span><br><span class="line">SECOND_URL=&quot;http://172.168.254.4:801/eportal/portal/login?callback=dr1003&amp;login_method=1&amp;user_account=%2C0%2C$&#123;XUEHAO&#125;&amp;user_password=$&#123;PASSWD&#125;&amp;wlan_user_ip=$&#123;WLANUSERIP&#125;&amp;wlan_user_ipv6=&amp;wlan_user_mac=000000000000&amp;wlan_ac_ip=172.168.254.100&amp;wlan_ac_name=&amp;jsVersion=4.2.1&amp;terminal_type=1&amp;lang=zh-cn&amp;v=1540&amp;lang=zh&quot;</span><br><span class="line"></span><br><span class="line">RESPONSE=$(curl -s -L -H &quot;Accept: */*&quot; \</span><br><span class="line">-H &quot;Accept-Encoding: gzip, deflate&quot; \</span><br><span class="line">-H &quot;Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,tr;q=0.7,ee;q=0.6&quot; \</span><br><span class="line">-H &quot;Cache-Control: no-cache&quot; \</span><br><span class="line">-H &quot;DNT: 1&quot; \</span><br><span class="line">-H &quot;Pragma: no-cache&quot; \</span><br><span class="line">-H &quot;Referer: $REFERER&quot; \</span><br><span class="line">-H &quot;User-Agent: $USER_AGENT&quot; \</span><br><span class="line">--cookie &quot;program=aygxy1807; vlan=0; ssid=null; areaID=null; ISP_select=; md5_login2=%2C0%2C$&#123;XUEHAO&#125;%7C$&#123;PASSWD&#125;; ip=$&#123;IP&#125;&quot; \</span><br><span class="line"><span class="meta prompt_">$</span><span class="language-bash">SECOND_URL)</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">打印响应</span></span><br><span class="line">echo $RESPONSE</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
+
+<h2 id="自动化脚本自动执行"><a href="#自动化脚本自动执行" class="headerlink" title="自动化脚本自动执行"></a>自动化脚本自动执行</h2><p>思路： 如果已经登陆则<a target="_blank" rel="noopener" href="http://172.168.254.4/">http://172.168.254.4</a>的响应<code>title</code>为注销页 其余情况则为 上网登录页 可以定时进行判断进行申请</p>
+<p>[task]我是用了NID进行判断 服务器编码为GBK格式转换复杂 [&#x2F;task]</p>
+<div class="highlight-wrap" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">!/bin/bash</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">指定的网址</span></span><br><span class="line">URL=&quot;http://172.168.254.4&quot;</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">发送GET请求并获取响应的HTML内容</span></span><br><span class="line">RESPONSE=$(curl -s &quot;$URL&quot;)</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">搜索网页内容是否包含 <span class="string">&quot;NID&quot;</span></span></span><br><span class="line">if echo &quot;$RESPONSE&quot; | grep -q &quot;NID&quot;; then</span><br><span class="line">  echo &quot;login OK!&quot;</span><br><span class="line">else</span><br><span class="line">  bash login.sh</span><br><span class="line">fi</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
+
+
+  </div>
+</article>
+
+
+
+    <div class="blog-post-comments">
+        <div id="waline_thread"></div>
+    </div>
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">首页</a></li>
+        
+          <li><a href="/categories/%E8%AF%B4%E8%AF%B4/">说说</a></li>
+        
+          <li><a href="/archives/">归档</a></li>
+        
+          <li><a href="/pages/">导航</a></li>
+        
+          <li><a href="/about/">关于</a></li>
+        
+          <li><a href="/search/">搜索</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#python%E8%84%9A%E6%9C%AC"><span class="toc-number">1.</span> <span class="toc-text">python脚本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Liunx%E7%8E%AF%E5%A2%83shell%E8%84%9A%E6%9C%AC"><span class="toc-number">2.</span> <span class="toc-text">Liunx环境shell脚本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%87%AA%E5%8A%A8%E5%8C%96%E8%84%9A%E6%9C%AC%E8%87%AA%E5%8A%A8%E6%89%A7%E8%A1%8C"><span class="toc-number">3.</span> <span class="toc-text">自动化脚本自动执行</span></a></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="mailto:?subject=安阳工学院宽带更新自动更新脚本[可能已失效]&body=Check out this article: http://example.com/2024/07/06/%E6%95%99%E7%A8%8B/ayit-network/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+ </ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2022-2025
+    稚
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/categories/%E8%AF%B4%E8%AF%B4/">说说</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a href="/pages/">导航</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="/search/">搜索</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://s4.zstatic.net/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://s4.zstatic.net/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板！\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功！");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+
+<!-- Waline Comments -->
+
+<script type="module">
+    import { init } from 'http://s4.zstatic.net/npm/@waline/client@v2/dist/waline.mjs';
+
+    var EMOJI = ['//unpkg.com/@waline/emojis@1.2.0/qq']
+    var META = ['nick', 'mail', 'link'];
+    var REQUIREDFIELDS = ['nick', 'mail', 'link'];
+
+    var emoji = 'https://npm.elemecdn.com/@waline/emojis@1.2.0/bilibili'.split(',').filter(function(item){
+        return item !== ''; // filter()返回满足不为空item
+    });
+    emoji = emoji.length == 0 ? EMOJI : emoji;
+
+    var meta = 'nick,mail,link'.split(',').filter(function(item){
+        return META.indexOf(item) > -1; // filter()返回满足META.indexOf(item) > -1为true的item
+    });
+    meta = meta.length == 0 ? META : meta;
+
+    var requiredFields = 'nick,mail'.split(',').filter(function(item){
+        return REQUIREDFIELDS.indexOf(item) > -1; // filter()返回满足META.indexOf(item) > -1为true的item
+    });
+    requiredFields = requiredFields.length == 0 ? REQUIREDFIELDS : requiredFields;
+
+    document.addEventListener('DOMContentLoaded', function () {
+
+        const walineElement = document.getElementById('waline_thread');
+
+        if (walineElement) {
+            init({
+                el: '#waline_thread',
+                serverURL: 'https://waline.aboyzy.top/', // Waline 的服务端地址
+                path: '' == '' ? window.location.pathname : '', // 当前文章页路径，用于区分不同的文章页，以保证正确读取该文章页下的评论列表
+                lang: 'zh-CN' == '' ? 'zh-CN' : 'zh-CN', // 多语言支持，未设置默认英文
+                emoji: emoji,
+                dark: '', // 暗黑模式适配
+                commentSorting: '' == '' ? 'latest' : '', // 评论列表排序方式
+                meta: meta, // 评论者相关属性
+                requiredFields: requiredFields, // 设置必填项，默认匿名
+                login: '', // 登录模式状态
+                wordLimit: '', // 评论字数限制
+                pageSize: '10' == '' ? 10 : '10', // 评论列表分页，每页条数
+                imageUploader: '', // 自定义图片上传方法
+                highlighter: '', // 代码高亮
+                placeholder: '',
+                avatar: 'mm',
+                visitor: 'false',
+                comment_count: 'false',
+            });
+        }
+    });
+</script>
+
+</body>
+</html>

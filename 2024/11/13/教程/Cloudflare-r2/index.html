@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="图片存储迁移前言更新一下博客的图片使用的存储方式 最开始的时候博客使用的是GitHub+vercel提供加速的方式,但是vercel偶尔容易在国内死掉 所以迁移到了GitHub + jsDelivr CDN + PicGo的方式,但是jsDelivr 遭到了 DNS 污染，被大陆封锁，以至于我的博客图片在很长一段时间完全无法加载。而且依赖于Github算是一种滥用 。后来看到風雪城写的关于百度的图">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Cloudflare-r2">
+<meta property="og:url" content="http://example.com/2024/11/13/%E6%95%99%E7%A8%8B/Cloudflare-r2/index.html">
+<meta property="og:site_name" content="稚的小窝">
+<meta property="og:description" content="图片存储迁移前言更新一下博客的图片使用的存储方式 最开始的时候博客使用的是GitHub+vercel提供加速的方式,但是vercel偶尔容易在国内死掉 所以迁移到了GitHub + jsDelivr CDN + PicGo的方式,但是jsDelivr 遭到了 DNS 污染，被大陆封锁，以至于我的博客图片在很长一段时间完全无法加载。而且依赖于Github算是一种滥用 。后来看到風雪城写的关于百度的图">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://524524d.webp.li/photo/2024_11_13_202411132132819.webp">
+<meta property="og:image" content="https://524524d.webp.li/photo/2024_11_13_202411132249669.webp">
+<meta property="og:image" content="https://524524d.webp.li/photo/2024_11_13_202411132249456.webp">
+<meta property="og:image" content="https://524524d.webp.li/photo/2024_11_13_202411132200409.webp">
+<meta property="og:image" content="https://524524d.webp.li/photo/2024_11_13_202411132200251.webp">
+<meta property="og:image" content="https://524524d.webp.li/photo/2024_11_13_202411132200368.webp">
+<meta property="og:image" content="https://524524d.webp.li/photo/2024_11_13_202411132200786.webp">
+<meta property="og:image" content="https://524524d.webp.li/photo/2024_11_13_202411132147188.webp">
+<meta property="article:published_time" content="2024-11-13T05:50:03.000Z">
+<meta property="article:modified_time" content="2025-03-08T05:50:31.563Z">
+<meta property="article:author" content="稚">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://524524d.webp.li/photo/2024_11_13_202411132132819.webp">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="https://npm.elemecdn.com/aboyzy_blogstatic/img/%E5%A4%B4%E5%83%8F.webp">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="https://npm.elemecdn.com/aboyzy_blogstatic/img/%E5%A4%B4%E5%83%8F.webp" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="https://npm.elemecdn.com/aboyzy_blogstatic/img/%E5%A4%B4%E5%83%8F.webp">
+        
+      
+    
+    <!-- title -->
+    <title>Cloudflare-r2</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+
+    <!-- Waline Comments -->
+    
+        <link rel="stylesheet" href="http://s4.zstatic.net/npm/@waline/client@v2/dist/waline.css"/>
+    
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/rss2.xml" title="稚的小窝" type="application/rss+xml">
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="顶部" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/categories/%E8%AF%B4%E8%AF%B4/">说说</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a href="/pages/">导航</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="/search/">搜索</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="上一篇" href="/2024/11/14/HCIE/Hcie/"><i class="fa-solid fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="下一篇" href="/2024/09/16/%E7%BE%A4%E6%99%96/synology-face/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="返回顶部" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="分享文章" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="mailto:?subject=Cloudflare-r2&body=Check out this article: http://example.com/2024/11/13/%E6%95%99%E7%A8%8B/Cloudflare-r2/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+ </ul>
+
+    </div>
+<!--    -->
+<!--    -->
+<!--      <div id="toc">-->
+<!--        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%BE%E7%89%87%E5%AD%98%E5%82%A8%E8%BF%81%E7%A7%BB"><span class="toc-number">1.</span> <span class="toc-text">图片存储迁移</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Cloudflare-R2-WebP-Cloud-PicList"><span class="toc-number">1.2.</span> <span class="toc-text">Cloudflare R2 + WebP Cloud + PicList</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%90%AD%E5%BB%BA%E8%AF%B4%E6%98%8E"><span class="toc-number">1.2.1.</span> <span class="toc-text">搭建说明</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E5%AD%98%E5%82%A8%E6%A1%B6"><span class="toc-number">1.2.1.1.</span> <span class="toc-text">创建存储桶</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE-Bucket-%E8%AE%BF%E9%97%AE-API"><span class="toc-number">1.2.1.2.</span> <span class="toc-text">配置 Bucket 访问 API</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Piclist-%E8%AE%BE%E7%BD%AE"><span class="toc-number">1.2.2.</span> <span class="toc-text">Piclist 设置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#WebP-Cloud-%E5%9B%BE%E7%89%87%E4%BC%98%E5%8C%96"><span class="toc-number">1.2.3.</span> <span class="toc-text">WebP Cloud 图片优化</span></a></li></ol></li></ol></li></ol>-->
+<!--      </div>-->
+<!--    -->
+    <div id="toc">
+  <div id="toc-div" class="toc-article" >
+    
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%BE%E7%89%87%E5%AD%98%E5%82%A8%E8%BF%81%E7%A7%BB"><span class="toc-number">1.</span> <span class="toc-text">图片存储迁移</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Cloudflare-R2-WebP-Cloud-PicList"><span class="toc-number">1.2.</span> <span class="toc-text">Cloudflare R2 + WebP Cloud + PicList</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%90%AD%E5%BB%BA%E8%AF%B4%E6%98%8E"><span class="toc-number">1.2.1.</span> <span class="toc-text">搭建说明</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E5%AD%98%E5%82%A8%E6%A1%B6"><span class="toc-number">1.2.1.1.</span> <span class="toc-text">创建存储桶</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE-Bucket-%E8%AE%BF%E9%97%AE-API"><span class="toc-number">1.2.1.2.</span> <span class="toc-text">配置 Bucket 访问 API</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Piclist-%E8%AE%BE%E7%BD%AE"><span class="toc-number">1.2.2.</span> <span class="toc-text">Piclist 设置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#WebP-Cloud-%E5%9B%BE%E7%89%87%E4%BC%98%E5%8C%96"><span class="toc-number">1.2.3.</span> <span class="toc-text">WebP Cloud 图片优化</span></a></li></ol></li></ol></li></ol>
+    
+  </div>
+</div>
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        Cloudflare-r2
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">稚</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2024-11-13T05:50:03.000Z" class="dt-published" itemprop="datePublished">2024-11-13</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fa-solid fa-archive"></i>
+        <a class="category-link" href="/categories/%E6%95%99%E7%A8%8B/">教程</a>
+    </div>
+
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <h1 id="图片存储迁移"><a href="#图片存储迁移" class="headerlink" title="图片存储迁移"></a>图片存储迁移</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>更新一下博客的图片使用的存储方式</p>
+<p>最开始的时候博客使用的是GitHub+vercel提供加速的方式,但是vercel偶尔容易在国内死掉 所以迁移到了GitHub + jsDelivr CDN + PicGo的方式,但是jsDelivr 遭到了 DNS 污染，被大陆封锁，以至于我的博客图片在很长一段时间完全无法加载。而且依赖于Github算是一种滥用 。后来看到<a target="_blank" rel="noopener" href="https://blog.chyk.ink/">風雪城</a>写的关于百度的图床用法，写了一篇文章<a target="_blank" rel="noopener" href="https://blog.aboyzy.top/2024/08/15/baidu_cdn/">白嫖某度CDN当博客图床</a>没用几天图片全部无法访问了出现了参数错误 估计百度修复这个bug了吧 。最后想了一下还是决定使用oss存储 。之前就一致在用cloudfile的服务 忽然想到它有一个R2存储还是10G每月免费 而且我还有一个eu.org的免费域名于是想到了Cloudflare R2 + WebP Cloud + Piclist的方式</p>
+<h2 id="Cloudflare-R2-WebP-Cloud-PicList"><a href="#Cloudflare-R2-WebP-Cloud-PicList" class="headerlink" title="Cloudflare R2 + WebP Cloud + PicList"></a>Cloudflare R2 + WebP Cloud + PicList</h2><p><img src="https://524524d.webp.li/photo/2024_11_13_202411132132819.webp"></p>
+<p>为了优化用户的访问，又使用了一个「<a target="_blank" rel="noopener" href="https://webp.se/">WebP Cloud</a>」服务对 R2 的图片进行代理，在代理层面进一步减小图片体积，虽然对于国内用户来说速度肯定还是比不上阿里云 OSS 这种线路，但是在不用备案、稳定且免费的综合条件下，这是我能想到的最好的方案了。</p>
+<h3 id="搭建说明"><a href="#搭建说明" class="headerlink" title="搭建说明"></a>搭建说明</h3><p>R2 是 Cloudflare 推出的免费对象存储服务，需要免费注册一个 Cloudflare 账号才能使用，注册登录后，点击左侧边栏的 R2 访问服务，但需要注意的是开通 R2 服务需要绑定信用卡（国内外主流信用卡皆可），但并不会扣费，主要是为了验证用户身份使用。</p>
+<h4 id="创建存储桶"><a href="#创建存储桶" class="headerlink" title="创建存储桶"></a>创建存储桶</h4><p><img src="https://524524d.webp.li/photo/2024_11_13_202411132249669.webp" alt="image-20241113213529710"></p>
+<p>写一个又标识的名称 因为常为亚太地区访问所以设置为亚太</p>
+<p><img src="https://524524d.webp.li/photo/2024_11_13_202411132249456.webp" alt="image-20241113213620275"></p>
+<p>点击设置</p>
+<p><img src="https://524524d.webp.li/photo/2024_11_13_202411132200409.webp" alt="image-20241113213734063"></p>
+<p>点击允许访问 输入[allow]就可以了</p>
+<p>连接域 可自行选择是否打开 。分配的网址比较长，不易于记忆，我们可以通过「自定义域」来绑定我们的专属域名，点击「连接域」按钮</p>
+<p><img src="https://524524d.webp.li/photo/2024_11_13_202411132200251.webp" alt="image-20241113213936399"></p>
+<h4 id="配置-Bucket-访问-API"><a href="#配置-Bucket-访问-API" class="headerlink" title="配置 Bucket 访问 API"></a>配置 Bucket 访问 API</h4><p><img src="https://524524d.webp.li/photo/2024_11_13_202411132200368.webp" alt="image-20241113214152257"></p>
+<p>创建密钥选择读和写 指定存储桶</p>
+<p><img src="https://524524d.webp.li/photo/2024_11_13_202411132200786.webp" alt="image-20241113214229419"></p>
+<p>点击确定</p>
+<p>之后界面只出现一次 请务必保存好信息</p>
+<h3 id="Piclist-设置"><a href="#Piclist-设置" class="headerlink" title="Piclist 设置"></a>Piclist 设置</h3><p>下载<a target="_blank" rel="noopener" href="https://piclist.cn/">https://piclist.cn/</a></p>
+<p>点击图床 点击加号配置如下内容</p>
+<p><img src="https://524524d.webp.li/photo/2024_11_13_202411132147188.webp"></p>
+<ul>
+<li><strong>Access Key ID</strong> :填写访问密钥 ID</li>
+<li><strong>Secret Access Key</strong>：填写机密访问密钥</li>
+<li><strong>Bucket</strong>: 填写 R2 中创建的 Bucket 名称</li>
+<li><strong>文件路径</strong>：也可选择使用 <code>&#123;fileName&#125;.&#123;extName&#125;</code> 来保留原文件的文件名和扩展名。</li>
+<li><strong>自定义节点</strong>，填写 R2 API 中的「为 S3 客户端使用管辖权地特定的终结点」，即 <code>xxx.r2.cloudflarestorage.com</code> 格式的 S3 Endpoint</li>
+<li><strong>自定义域名</strong>，填写上文生成的 <code>xxx.r2.dev</code> 格式的域名或自定义域名</li>
+</ul>
+<p>点击确认</p>
+<h3 id="WebP-Cloud-图片优化"><a href="#WebP-Cloud-图片优化" class="headerlink" title="WebP Cloud 图片优化"></a>WebP Cloud 图片优化</h3><p>登录<a target="_blank" rel="noopener" href="https://webp.se/">https://webp.se/</a>连接Github 一天3000次免费压缩和加速请求次数 超过则使用源站请求.对于一般用户来说完全够用</p>
+<p>主页点击创建代理</p>
+<ul>
+<li>为了优化国内访问，我「Proxy Region」选择的是美西「Hillsboro, OR」区域</li>
+<li>「Proxy Name」填写一个自定义名称即可</li>
+<li>「Proxy Origin URL」，比较重要，需要填写上文我们配置好的 R2 自定义域名，如果没配置自定义域名则填写 R2 提供的 <code>xxx.r2.dev</code> 格式的域名</li>
+</ul>
+<p>将piklist的自定义域名设置为代理的地址</p>
+
+  </div>
+</article>
+
+
+
+    <div class="blog-post-comments">
+        <div id="waline_thread"></div>
+    </div>
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">首页</a></li>
+        
+          <li><a href="/categories/%E8%AF%B4%E8%AF%B4/">说说</a></li>
+        
+          <li><a href="/archives/">归档</a></li>
+        
+          <li><a href="/pages/">导航</a></li>
+        
+          <li><a href="/about/">关于</a></li>
+        
+          <li><a href="/search/">搜索</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%BE%E7%89%87%E5%AD%98%E5%82%A8%E8%BF%81%E7%A7%BB"><span class="toc-number">1.</span> <span class="toc-text">图片存储迁移</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Cloudflare-R2-WebP-Cloud-PicList"><span class="toc-number">1.2.</span> <span class="toc-text">Cloudflare R2 + WebP Cloud + PicList</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%90%AD%E5%BB%BA%E8%AF%B4%E6%98%8E"><span class="toc-number">1.2.1.</span> <span class="toc-text">搭建说明</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E5%AD%98%E5%82%A8%E6%A1%B6"><span class="toc-number">1.2.1.1.</span> <span class="toc-text">创建存储桶</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE-Bucket-%E8%AE%BF%E9%97%AE-API"><span class="toc-number">1.2.1.2.</span> <span class="toc-text">配置 Bucket 访问 API</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Piclist-%E8%AE%BE%E7%BD%AE"><span class="toc-number">1.2.2.</span> <span class="toc-text">Piclist 设置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#WebP-Cloud-%E5%9B%BE%E7%89%87%E4%BC%98%E5%8C%96"><span class="toc-number">1.2.3.</span> <span class="toc-text">WebP Cloud 图片优化</span></a></li></ol></li></ol></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="mailto:?subject=Cloudflare-r2&body=Check out this article: http://example.com/2024/11/13/%E6%95%99%E7%A8%8B/Cloudflare-r2/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+ </ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2022-2025
+    稚
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/categories/%E8%AF%B4%E8%AF%B4/">说说</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a href="/pages/">导航</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="/search/">搜索</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://s4.zstatic.net/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://s4.zstatic.net/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板！\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功！");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+
+<!-- Waline Comments -->
+
+<script type="module">
+    import { init } from 'http://s4.zstatic.net/npm/@waline/client@v2/dist/waline.mjs';
+
+    var EMOJI = ['//unpkg.com/@waline/emojis@1.2.0/qq']
+    var META = ['nick', 'mail', 'link'];
+    var REQUIREDFIELDS = ['nick', 'mail', 'link'];
+
+    var emoji = 'https://npm.elemecdn.com/@waline/emojis@1.2.0/bilibili'.split(',').filter(function(item){
+        return item !== ''; // filter()返回满足不为空item
+    });
+    emoji = emoji.length == 0 ? EMOJI : emoji;
+
+    var meta = 'nick,mail,link'.split(',').filter(function(item){
+        return META.indexOf(item) > -1; // filter()返回满足META.indexOf(item) > -1为true的item
+    });
+    meta = meta.length == 0 ? META : meta;
+
+    var requiredFields = 'nick,mail'.split(',').filter(function(item){
+        return REQUIREDFIELDS.indexOf(item) > -1; // filter()返回满足META.indexOf(item) > -1为true的item
+    });
+    requiredFields = requiredFields.length == 0 ? REQUIREDFIELDS : requiredFields;
+
+    document.addEventListener('DOMContentLoaded', function () {
+
+        const walineElement = document.getElementById('waline_thread');
+
+        if (walineElement) {
+            init({
+                el: '#waline_thread',
+                serverURL: 'https://waline.aboyzy.top/', // Waline 的服务端地址
+                path: '' == '' ? window.location.pathname : '', // 当前文章页路径，用于区分不同的文章页，以保证正确读取该文章页下的评论列表
+                lang: 'zh-CN' == '' ? 'zh-CN' : 'zh-CN', // 多语言支持，未设置默认英文
+                emoji: emoji,
+                dark: '', // 暗黑模式适配
+                commentSorting: '' == '' ? 'latest' : '', // 评论列表排序方式
+                meta: meta, // 评论者相关属性
+                requiredFields: requiredFields, // 设置必填项，默认匿名
+                login: '', // 登录模式状态
+                wordLimit: '', // 评论字数限制
+                pageSize: '10' == '' ? 10 : '10', // 评论列表分页，每页条数
+                imageUploader: '', // 自定义图片上传方法
+                highlighter: '', // 代码高亮
+                placeholder: '',
+                avatar: 'mm',
+                visitor: 'false',
+                comment_count: 'false',
+            });
+        }
+    });
+</script>
+
+</body>
+</html>

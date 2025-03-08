@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="前言之前使用的服务器配置没有在活动的时候搞 然后配置低还贵 &#x2F;(ㄒoㄒ)&#x2F;~~ 所以这次趁着活动换了一台服务器 (还是国外的)在华盛顿 小水管 下次一定迁移回国或者到香港 主要是国内要备案什么的好麻烦 。 环境 ubuntu 22.04 为什么我看大家都用debian lnmp  配置主机拿到之后首先使用root用户登录到cli界面 SSH登录ssh基础知识首先需要创建用户并禁">
+<meta property="og:type" content="article">
+<meta property="og:title" content="服务器升级">
+<meta property="og:url" content="http://example.com/2024/11/30/%E6%95%99%E7%A8%8B/server/index.html">
+<meta property="og:site_name" content="稚的小窝">
+<meta property="og:description" content="前言之前使用的服务器配置没有在活动的时候搞 然后配置低还贵 &#x2F;(ㄒoㄒ)&#x2F;~~ 所以这次趁着活动换了一台服务器 (还是国外的)在华盛顿 小水管 下次一定迁移回国或者到香港 主要是国内要备案什么的好麻烦 。 环境 ubuntu 22.04 为什么我看大家都用debian lnmp  配置主机拿到之后首先使用root用户登录到cli界面 SSH登录ssh基础知识首先需要创建用户并禁">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://524524d.webp.li/photo/2024_11_30_202411301935153.webp">
+<meta property="og:image" content="https://524524d.webp.li/photo/2024_11_30_202411301935110.webp">
+<meta property="og:image" content="https://524524d.webp.li/photo/2024_11_30_202411301936848.webp">
+<meta property="og:image" content="https://524524d.webp.li/photo/2024_11_30_202411301936834.webp">
+<meta property="og:image" content="https://524524d.webp.li/photo/2024_11_30_202411301936874.webp">
+<meta property="og:image" content="https://524524d.webp.li/photo/2024_11_30_202411301936531.webp">
+<meta property="article:published_time" content="2024-11-30T11:33:58.000Z">
+<meta property="article:modified_time" content="2025-03-08T08:44:15.244Z">
+<meta property="article:author" content="稚">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://524524d.webp.li/photo/2024_11_30_202411301935153.webp">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="https://npm.elemecdn.com/aboyzy_blogstatic/img/%E5%A4%B4%E5%83%8F.webp">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="https://npm.elemecdn.com/aboyzy_blogstatic/img/%E5%A4%B4%E5%83%8F.webp" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="https://npm.elemecdn.com/aboyzy_blogstatic/img/%E5%A4%B4%E5%83%8F.webp">
+        
+      
+    
+    <!-- title -->
+    <title>服务器升级</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+
+    <!-- Waline Comments -->
+    
+        <link rel="stylesheet" href="http://s4.zstatic.net/npm/@waline/client@v2/dist/waline.css"/>
+    
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/rss2.xml" title="稚的小窝" type="application/rss+xml">
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="顶部" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/categories/%E8%AF%B4%E8%AF%B4/">说说</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a href="/pages/">导航</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="/search/">搜索</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="上一篇" href="/2024/12/28/%E8%AF%B4%E8%AF%B4/2024/"><i class="fa-solid fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="下一篇" href="/2024/11/16/%E8%AF%B4%E8%AF%B4/synology-yingpanboom/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="返回顶部" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="分享文章" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="mailto:?subject=服务器升级&body=Check out this article: http://example.com/2024/11/30/%E6%95%99%E7%A8%8B/server/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+ </ul>
+
+    </div>
+<!--    -->
+<!--    -->
+<!--      <div id="toc">-->
+<!--        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83"><span class="toc-number">1.1.</span> <span class="toc-text">环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE"><span class="toc-number">1.2.</span> <span class="toc-text">配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SSH%E7%99%BB%E5%BD%95"><span class="toc-number">1.3.</span> <span class="toc-text">SSH登录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Lnmp%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85"><span class="toc-number">1.4.</span> <span class="toc-text">Lnmp环境安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A2%9E%E5%8A%A0%E7%AB%99%E7%82%B9"><span class="toc-number">1.4.1.</span> <span class="toc-text">增加站点</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%83%A8%E7%BD%B2wordpress"><span class="toc-number">1.4.1.1.</span> <span class="toc-text">部署wordpress</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEnginx"><span class="toc-number">1.4.1.2.</span> <span class="toc-text">配置nginx</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#SSL%E9%85%8D%E7%BD%AE"><span class="toc-number">1.4.1.2.1.</span> <span class="toc-text">SSL配置</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#alist"><span class="toc-number">1.4.1.3.</span> <span class="toc-text">alist</span></a></li></ol></li></ol></li></ol></li></ol>-->
+<!--      </div>-->
+<!--    -->
+    <div id="toc">
+  <div id="toc-div" class="toc-article" >
+    
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83"><span class="toc-number">1.1.</span> <span class="toc-text">环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE"><span class="toc-number">1.2.</span> <span class="toc-text">配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SSH%E7%99%BB%E5%BD%95"><span class="toc-number">1.3.</span> <span class="toc-text">SSH登录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Lnmp%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85"><span class="toc-number">1.4.</span> <span class="toc-text">Lnmp环境安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A2%9E%E5%8A%A0%E7%AB%99%E7%82%B9"><span class="toc-number">1.4.1.</span> <span class="toc-text">增加站点</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%83%A8%E7%BD%B2wordpress"><span class="toc-number">1.4.1.1.</span> <span class="toc-text">部署wordpress</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEnginx"><span class="toc-number">1.4.1.2.</span> <span class="toc-text">配置nginx</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#SSL%E9%85%8D%E7%BD%AE"><span class="toc-number">1.4.1.2.1.</span> <span class="toc-text">SSL配置</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#alist"><span class="toc-number">1.4.1.3.</span> <span class="toc-text">alist</span></a></li></ol></li></ol></li></ol></li></ol>
+    
+  </div>
+</div>
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        服务器升级
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">稚</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2024-11-30T11:33:58.000Z" class="dt-published" itemprop="datePublished">2024-11-30</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fa-solid fa-archive"></i>
+        <a class="category-link" href="/categories/%E6%95%99%E7%A8%8B/">教程</a>
+    </div>
+
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>之前使用的服务器配置没有在活动的时候搞 然后配置低还贵 &#x2F;(ㄒoㄒ)&#x2F;~~ 所以这次趁着活动换了一台服务器 (还是国外的)在华盛顿 小水管 <del>下次一定迁移回国</del>或者到香港 主要是国内要备案什么的好麻烦 。</p>
+<h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><ul>
+<li>ubuntu 22.04 为什么我看大家都用debian</li>
+<li>lnmp</li>
+</ul>
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><p>主机拿到之后首先使用root用户登录到cli界面</p>
+<h2 id="SSH登录"><a href="#SSH登录" class="headerlink" title="SSH登录"></a>SSH登录</h2><p><a target="_blank" rel="noopener" href="https://wangdoc.com/ssh/key">ssh基础知识</a><br>首先需要创建用户并禁用root账户的ssh登录 <code>xzxzbyh</code>为创建的用户</p>
+<div class="highlight-wrap" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">该标志-m表示创建用户的主目录并-c允许指定注释</span></span><br><span class="line">useradd -m -c &quot;my selfs &quot; xzxzbyh</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">指定shell</span></span><br><span class="line">usermod -s /bin/bash xzxzbyh</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">更改密码</span></span><br><span class="line">passwd xzxzbyh </span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">使用usermod 命令将此用户添加到适当的系统管理员组，-a表示追加用户帐户 -G指定一个组</span></span><br><span class="line">usermod -aG wheel xzxzbyh #CentOS/RHEL </span><br><span class="line">usermod -aG sudo xzxzbyh #Debian/Ubuntu</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">切换用户</span></span><br><span class="line">su xzxzbyh</span><br><span class="line">cd ~</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">生成ssh密钥</span></span><br><span class="line">ssh-keygen  </span><br></pre></td></tr></table></figure></div>
+
+<p><img src="https://524524d.webp.li/photo/2024_11_30_202411301935153.webp" alt="img"></p>
+<p>生成密钥以后，建议修改它们的权限，防止其他人读取。</p>
+<div class="highlight-wrap" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">chmod 600 ~/.ssh/id_rsa</span><br><span class="line"></span><br><span class="line">chmod 600 ~/.ssh/id_rsa.pub</span><br></pre></td></tr></table></figure></div>
+
+<p>将本机的id_rsa.pub 复制公钥到服务器(前提本机也生成了公钥和私钥)</p>
+<div class="highlight-wrap" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vi ~/.ssh/authorized_keys</span><br><span class="line">chmod 644 ~/.ssh/authorized_keys</span><br></pre></td></tr></table></figure></div>
+
+<p>authorized_keys文件的权限要设为644，即只有文件所有者才能写。如果权限设置不对，SSH 服务器可能会拒绝读取该文件。</p>
+<p>修改ssh配置文件取消root登录</p>
+<div class="highlight-wrap" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/ssh/sshd_config</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">PermitRootLogin并将其值设置为no 不允许root登录</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">设置PasswordAuthentication no 不允许密码登录</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">重启ssh服务</span></span><br><span class="line">systemctl restart sshd</span><br><span class="line">service sshd restart</span><br></pre></td></tr></table></figure></div>
+
+<h2 id="Lnmp环境安装"><a href="#Lnmp环境安装" class="headerlink" title="Lnmp环境安装"></a>Lnmp环境安装</h2><p>lnmp即linux+nginx+mysql+php 我使用的是lnmp一键安装包</p>
+<p>进入 <a target="_blank" rel="noopener" href="https://www.lnmp.org/install.html">lnmp.org</a> 可以进行查看</p>
+<p>也可直接使用下发代码</p>
+<div class="highlight-wrap" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 切换root账户</span><br><span class="line">sudo -i </span><br><span class="line"></span><br><span class="line">wget https://soft.lnmp.com/lnmp/lnmp2.1.tar.gz -O lnmp2.1.tar.gz &amp;&amp; tar zxf lnmp2.1.tar.gz &amp;&amp; cd lnmp2.1 &amp;&amp; ./install.sh lnmp</span><br></pre></td></tr></table></figure></div>
+
+<p>安装的配置</p>
+<p><img src="https://524524d.webp.li/photo/2024_11_30_202411301935110.webp" alt="PixPin_2024-11-27_21-06-40"></p>
+<p>可参考官网的配置方式</p>
+<p>等待安装成功</p>
+<p><img src="https://524524d.webp.li/photo/2024_11_30_202411301936848.webp" alt="28eb888de6fb332aecc16ff6f26146d0"></p>
+<h3 id="增加站点"><a href="#增加站点" class="headerlink" title="增加站点"></a>增加站点</h3><div class="highlight-wrap" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lnmp vhost add</span><br></pre></td></tr></table></figure></div>
+
+<p>配置信息可参考下方 也可查看<a target="_blank" rel="noopener" href="https://lnmp.org/faq/lnmp-vhost-add-howto.html">lnmp添加站点</a></p>
+<p><img src="https://524524d.webp.li/photo/2024_11_30_202411301936834.webp" alt="PixPin_2024-11-27_21-09-49"></p>
+<h4 id="部署wordpress"><a href="#部署wordpress" class="headerlink" title="部署wordpress"></a>部署wordpress</h4><p>普通用户使用以下命令需要使用<code>sudo</code>提权</p>
+<div class="highlight-wrap" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">cd /home/wwwroot/wordpress</span><br><span class="line">curl -O https://cn.wordpress.org/wordpress-6.7.1-zh_CN.tar.gz</span><br><span class="line">tar -xzvf wordpress-6.7.1-zh_CN.tar.gz</span><br><span class="line">mv wordpress/* .</span><br><span class="line">rmdir wordpress</span><br><span class="line"># 提权</span><br><span class="line">chmod -R 755 *</span><br><span class="line">find . -type f -not -name &#x27;.user.ini&#x27; -exec chmod 644 &#123;&#125; +</span><br><span class="line"># 修改myqsl允许最大包</span><br><span class="line"></span><br><span class="line">vim /etc/my.cnf</span><br><span class="line"># max_allowed_packet = 16M 设置为16M</span><br><span class="line">systemctl restart mysql.service</span><br></pre></td></tr></table></figure></div>
+
+<p>指令的作用如下：</p>
+<ul>
+<li><code>chmod -R 755 *</code>：将所有文件和目录的权限设置为 755。</li>
+<li><code>find . -type f -exec chmod 644 &#123;&#125; +</code>：将所有文件的权限设置为 644。</li>
+</ul>
+<h4 id="配置nginx"><a href="#配置nginx" class="headerlink" title="配置nginx"></a>配置nginx</h4><p>将default域的路径改为worepress的路径</p>
+<div class="highlight-wrap" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local/nginx/conf</span><br><span class="line">sudo vim nginx.conf</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
+
+<p><img src="https://524524d.webp.li/photo/2024_11_30_202411301936874.webp" alt="image-20241127212028825"></p>
+<p>刷新nginx</p>
+<div class="highlight-wrap" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl reload nginx</span><br></pre></td></tr></table></figure></div>
+
+<p>输入自己服务器ip地址 配置wordpress</p>
+<p>备份插件：<code>wpvivid Backup</code></p>
+<p>为了让界面可以访问 我们需要配置伪静态来实现访问</p>
+<div class="highlight-wrap" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">location / &#123;</span><br><span class="line">         # file ($uri) or directory ($uri/)? if not, redirect to /index.php + query string</span><br><span class="line">         try_files $uri $uri/ /index.php?$args;</span><br><span class="line">         index  index.html index.htm index.php;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
+
+<p>最开始建议配上方伪静态等调试完毕之后可以为了安全考虑使用下方规则</p>
+<p>如果你允许ip地址访问又强制https可以使用以下规则</p>
+<div class="highlight-wrap" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">location /</span><br><span class="line">           &#123;</span><br><span class="line">          return 301 https://$host$request_uri;</span><br><span class="line">       &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
+
+<p>如果不需要ip地址访问可以将其重定向到指定网站 <mark style="background: #FF5582A6;">需要提前好配置域名解析</mark></p>
+<div class="highlight-wrap" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">return 301 https://blog.aboyzy.top;</span><br></pre></td></tr></table></figure></div>
+
+<h5 id="SSL配置"><a href="#SSL配置" class="headerlink" title="SSL配置"></a>SSL配置</h5><p>以下命令需要在root权限下进行 普通用户注意提权</p>
+<p>因为在前边可能没有配置好站点或者域名解析，所以我们在之前创建站点的时候ssl访问设置为了no。 为了网站安全考虑我们现在需要给其加上证书。可以选择本地 和自动配发免费证书。我是用的是自动配发的证书。脚本支持自动acme续期</p>
+<p>[warning]请提前设置好域名DNS解析 ，并等待解析生效[&#x2F;warning]</p>
+<div class="highlight-wrap" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lnmp ssl add</span><br></pre></td></tr></table></figure></div>
+
+<p><img src="https://524524d.webp.li/photo/2024_11_30_202411301936531.webp" alt="image-20241130190004585"></p>
+<p>root查看自动定时任务自动续期 查看是否有定时任务</p>
+<div class="highlight-wrap" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">crontab -l </span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
+
+
+
+<p>配置完成之后需要配置伪静态否则界面无法访问</p>
+<div class="highlight-wrap" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /usr/local/nginx/conf/vhost/blog.aboyzy.top.conf</span><br></pre></td></tr></table></figure></div>
+
+<p>在监听443的server中增加</p>
+<div class="highlight-wrap" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">location / &#123;</span><br><span class="line">        try_files $uri $uri/ /index.php?$args;</span><br><span class="line">        index  index.html index.htm index.php;</span><br><span class="line">       &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
+
+<p>刷新nginx</p>
+<div class="highlight-wrap" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo nginx -t </span><br><span class="line">sudo systemctl reload nginx</span><br></pre></td></tr></table></figure></div>
+
+<p>配置之后如果是wordpress则需要在后台管理界面将网站地址改为与域名相同的地址</p>
+<p>安全部分配置</p>
+<div class="highlight-wrap" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">location ~ .*\.(gif|jpg|jpeg|png|bmp|swf)$</span><br><span class="line">        &#123;</span><br><span class="line">                 valid_referers none blocked blog.aboyzy.top *.aboyzy.top;</span><br><span class="line">                if ($invalid_referer) &#123;</span><br><span class="line">            				return 403;</span><br><span class="line">        						&#125;</span><br><span class="line">        expires      30d;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
+
+<h4 id="alist"><a href="#alist" class="headerlink" title="alist"></a>alist</h4><p>新增站点跟上边wordpress一样<code>lnmp vhost add</code>然后它不需要mysql</p>
+<p>创建完站点后进入站点目录</p>
+<p>安装程序 后边更的是站点的目录 root账户执行</p>
+<div class="highlight-wrap" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -fsSL &quot;https://alist.nn.ci/v3.sh&quot; | bash -s install /站点目录</span><br></pre></td></tr></table></figure></div>
+
+<p>根据提示设置密码 域名解析提前设置好</p>
+<p>配置ssl 之后 <code>lnmp ssl add</code> http要重定向到https</p>
+<p>443 监听配置以下规则就可以</p>
+<div class="highlight-wrap" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">location / &#123;</span><br><span class="line">    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</span><br><span class="line">    proxy_set_header Host $http_host;</span><br><span class="line">    proxy_set_header X-Real-IP $remote_addr;</span><br><span class="line">    proxy_set_header Range $http_range;</span><br><span class="line">    proxy_set_header If-Range $http_if_range;</span><br><span class="line">    proxy_redirect off;</span><br><span class="line">    proxy_pass http://127.0.0.1:5244;</span><br><span class="line">    # 上传的最大文件尺寸</span><br><span class="line">    client_max_body_size 20000m;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
+
+
+
+
+
+
+  </div>
+</article>
+
+
+
+    <div class="blog-post-comments">
+        <div id="waline_thread"></div>
+    </div>
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">首页</a></li>
+        
+          <li><a href="/categories/%E8%AF%B4%E8%AF%B4/">说说</a></li>
+        
+          <li><a href="/archives/">归档</a></li>
+        
+          <li><a href="/pages/">导航</a></li>
+        
+          <li><a href="/about/">关于</a></li>
+        
+          <li><a href="/search/">搜索</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83"><span class="toc-number">1.1.</span> <span class="toc-text">环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE"><span class="toc-number">1.2.</span> <span class="toc-text">配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SSH%E7%99%BB%E5%BD%95"><span class="toc-number">1.3.</span> <span class="toc-text">SSH登录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Lnmp%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85"><span class="toc-number">1.4.</span> <span class="toc-text">Lnmp环境安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A2%9E%E5%8A%A0%E7%AB%99%E7%82%B9"><span class="toc-number">1.4.1.</span> <span class="toc-text">增加站点</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%83%A8%E7%BD%B2wordpress"><span class="toc-number">1.4.1.1.</span> <span class="toc-text">部署wordpress</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEnginx"><span class="toc-number">1.4.1.2.</span> <span class="toc-text">配置nginx</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#SSL%E9%85%8D%E7%BD%AE"><span class="toc-number">1.4.1.2.1.</span> <span class="toc-text">SSL配置</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#alist"><span class="toc-number">1.4.1.3.</span> <span class="toc-text">alist</span></a></li></ol></li></ol></li></ol></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="mailto:?subject=服务器升级&body=Check out this article: http://example.com/2024/11/30/%E6%95%99%E7%A8%8B/server/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+ </ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2022-2025
+    稚
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/categories/%E8%AF%B4%E8%AF%B4/">说说</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a href="/pages/">导航</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="/search/">搜索</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://s4.zstatic.net/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://s4.zstatic.net/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板！\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功！");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+
+<!-- Waline Comments -->
+
+<script type="module">
+    import { init } from 'http://s4.zstatic.net/npm/@waline/client@v2/dist/waline.mjs';
+
+    var EMOJI = ['//unpkg.com/@waline/emojis@1.2.0/qq']
+    var META = ['nick', 'mail', 'link'];
+    var REQUIREDFIELDS = ['nick', 'mail', 'link'];
+
+    var emoji = 'https://npm.elemecdn.com/@waline/emojis@1.2.0/bilibili'.split(',').filter(function(item){
+        return item !== ''; // filter()返回满足不为空item
+    });
+    emoji = emoji.length == 0 ? EMOJI : emoji;
+
+    var meta = 'nick,mail,link'.split(',').filter(function(item){
+        return META.indexOf(item) > -1; // filter()返回满足META.indexOf(item) > -1为true的item
+    });
+    meta = meta.length == 0 ? META : meta;
+
+    var requiredFields = 'nick,mail'.split(',').filter(function(item){
+        return REQUIREDFIELDS.indexOf(item) > -1; // filter()返回满足META.indexOf(item) > -1为true的item
+    });
+    requiredFields = requiredFields.length == 0 ? REQUIREDFIELDS : requiredFields;
+
+    document.addEventListener('DOMContentLoaded', function () {
+
+        const walineElement = document.getElementById('waline_thread');
+
+        if (walineElement) {
+            init({
+                el: '#waline_thread',
+                serverURL: 'https://waline.aboyzy.top/', // Waline 的服务端地址
+                path: '' == '' ? window.location.pathname : '', // 当前文章页路径，用于区分不同的文章页，以保证正确读取该文章页下的评论列表
+                lang: 'zh-CN' == '' ? 'zh-CN' : 'zh-CN', // 多语言支持，未设置默认英文
+                emoji: emoji,
+                dark: '', // 暗黑模式适配
+                commentSorting: '' == '' ? 'latest' : '', // 评论列表排序方式
+                meta: meta, // 评论者相关属性
+                requiredFields: requiredFields, // 设置必填项，默认匿名
+                login: '', // 登录模式状态
+                wordLimit: '', // 评论字数限制
+                pageSize: '10' == '' ? 10 : '10', // 评论列表分页，每页条数
+                imageUploader: '', // 自定义图片上传方法
+                highlighter: '', // 代码高亮
+                placeholder: '',
+                avatar: 'mm',
+                visitor: 'false',
+                comment_count: 'false',
+            });
+        }
+    });
+</script>
+
+</body>
+</html>

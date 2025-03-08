@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="使用群晖AME可以解析IPhone的HEVC高效编码文件 在IPhone中录视频4k60帧只能为高效模式HEVC编码  而且高效模式的图片也无法显示 当安装AME之后会自动将HEVC格式编码转为JPG 结果 操作方法可以直接使用ssh登录之后操作 脚本 适用于7.2版本 1234567891011121314151617181920212223242526272829303132333435363">
+<meta property="og:type" content="article">
+<meta property="og:title" content="群晖AME开启脚本">
+<meta property="og:url" content="http://example.com/2024/09/10/%E7%BE%A4%E6%99%96/synology-ame/index.html">
+<meta property="og:site_name" content="稚的小窝">
+<meta property="og:description" content="使用群晖AME可以解析IPhone的HEVC高效编码文件 在IPhone中录视频4k60帧只能为高效模式HEVC编码  而且高效模式的图片也无法显示 当安装AME之后会自动将HEVC格式编码转为JPG 结果 操作方法可以直接使用ssh登录之后操作 脚本 适用于7.2版本 1234567891011121314151617181920212223242526272829303132333435363">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://524524d.webp.li/photo/2024_11_13_202411132218228.webp">
+<meta property="og:image" content="https://524524d.webp.li/photo/2024_11_13_202411132219758.webp">
+<meta property="article:published_time" content="2024-09-10T06:18:52.000Z">
+<meta property="article:modified_time" content="2025-03-08T06:19:15.314Z">
+<meta property="article:author" content="稚">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://524524d.webp.li/photo/2024_11_13_202411132218228.webp">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="https://npm.elemecdn.com/aboyzy_blogstatic/img/%E5%A4%B4%E5%83%8F.webp">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="https://npm.elemecdn.com/aboyzy_blogstatic/img/%E5%A4%B4%E5%83%8F.webp" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="https://npm.elemecdn.com/aboyzy_blogstatic/img/%E5%A4%B4%E5%83%8F.webp">
+        
+      
+    
+    <!-- title -->
+    <title>群晖AME开启脚本</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+
+    <!-- Waline Comments -->
+    
+        <link rel="stylesheet" href="http://s4.zstatic.net/npm/@waline/client@v2/dist/waline.css"/>
+    
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/rss2.xml" title="稚的小窝" type="application/rss+xml">
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="顶部" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/categories/%E8%AF%B4%E8%AF%B4/">说说</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a href="/pages/">导航</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="/search/">搜索</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="上一篇" href="/2024/09/16/%E7%BE%A4%E6%99%96/synology-face/"><i class="fa-solid fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="下一篇" href="/2024/09/05/%E6%95%99%E7%A8%8B/IPsec/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="返回顶部" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="分享文章" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="mailto:?subject=群晖AME开启脚本&body=Check out this article: http://example.com/2024/09/10/%E7%BE%A4%E6%99%96/synology-ame/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+ </ul>
+
+    </div>
+<!--    -->
+<!--    -->
+<!--      <div id="toc">-->
+<!--        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%93%E6%9E%9C"><span class="toc-number">1.</span> <span class="toc-text">结果</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%93%8D%E4%BD%9C%E6%96%B9%E6%B3%95"><span class="toc-number">2.</span> <span class="toc-text">操作方法</span></a></li></ol>-->
+<!--      </div>-->
+<!--    -->
+    <div id="toc">
+  <div id="toc-div" class="toc-article" >
+    
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%93%E6%9E%9C"><span class="toc-number">1.</span> <span class="toc-text">结果</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%93%8D%E4%BD%9C%E6%96%B9%E6%B3%95"><span class="toc-number">2.</span> <span class="toc-text">操作方法</span></a></li></ol>
+    
+  </div>
+</div>
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        群晖AME开启脚本
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">稚</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2024-09-10T06:18:52.000Z" class="dt-published" itemprop="datePublished">2024-09-10</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fa-solid fa-archive"></i>
+        <a class="category-link" href="/categories/%E7%BE%A4%E6%99%96/">群晖</a>
+    </div>
+
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <p>使用群晖AME可以解析IPhone的HEVC高效编码文件 在IPhone中录视频4k60帧只能为高效模式HEVC编码  而且高效模式的图片也无法显示 当安装AME之后会自动将HEVC格式编码转为JPG</p>
+<h2 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h2><p><img src="https://524524d.webp.li/photo/2024_11_13_202411132218228.webp" alt="image-20240911151926969"></p>
+<h2 id="操作方法"><a href="#操作方法" class="headerlink" title="操作方法"></a>操作方法</h2><p>可以直接使用ssh登录之后操作</p>
+<p>脚本</p>
+<p>适用于7.2版本</p>
+<div class="highlight-wrap" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">import hashlib</span><br><span class="line">import os</span><br><span class="line">import subprocess</span><br><span class="line"></span><br><span class="line">r = [&#x27;669066909066906690&#x27;, &#x27;B801000000&#x27;, &#x27;30&#x27;]</span><br><span class="line">s = [(0x3718, 0), (0x60A5, 1), (0x60D1, 1), (0x6111, 1), (0x6137, 1), (0xB5F0, 2)]</span><br><span class="line"></span><br><span class="line">prefix = &#x27;/var/packages/CodecPack/target/usr&#x27;</span><br><span class="line">so = prefix + &#x27;/lib/libsynoame-license.so&#x27;</span><br><span class="line"></span><br><span class="line">print(&quot;Patching&quot;)</span><br><span class="line">with open(so, &#x27;r+b&#x27;) as fh:</span><br><span class="line">    full = fh.read()</span><br><span class="line">    if hashlib.md5(full).digest().hex() != &#x27;09e3adeafe85b353c9427d93ef0185e9&#x27;:</span><br><span class="line">        print(&quot;MD5 mismatch&quot;)</span><br><span class="line">        exit(1)</span><br><span class="line">    for x in s:</span><br><span class="line">        fh.seek(x[0] + 0x8000, 0)</span><br><span class="line">        fh.write(bytes.fromhex(r[x[1]]))</span><br><span class="line"></span><br><span class="line">lic = &#x27;/usr/syno/etc/license/data/ame/offline_license.json&#x27;</span><br><span class="line">os.makedirs(os.path.dirname(lic), exist_ok=True)</span><br><span class="line">with open(lic, &#x27;w&#x27;) as licf:</span><br><span class="line">    licf.write(&#x27;[&#123;&quot;attribute&quot;: &#123;&quot;codec&quot;: &quot;hevc&quot;, &quot;type&quot;: &quot;free&quot;&#125;, &quot;status&quot;: &quot;valid&quot;, &quot;extension_gid&quot;: null, &quot;expireTime&quot;: 0, &quot;appName&quot;: &quot;ame&quot;, &quot;follow&quot;: [&quot;device&quot;], &quot;duration&quot;: 1576800000, &quot;appType&quot;: 14, &quot;licenseContent&quot;: 1, &quot;registered_at&quot;: 1649315995, &quot;server_time&quot;: 1685421618, &quot;firstActTime&quot;: 1649315995, &quot;licenseCode&quot;: &quot;0&quot;&#125;, &#123;&quot;attribute&quot;: &#123;&quot;codec&quot;: &quot;aac&quot;, &quot;type&quot;: &quot;free&quot;&#125;, &quot;status&quot;: &quot;valid&quot;, &quot;extension_gid&quot;: null, &quot;expireTime&quot;: 0, &quot;appName&quot;: &quot;ame&quot;, &quot;follow&quot;: [&quot;device&quot;], &quot;duration&quot;: 1576800000, &quot;appType&quot;: 14, &quot;licenseContent&quot;: 1, &quot;registered_at&quot;: 1649315995, &quot;server_time&quot;: 1685421618, &quot;firstActTime&quot;: 1649315995, &quot;licenseCode&quot;: &quot;0&quot;&#125;]&#x27;)</span><br><span class="line"></span><br><span class="line">subprocess.run([&#x27;/usr/syno/etc/rc.sysv/apparmor.sh&#x27;, &#x27;remove_packages_profile&#x27;, &#x27;0&#x27;, &#x27;CodecPack&#x27;])</span><br><span class="line"></span><br><span class="line">apparmor = &#x27;/var/packages/CodecPack/target/apparmor&#x27;</span><br><span class="line">if os.path.exists(apparmor):</span><br><span class="line">    os.rename(apparmor, apparmor + &quot;.bak&quot;)</span><br><span class="line"></span><br><span class="line">print(&quot;Checking whether patch is successful...&quot;)</span><br><span class="line">ret = os.system(prefix + &quot;/bin/synoame-bin-check-license&quot;)</span><br><span class="line">if ret == 0:</span><br><span class="line">    print(&quot;Successful, updating codecs...&quot;)</span><br><span class="line">    os.system(prefix + &quot;/bin/synoame-bin-auto-install-needed-codec&quot;)</span><br><span class="line">    print(&quot;Done&quot;)</span><br><span class="line">else:</span><br><span class="line">    print(f&quot;Patch is unsuccessful, retcode = &#123;ret&#125;&quot;)</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
+
+<p>然后 在计划任务中 设置用户自定义脚本 <code>ROOT账户</code></p>
+<p>用户执行的脚本  前边的path是你的脚本文件路径 后边为输出log路径</p>
+<div class="highlight-wrap" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python /volume1/docker/acm.py &gt; /volume1/docker/output.txt</span><br></pre></td></tr></table></figure></div>
+
+<p>执行结果可以去output.txt 查看</p>
+<p><img src="https://524524d.webp.li/photo/2024_11_13_202411132219758.webp" alt="image-20240911152222332"></p>
+<p>出现此则为成功</p>
+<p>参考链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/ruankun521/article/details/139371440">CSDN</a></p>
+
+  </div>
+</article>
+
+
+
+    <div class="blog-post-comments">
+        <div id="waline_thread"></div>
+    </div>
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">首页</a></li>
+        
+          <li><a href="/categories/%E8%AF%B4%E8%AF%B4/">说说</a></li>
+        
+          <li><a href="/archives/">归档</a></li>
+        
+          <li><a href="/pages/">导航</a></li>
+        
+          <li><a href="/about/">关于</a></li>
+        
+          <li><a href="/search/">搜索</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%93%E6%9E%9C"><span class="toc-number">1.</span> <span class="toc-text">结果</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%93%8D%E4%BD%9C%E6%96%B9%E6%B3%95"><span class="toc-number">2.</span> <span class="toc-text">操作方法</span></a></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="mailto:?subject=群晖AME开启脚本&body=Check out this article: http://example.com/2024/09/10/%E7%BE%A4%E6%99%96/synology-ame/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+ </ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2022-2025
+    稚
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/categories/%E8%AF%B4%E8%AF%B4/">说说</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a href="/pages/">导航</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="/search/">搜索</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://s4.zstatic.net/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://s4.zstatic.net/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板！\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功！");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+
+<!-- Waline Comments -->
+
+<script type="module">
+    import { init } from 'http://s4.zstatic.net/npm/@waline/client@v2/dist/waline.mjs';
+
+    var EMOJI = ['//unpkg.com/@waline/emojis@1.2.0/qq']
+    var META = ['nick', 'mail', 'link'];
+    var REQUIREDFIELDS = ['nick', 'mail', 'link'];
+
+    var emoji = 'https://npm.elemecdn.com/@waline/emojis@1.2.0/bilibili'.split(',').filter(function(item){
+        return item !== ''; // filter()返回满足不为空item
+    });
+    emoji = emoji.length == 0 ? EMOJI : emoji;
+
+    var meta = 'nick,mail,link'.split(',').filter(function(item){
+        return META.indexOf(item) > -1; // filter()返回满足META.indexOf(item) > -1为true的item
+    });
+    meta = meta.length == 0 ? META : meta;
+
+    var requiredFields = 'nick,mail'.split(',').filter(function(item){
+        return REQUIREDFIELDS.indexOf(item) > -1; // filter()返回满足META.indexOf(item) > -1为true的item
+    });
+    requiredFields = requiredFields.length == 0 ? REQUIREDFIELDS : requiredFields;
+
+    document.addEventListener('DOMContentLoaded', function () {
+
+        const walineElement = document.getElementById('waline_thread');
+
+        if (walineElement) {
+            init({
+                el: '#waline_thread',
+                serverURL: 'https://waline.aboyzy.top/', // Waline 的服务端地址
+                path: '' == '' ? window.location.pathname : '', // 当前文章页路径，用于区分不同的文章页，以保证正确读取该文章页下的评论列表
+                lang: 'zh-CN' == '' ? 'zh-CN' : 'zh-CN', // 多语言支持，未设置默认英文
+                emoji: emoji,
+                dark: '', // 暗黑模式适配
+                commentSorting: '' == '' ? 'latest' : '', // 评论列表排序方式
+                meta: meta, // 评论者相关属性
+                requiredFields: requiredFields, // 设置必填项，默认匿名
+                login: '', // 登录模式状态
+                wordLimit: '', // 评论字数限制
+                pageSize: '10' == '' ? 10 : '10', // 评论列表分页，每页条数
+                imageUploader: '', // 自定义图片上传方法
+                highlighter: '', // 代码高亮
+                placeholder: '',
+                avatar: 'mm',
+                visitor: 'false',
+                comment_count: 'false',
+            });
+        }
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="某度的首页存在一个 bug，「自定义换肤」上传的图片会留在云端不删除，并且图片直链不会鉴定 cookie 和 referer。 可以直接使用百度来做图床存储图片 (安全性未知) 但是速度快啊:sunglasses: 思路需要事先在浏览器登录百度账号 简单构建一个网页 模拟用户提交图片 12345678910111213&lt;!DOCTYPE html&gt;&lt;html&gt;&lt;hea">
+<meta property="og:type" content="article">
+<meta property="og:title" content="白嫖某度CDN当博客图床[已失效]">
+<meta property="og:url" content="http://example.com/2024/08/15/%E6%95%99%E7%A8%8B/baiduCDN/index.html">
+<meta property="og:site_name" content="稚的小窝">
+<meta property="og:description" content="某度的首页存在一个 bug，「自定义换肤」上传的图片会留在云端不删除，并且图片直链不会鉴定 cookie 和 referer。 可以直接使用百度来做图床存储图片 (安全性未知) 但是速度快啊:sunglasses: 思路需要事先在浏览器登录百度账号 简单构建一个网页 模拟用户提交图片 12345678910111213&lt;!DOCTYPE html&gt;&lt;html&gt;&lt;hea">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-08-15T08:15:07.000Z">
+<meta property="article:modified_time" content="2025-03-08T08:15:48.499Z">
+<meta property="article:author" content="稚">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="https://npm.elemecdn.com/aboyzy_blogstatic/img/%E5%A4%B4%E5%83%8F.webp">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="https://npm.elemecdn.com/aboyzy_blogstatic/img/%E5%A4%B4%E5%83%8F.webp" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="https://npm.elemecdn.com/aboyzy_blogstatic/img/%E5%A4%B4%E5%83%8F.webp">
+        
+      
+    
+    <!-- title -->
+    <title>白嫖某度CDN当博客图床[已失效]</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+
+    <!-- Waline Comments -->
+    
+        <link rel="stylesheet" href="http://s4.zstatic.net/npm/@waline/client@v2/dist/waline.css"/>
+    
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/rss2.xml" title="稚的小窝" type="application/rss+xml">
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="顶部" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/categories/%E8%AF%B4%E8%AF%B4/">说说</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a href="/pages/">导航</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="/search/">搜索</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="上一篇" href="/2024/08/15/jiasu/"><i class="fa-solid fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="下一篇" href="/2024/08/13/%E6%95%99%E7%A8%8B/Sublime-Text/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="返回顶部" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="分享文章" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="mailto:?subject=白嫖某度CDN当博客图床[已失效]&body=Check out this article: http://example.com/2024/08/15/%E6%95%99%E7%A8%8B/baiduCDN/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+ </ul>
+
+    </div>
+<!--    -->
+<!--    -->
+<!--      <div id="toc">-->
+<!--        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF"><span class="toc-number">1.</span> <span class="toc-text">思路</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%94%B9%E5%8A%A8%E4%B9%8B%E5%90%8E"><span class="toc-number">1.1.</span> <span class="toc-text">改动之后</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Typora-%E9%85%8D%E5%90%88piclist%E4%BD%BF%E7%94%A8"><span class="toc-number">1.2.</span> <span class="toc-text">Typora 配合piclist使用</span></a></li></ol></li></ol>-->
+<!--      </div>-->
+<!--    -->
+    <div id="toc">
+  <div id="toc-div" class="toc-article" >
+    
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF"><span class="toc-number">1.</span> <span class="toc-text">思路</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%94%B9%E5%8A%A8%E4%B9%8B%E5%90%8E"><span class="toc-number">1.1.</span> <span class="toc-text">改动之后</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Typora-%E9%85%8D%E5%90%88piclist%E4%BD%BF%E7%94%A8"><span class="toc-number">1.2.</span> <span class="toc-text">Typora 配合piclist使用</span></a></li></ol></li></ol>
+    
+  </div>
+</div>
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        白嫖某度CDN当博客图床[已失效]
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">稚</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2024-08-15T08:15:07.000Z" class="dt-published" itemprop="datePublished">2024-08-15</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fa-solid fa-archive"></i>
+        <a class="category-link" href="/categories/%E6%95%99%E7%A8%8B/">教程</a>
+    </div>
+
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <p>某度的首页存在一个 bug，「自定义换肤」上传的图片会留在云端不删除，并且图片直链不会鉴定 cookie 和 referer。</p>
+<p>可以直接使用百度来做图床存储图片 (安全性未知) 但是速度快啊:sunglasses:</p>
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>需要事先在浏览器登录百度账号</p>
+<p>简单构建一个网页 模拟用户提交图片</p>
+<div class="highlight-wrap" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;&lt;html&gt;&lt;head&gt;</span><br><span class="line">&lt;meta charset=&quot;utf-8&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;title&gt;图片上传&lt;/title&gt;&lt;/head&gt;&lt;body&gt;</span><br><span class="line"></span><br><span class="line">&lt;form enctype=&quot;multipart/form-data&quot; action=&quot;https://sp0.baidu.com/6_R1fD_bAAd3otqbppnN2DJv/Pic/upload?pid=super&amp;app=skin&amp;logid=2915142959&quot; method=&quot;post&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;input type=&quot;file&quot; name=&quot;file&quot;&gt;&lt;br/&gt;</span><br><span class="line"></span><br><span class="line">&lt;input type=&quot;submit&quot; value=&quot;上传&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;/form&gt;&lt;/body&gt;&lt;/html&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
+
+<p>需要携带 BDUSS 和 BAIDUID cookie。</p>
+<p>返回的图片 URL 就在 JSON 中的 data.pic_water 值中</p>
+<p>返回图片的地址不可以直接使用需要替换网址信息，将返回的json信息中的data.pic_water值提取出来进行更改</p>
+<p>图片头部信息为：<a target="_blank" rel="noopener" href="https://imgsrc.baidu.com/forum/pic/item/">https://imgsrc.baidu.com/forum/pic/item/</a></p>
+<h2 id="改动之后"><a href="#改动之后" class="headerlink" title="改动之后"></a>改动之后</h2><div class="highlight-wrap" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;utf-8&quot;&gt;</span><br><span class="line">    &lt;title&gt;百度图床上传&lt;/title&gt;</span><br><span class="line">    &lt;style&gt;</span><br><span class="line">        #outputBox &#123;</span><br><span class="line">            width: 100%;</span><br><span class="line">            padding: 10px;</span><br><span class="line">            margin-top: 20px;</span><br><span class="line">            border: 1px solid #ccc;</span><br><span class="line">            background-color: #f0f0f0;</span><br><span class="line">            box-sizing: border-box;</span><br><span class="line">            cursor: text;</span><br><span class="line">            overflow: auto;</span><br><span class="line">            white-space: pre-wrap; /* 保持文本格式 */</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line"></span><br><span class="line">&lt;form id=&quot;uploadForm&quot; enctype=&quot;multipart/form-data&quot;&gt;</span><br><span class="line">    &lt;input type=&quot;file&quot; name=&quot;file&quot; id=&quot;fileInput&quot;&gt;&lt;br/&gt;</span><br><span class="line">    &lt;input type=&quot;submit&quot; value=&quot;上传&quot;&gt;</span><br><span class="line">&lt;/form&gt;</span><br><span class="line"></span><br><span class="line">&lt;div id=&quot;result&quot;&gt;</span><br><span class="line">    &lt;p&gt;处理后的文件名: (双击可复制)&lt;/p&gt;</span><br><span class="line">    &lt;div id=&quot;outputBox&quot;&gt;&lt;/div&gt;</span><br><span class="line">    &lt;p&gt;上传的图片:&lt;/p&gt;</span><br><span class="line">    &lt;img id=&quot;uploadedImage&quot; src=&quot;&quot; alt=&quot;&quot; style=&quot;max-width: 100%; margin-top: 10px;&quot;&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">    document.getElementById(&#x27;uploadForm&#x27;).addEventListener(&#x27;submit&#x27;, function(event) &#123;</span><br><span class="line">        event.preventDefault(); // 阻止表单默认提交</span><br><span class="line"></span><br><span class="line">        var formData = new FormData();</span><br><span class="line">        var fileInput = document.getElementById(&#x27;fileInput&#x27;);</span><br><span class="line">        formData.append(&#x27;file&#x27;, fileInput.files[0]);</span><br><span class="line"></span><br><span class="line">        var xhr = new XMLHttpRequest();</span><br><span class="line">        xhr.open(&#x27;POST&#x27;, &#x27;https://sp0.baidu.com/6_R1fD_bAAd3otqbppnN2DJv/Pic/upload?pid=super&amp;app=skin&amp;logid=2915142959&#x27;, true);</span><br><span class="line">        // 携带 cookies</span><br><span class="line">        xhr.withCredentials = true;</span><br><span class="line"></span><br><span class="line">        xhr.onload = function () &#123;</span><br><span class="line">                var data = JSON.parse(xhr.responseText);</span><br><span class="line"></span><br><span class="line">                // 提取 pic_water 字段的内容</span><br><span class="line">                var picWater = data.data.pic_water;</span><br><span class="line">                // 提取文件名</span><br><span class="line">                var fileName = picWater.split(&#x27;/&#x27;).pop();</span><br><span class="line">                // 添加特定内容</span><br><span class="line">                var prefix = &quot;https://imgsrc.baidu.com/forum/pic/item/&quot;; // 自定义的特定内容</span><br><span class="line">                var finalResult = prefix + fileName;</span><br><span class="line">                outputBox.innerText = finalResult;</span><br><span class="line">                // 显示图片</span><br><span class="line">                var uploadedImage = document.getElementById(&#x27;uploadedImage&#x27;);</span><br><span class="line">                uploadedImage.src =finalResult;</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        xhr.onerror = function () &#123;</span><br><span class="line">            document.getElementById(&#x27;result&#x27;).innerHTML = `</span><br><span class="line">                &lt;p&gt;上传失败: $&#123;xhr.statusText&#125;&lt;/p&gt;</span><br><span class="line">            `;</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        xhr.send(formData);</span><br><span class="line">    &#125;);</span><br><span class="line">    // 实现双击复制功能</span><br><span class="line">    document.getElementById(&#x27;outputBox&#x27;).addEventListener(&#x27;dblclick&#x27;, function() &#123;</span><br><span class="line">        var range = document.createRange();</span><br><span class="line">        range.selectNodeContents(this);</span><br><span class="line">        var selection = window.getSelection();</span><br><span class="line">        selection.removeAllRanges();</span><br><span class="line">        selection.addRange(range);</span><br><span class="line">        document.execCommand(&#x27;copy&#x27;);</span><br><span class="line"></span><br><span class="line">        // 显示复制提示</span><br><span class="line">        var message = document.createElement(&#x27;div&#x27;);</span><br><span class="line">        message.innerText = &#x27;内容已复制到剪贴板&#x27;;</span><br><span class="line">        message.style.position = &#x27;fixed&#x27;;</span><br><span class="line">        message.style.bottom = &#x27;10px&#x27;;</span><br><span class="line">        message.style.right = &#x27;10px&#x27;;</span><br><span class="line">        message.style.padding = &#x27;10px&#x27;;</span><br><span class="line">        message.style.backgroundColor = &#x27;#dff0d8&#x27;;</span><br><span class="line">        message.style.color = &#x27;#3c763d&#x27;;</span><br><span class="line">        message.style.border = &#x27;1px solid #d6e9c6&#x27;;</span><br><span class="line">        message.style.borderRadius = &#x27;5px&#x27;;</span><br><span class="line">        document.body.appendChild(message);</span><br><span class="line"></span><br><span class="line">        setTimeout(function() &#123;</span><br><span class="line">            document.body.removeChild(message);</span><br><span class="line">        &#125;, 1000); // 2秒后隐藏消息</span><br><span class="line">    &#125;);</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
+<h2 id="Typora-配合piclist使用"><a href="#Typora-配合piclist使用" class="headerlink" title="Typora 配合piclist使用"></a>Typora 配合piclist使用</h2><p>Typora配置 文件-&gt;偏好设置-&gt;图像-&gt;上传服务-&gt;自定义命令<code>python pic.py</code></p>
+<div class="highlight-wrap" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">upload_image</span>(<span class="params">image_path</span>):</span><br><span class="line">    url = <span class="string">&#x27;http://127.0.0.1:36677/upload&#x27;</span></span><br><span class="line">    <span class="comment"># 打开并上传文件</span></span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(image_path, <span class="string">&#x27;rb&#x27;</span>) <span class="keyword">as</span> file:</span><br><span class="line">        files = &#123;<span class="string">&#x27;file&#x27;</span>: (image_path, file, <span class="string">&#x27;image/jpeg&#x27;</span>)&#125;</span><br><span class="line">        response = requests.post(url, files=files)</span><br><span class="line">        responsetext = response.text</span><br><span class="line">        responsejson = json.loads(responsetext)</span><br><span class="line">        name = responsejson[<span class="string">&#x27;result&#x27;</span>][<span class="number">0</span>]</span><br><span class="line">        name = <span class="built_in">str</span>(name).split(<span class="string">&#x27;/&#x27;</span>)[-<span class="number">1</span>]</span><br><span class="line">        name = <span class="string">&quot;https://imgsrc.baidu.com/forum/pic/item/&quot;</span>+<span class="built_in">str</span>(name)</span><br><span class="line">        <span class="built_in">print</span>(name)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    image_paths = sys.argv[<span class="number">1</span>:]</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 上传每个图片</span></span><br><span class="line">    <span class="keyword">for</span> image_path <span class="keyword">in</span> image_paths:</span><br><span class="line">        upload_image(image_path)</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
+<p>前提：piclist 配置自定义图床 设置<br>注：cookie易失效</p>
+<p>参考链接<a target="_blank" rel="noopener" href="https://blog.chyk.ink/2022/03/16/baidu-picbed/">白嫖某度CDN当博客图床</a></p>
+
+  </div>
+</article>
+
+
+
+    <div class="blog-post-comments">
+        <div id="waline_thread"></div>
+    </div>
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">首页</a></li>
+        
+          <li><a href="/categories/%E8%AF%B4%E8%AF%B4/">说说</a></li>
+        
+          <li><a href="/archives/">归档</a></li>
+        
+          <li><a href="/pages/">导航</a></li>
+        
+          <li><a href="/about/">关于</a></li>
+        
+          <li><a href="/search/">搜索</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF"><span class="toc-number">1.</span> <span class="toc-text">思路</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%94%B9%E5%8A%A8%E4%B9%8B%E5%90%8E"><span class="toc-number">1.1.</span> <span class="toc-text">改动之后</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Typora-%E9%85%8D%E5%90%88piclist%E4%BD%BF%E7%94%A8"><span class="toc-number">1.2.</span> <span class="toc-text">Typora 配合piclist使用</span></a></li></ol></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="mailto:?subject=白嫖某度CDN当博客图床[已失效]&body=Check out this article: http://example.com/2024/08/15/%E6%95%99%E7%A8%8B/baiduCDN/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+ </ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2022-2025
+    稚
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/categories/%E8%AF%B4%E8%AF%B4/">说说</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a href="/pages/">导航</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="/search/">搜索</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://s4.zstatic.net/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://s4.zstatic.net/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板！\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功！");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+
+<!-- Waline Comments -->
+
+<script type="module">
+    import { init } from 'http://s4.zstatic.net/npm/@waline/client@v2/dist/waline.mjs';
+
+    var EMOJI = ['//unpkg.com/@waline/emojis@1.2.0/qq']
+    var META = ['nick', 'mail', 'link'];
+    var REQUIREDFIELDS = ['nick', 'mail', 'link'];
+
+    var emoji = 'https://npm.elemecdn.com/@waline/emojis@1.2.0/bilibili'.split(',').filter(function(item){
+        return item !== ''; // filter()返回满足不为空item
+    });
+    emoji = emoji.length == 0 ? EMOJI : emoji;
+
+    var meta = 'nick,mail,link'.split(',').filter(function(item){
+        return META.indexOf(item) > -1; // filter()返回满足META.indexOf(item) > -1为true的item
+    });
+    meta = meta.length == 0 ? META : meta;
+
+    var requiredFields = 'nick,mail'.split(',').filter(function(item){
+        return REQUIREDFIELDS.indexOf(item) > -1; // filter()返回满足META.indexOf(item) > -1为true的item
+    });
+    requiredFields = requiredFields.length == 0 ? REQUIREDFIELDS : requiredFields;
+
+    document.addEventListener('DOMContentLoaded', function () {
+
+        const walineElement = document.getElementById('waline_thread');
+
+        if (walineElement) {
+            init({
+                el: '#waline_thread',
+                serverURL: 'https://waline.aboyzy.top/', // Waline 的服务端地址
+                path: '' == '' ? window.location.pathname : '', // 当前文章页路径，用于区分不同的文章页，以保证正确读取该文章页下的评论列表
+                lang: 'zh-CN' == '' ? 'zh-CN' : 'zh-CN', // 多语言支持，未设置默认英文
+                emoji: emoji,
+                dark: '', // 暗黑模式适配
+                commentSorting: '' == '' ? 'latest' : '', // 评论列表排序方式
+                meta: meta, // 评论者相关属性
+                requiredFields: requiredFields, // 设置必填项，默认匿名
+                login: '', // 登录模式状态
+                wordLimit: '', // 评论字数限制
+                pageSize: '10' == '' ? 10 : '10', // 评论列表分页，每页条数
+                imageUploader: '', // 自定义图片上传方法
+                highlighter: '', // 代码高亮
+                placeholder: '',
+                avatar: 'mm',
+                visitor: 'false',
+                comment_count: 'false',
+            });
+        }
+    });
+</script>
+
+</body>
+</html>

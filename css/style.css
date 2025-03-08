@@ -453,7 +453,7 @@ body td {
   content: attr(data-rel);
   height: 38px;
   line-height: 38px;
-  background: #1c1c1c;
+  background: #626462;
   color: #eff;
   font-size: 16px;
   position: absolute;
@@ -1693,9 +1693,6 @@ code {
   opacity: 0;
   transition: opacity 0.2s ease-in;
 }
-.highlight .btn-copy:hover {
-  color: #2bbc8a;
-}
 .highlight pre {
   margin: 0;
   padding: 0;
@@ -1710,6 +1707,8 @@ code {
   opacity: 0.2;
 }
 .highlight .line {
+  word-wrap: break-word; /* 自动换行，长单词会换行 */
+  white-space: normal; /* 默认情况下会让文本换行 */
   height: 22px;
 }
 #header-post #actions {

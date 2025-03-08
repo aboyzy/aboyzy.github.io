@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="前言java期末需要用到数据库操作所以没办法就再安装一次数据库记录一下本次安装步骤方便以后查找使用。 下载mysql下载链接https:&#x2F;&#x2F;downloads.mysql.com&#x2F;archives&#x2F;installer&#x2F;  安装1. 选择设置类型我下载的版本是5.7.30 版本太高容易出问题 “Developer Default”是开发者默认 “Server only”仅作为服务器安装 “Clien">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Windows MySQL的安装">
+<meta property="og:url" content="http://example.com/2023/06/03/%E6%95%99%E7%A8%8B/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/win-MySQL/index.html">
+<meta property="og:site_name" content="稚的小窝">
+<meta property="og:description" content="前言java期末需要用到数据库操作所以没办法就再安装一次数据库记录一下本次安装步骤方便以后查找使用。 下载mysql下载链接https:&#x2F;&#x2F;downloads.mysql.com&#x2F;archives&#x2F;installer&#x2F;  安装1. 选择设置类型我下载的版本是5.7.30 版本太高容易出问题 “Developer Default”是开发者默认 “Server only”仅作为服务器安装 “Clien">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://npm.elemecdn.com/aboyzy_blogstatic//img/202306031824253.webp">
+<meta property="og:image" content="https://npm.elemecdn.com/aboyzy_blogstatic//img/202306031824317.webp">
+<meta property="og:image" content="https://npm.elemecdn.com/aboyzy_blogstatic//img/202306031824440.webp">
+<meta property="og:image" content="https://npm.elemecdn.com/aboyzy_blogstatic//img/202306031824097.webp">
+<meta property="og:image" content="https://npm.elemecdn.com/aboyzy_blogstatic//img/202306031824483.webp">
+<meta property="og:image" content="https://npm.elemecdn.com/aboyzy_blogstatic//img/202306031824123.webp">
+<meta property="og:image" content="https://npm.elemecdn.com/aboyzy_blogstatic//img/202306031824713.webp">
+<meta property="og:image" content="https://npm.elemecdn.com/aboyzy_blogstatic//img/202306031824153.webp">
+<meta property="og:image" content="https://npm.elemecdn.com/aboyzy_blogstatic//img/202306031824320.webp">
+<meta property="og:image" content="https://npm.elemecdn.com/aboyzy_blogstatic//img/202306031825319.webp">
+<meta property="og:image" content="https://npm.elemecdn.com/aboyzy_blogstatic//img/202306031825997.webp">
+<meta property="og:image" content="https://npm.elemecdn.com/aboyzy_blogstatic//img/202306031825065.webp">
+<meta property="og:image" content="https://npm.elemecdn.com/aboyzy_blogstatic//img/202306031825428.webp">
+<meta property="og:image" content="https://npm.elemecdn.com/aboyzy_blogstatic//img/202306031825355.webp">
+<meta property="og:image" content="https://npm.elemecdn.com/aboyzy_blogstatic//img/202306031825816.webp">
+<meta property="og:image" content="https://npm.elemecdn.com/aboyzy_blogstatic//img/202306031825079.webp">
+<meta property="og:image" content="https://npm.elemecdn.com/aboyzy_blogstatic//img/202306031825130.webp">
+<meta property="og:image" content="https://npm.elemecdn.com/aboyzy_blogstatic//img/202306031825085.webp">
+<meta property="og:image" content="https://npm.elemecdn.com/aboyzy_blogstatic//img/202306031825700.webp">
+<meta property="og:image" content="https://npm.elemecdn.com/aboyzy_blogstatic//img/202306031825100.webp">
+<meta property="og:image" content="https://npm.elemecdn.com/aboyzy_blogstatic//img/202306031826081.webp">
+<meta property="og:image" content="https://npm.elemecdn.com/aboyzy_blogstatic//img/202306031826707.webp">
+<meta property="og:image" content="https://npm.elemecdn.com/aboyzy_blogstatic//img/202306031826859.webp">
+<meta property="og:image" content="https://npm.elemecdn.com/aboyzy_blogstatic//img/202306031826398.webp">
+<meta property="article:published_time" content="2023-06-03T10:23:47.000Z">
+<meta property="article:modified_time" content="2025-03-08T10:25:16.258Z">
+<meta property="article:author" content="稚">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://npm.elemecdn.com/aboyzy_blogstatic//img/202306031824253.webp">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="https://npm.elemecdn.com/aboyzy_blogstatic/img/%E5%A4%B4%E5%83%8F.webp">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="https://npm.elemecdn.com/aboyzy_blogstatic/img/%E5%A4%B4%E5%83%8F.webp" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="https://npm.elemecdn.com/aboyzy_blogstatic/img/%E5%A4%B4%E5%83%8F.webp">
+        
+      
+    
+    <!-- title -->
+    <title>Windows MySQL的安装</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+
+    <!-- Waline Comments -->
+    
+        <link rel="stylesheet" href="http://s4.zstatic.net/npm/@waline/client@v2/dist/waline.css"/>
+    
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/rss2.xml" title="稚的小窝" type="application/rss+xml">
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="顶部" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/categories/%E8%AF%B4%E8%AF%B4/">说说</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a href="/pages/">导航</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="/search/">搜索</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="上一篇" href="/2023/06/21/%E6%95%99%E7%A8%8B/Adobe/"><i class="fa-solid fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="下一篇" href="/2023/05/20/%E6%95%99%E7%A8%8B/wallpaperEngine/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="返回顶部" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="分享文章" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="mailto:?subject=Windows MySQL的安装&body=Check out this article: http://example.com/2023/06/03/%E6%95%99%E7%A8%8B/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/win-MySQL/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+ </ul>
+
+    </div>
+<!--    -->
+<!--    -->
+<!--      <div id="toc">-->
+<!--        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BDmysql"><span class="toc-number">2.</span> <span class="toc-text">下载mysql</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%89%E8%A3%85"><span class="toc-number">3.</span> <span class="toc-text">安装</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E9%80%89%E6%8B%A9%E8%AE%BE%E7%BD%AE%E7%B1%BB%E5%9E%8B"><span class="toc-number">3.1.</span> <span class="toc-text">1. 选择设置类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E9%80%89%E6%8B%A9%E5%AE%89%E8%A3%85%E7%9B%AE%E5%BD%95"><span class="toc-number">3.2.</span> <span class="toc-text">2.选择安装目录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%AE%89%E8%A3%85"><span class="toc-number">3.3.</span> <span class="toc-text">3.安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E9%80%89%E6%8B%A9%E5%AE%89%E8%A3%85%E7%B1%BB%E5%9E%8B"><span class="toc-number">3.4.</span> <span class="toc-text">4.选择安装类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E8%AE%BE%E7%BD%AEmysql%E5%AF%86%E7%A0%81"><span class="toc-number">3.5.</span> <span class="toc-text">5.设置mysql密码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E6%9C%80%E5%90%8E"><span class="toc-number">3.6.</span> <span class="toc-text">6.最后</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-MySQL-Router-Configuration"><span class="toc-number">3.7.</span> <span class="toc-text">7.MySQL Router Configuration</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-%E5%AE%89%E8%A3%85%E5%AE%8C%E6%88%90"><span class="toc-number">3.8.</span> <span class="toc-text">8.安装完成</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="toc-number">4.</span> <span class="toc-text">环境变量</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MySQL%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E5%90%AF%E5%8A%A8%E5%92%8C%E5%85%B3%E9%97%AD"><span class="toc-number">5.</span> <span class="toc-text">MySQL服务器的启动和关闭</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%AF%E8%A7%86%E5%8C%96%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7Navicat%E5%AE%89%E8%A3%85%E4%B8%8E%E6%B3%A8%E5%86%8C"><span class="toc-number">6.</span> <span class="toc-text">可视化管理工具Navicat安装与注册</span></a></li></ol>-->
+<!--      </div>-->
+<!--    -->
+    <div id="toc">
+  <div id="toc-div" class="toc-article" >
+    
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BDmysql"><span class="toc-number">2.</span> <span class="toc-text">下载mysql</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%89%E8%A3%85"><span class="toc-number">3.</span> <span class="toc-text">安装</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E9%80%89%E6%8B%A9%E8%AE%BE%E7%BD%AE%E7%B1%BB%E5%9E%8B"><span class="toc-number">3.1.</span> <span class="toc-text">1. 选择设置类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E9%80%89%E6%8B%A9%E5%AE%89%E8%A3%85%E7%9B%AE%E5%BD%95"><span class="toc-number">3.2.</span> <span class="toc-text">2.选择安装目录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%AE%89%E8%A3%85"><span class="toc-number">3.3.</span> <span class="toc-text">3.安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E9%80%89%E6%8B%A9%E5%AE%89%E8%A3%85%E7%B1%BB%E5%9E%8B"><span class="toc-number">3.4.</span> <span class="toc-text">4.选择安装类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E8%AE%BE%E7%BD%AEmysql%E5%AF%86%E7%A0%81"><span class="toc-number">3.5.</span> <span class="toc-text">5.设置mysql密码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E6%9C%80%E5%90%8E"><span class="toc-number">3.6.</span> <span class="toc-text">6.最后</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-MySQL-Router-Configuration"><span class="toc-number">3.7.</span> <span class="toc-text">7.MySQL Router Configuration</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-%E5%AE%89%E8%A3%85%E5%AE%8C%E6%88%90"><span class="toc-number">3.8.</span> <span class="toc-text">8.安装完成</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="toc-number">4.</span> <span class="toc-text">环境变量</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MySQL%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E5%90%AF%E5%8A%A8%E5%92%8C%E5%85%B3%E9%97%AD"><span class="toc-number">5.</span> <span class="toc-text">MySQL服务器的启动和关闭</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%AF%E8%A7%86%E5%8C%96%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7Navicat%E5%AE%89%E8%A3%85%E4%B8%8E%E6%B3%A8%E5%86%8C"><span class="toc-number">6.</span> <span class="toc-text">可视化管理工具Navicat安装与注册</span></a></li></ol>
+    
+  </div>
+</div>
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        Windows MySQL的安装
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">稚</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2023-06-03T10:23:47.000Z" class="dt-published" itemprop="datePublished">2023-06-03</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fa-solid fa-archive"></i>
+        <a class="category-link" href="/categories/%E6%95%99%E7%A8%8B/">教程</a> › <a class="category-link" href="/categories/%E6%95%99%E7%A8%8B/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">环境配置</a>
+    </div>
+
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>java期末需要用到数据库操作所以没办法就再安装一次数据库记录一下本次安装步骤方便以后查找使用。</p>
+<h1 id="下载mysql"><a href="#下载mysql" class="headerlink" title="下载mysql"></a>下载mysql</h1><p>下载链接<a target="_blank" rel="noopener" href="https://downloads.mysql.com/archives/installer/">https://downloads.mysql.com/archives/installer/</a></p>
+<p><img src="https://npm.elemecdn.com/aboyzy_blogstatic//img/202306031824253.webp" alt="image-20230603165043804"></p>
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><h2 id="1-选择设置类型"><a href="#1-选择设置类型" class="headerlink" title="1. 选择设置类型"></a>1. 选择设置类型</h2><p>我下载的版本是5.7.30 版本太高容易出问题</p>
+<p>“Developer Default”是开发者默认</p>
+<p>“Server only”仅作为服务器安装</p>
+<p>“Client only”仅作为客户端安装</p>
+<p>“Full”是完整安装</p>
+<p>“Custom”是自定义安装</p>
+<p><img src="https://npm.elemecdn.com/aboyzy_blogstatic//img/202306031824317.webp" alt="image-20230603165305712"></p>
+<p>选择自定义安装</p>
+<p><img src="https://npm.elemecdn.com/aboyzy_blogstatic//img/202306031824440.webp" alt="image-20230603173251872"></p>
+<h2 id="2-选择安装目录"><a href="#2-选择安装目录" class="headerlink" title="2.选择安装目录"></a>2.选择安装目录</h2><p>这里提示已经有此目录不用管点击ok 弹出界面之后再次点击ok</p>
+<p><img src="https://npm.elemecdn.com/aboyzy_blogstatic//img/202306031824097.webp" alt="image-20230603173423722"></p>
+<p>确认一下安装路径和数据存放路径对不对，没有问题的话就直接点击Next</p>
+<p><img src="https://npm.elemecdn.com/aboyzy_blogstatic//img/202306031824483.webp" alt="image-20230603173619734"></p>
+<p>弹出这个直接点yes意思是 所选路径已存在</p>
+<p><img src="https://npm.elemecdn.com/aboyzy_blogstatic//img/202306031824123.webp" alt="image-20230603173638727"></p>
+<h2 id="3-安装"><a href="#3-安装" class="headerlink" title="3.安装"></a>3.安装</h2><p>直接点击 <code>Execute</code></p>
+<p><img src="https://npm.elemecdn.com/aboyzy_blogstatic//img/202306031824713.webp" alt="image-20230603173749947"></p>
+<p>等待全部成功点击 <code>Next</code> 这个界面再次点击 <code>Next</code></p>
+<p><img src="https://npm.elemecdn.com/aboyzy_blogstatic//img/202306031824153.webp" alt="image-20230603173911175"></p>
+<h2 id="4-选择安装类型"><a href="#4-选择安装类型" class="headerlink" title="4.选择安装类型"></a>4.选择安装类型</h2><p>个人学习研究的话选择 <code>Development Computer</code>则可以，我这里选择是 <code>Development Computer</code></p>
+<p>Development Computer 适合个人开发学习使用的</p>
+<p>Server Computer 是像主要用于像FTP，email，web服务器等等</p>
+<p>Dedicated Computer 只用作MySQL服务器</p>
+<p><img src="https://npm.elemecdn.com/aboyzy_blogstatic//img/202306031824320.webp" alt="image-20230603174055245"></p>
+<p>可以修改端口也可以不更改点击 <code>Next</code></p>
+<h2 id="5-设置mysql密码"><a href="#5-设置mysql密码" class="headerlink" title="5.设置mysql密码"></a>5.设置mysql密码</h2><p>自己用可以简单点</p>
+<p><img src="https://npm.elemecdn.com/aboyzy_blogstatic//img/202306031825319.webp" alt="image-20230603174141865"></p>
+<p>之后直接下一步</p>
+<p><img src="https://npm.elemecdn.com/aboyzy_blogstatic//img/202306031825997.webp" alt="image-20230603174301314"></p>
+<p>配置权限直接给了</p>
+<p><img src="https://npm.elemecdn.com/aboyzy_blogstatic//img/202306031825065.webp" alt="image-20230603174325524"></p>
+<h2 id="6-最后"><a href="#6-最后" class="headerlink" title="6.最后"></a>6.最后</h2><p>直接点击Execute安装</p>
+<p>等待完成点击Finish</p>
+<p><img src="https://npm.elemecdn.com/aboyzy_blogstatic//img/202306031825428.webp" alt="image-20230603174424371"></p>
+<h2 id="7-MySQL-Router-Configuration"><a href="#7-MySQL-Router-Configuration" class="headerlink" title="7.MySQL Router Configuration"></a>7.MySQL Router Configuration</h2><p>直接 <code>Finish</code></p>
+<p><img src="https://npm.elemecdn.com/aboyzy_blogstatic//img/202306031825355.webp" alt="image-20230603174655154"></p>
+<p>检查连接能够成功 输入刚才设置的密码</p>
+<p><img src="https://npm.elemecdn.com/aboyzy_blogstatic//img/202306031825816.webp" alt="image-20230603174735557"></p>
+<p><img src="https://npm.elemecdn.com/aboyzy_blogstatic//img/202306031825079.webp" alt="image-20230603174802444"></p>
+<h2 id="8-安装完成"><a href="#8-安装完成" class="headerlink" title="8.安装完成"></a>8.安装完成</h2><p><img src="https://npm.elemecdn.com/aboyzy_blogstatic//img/202306031825130.webp" alt="image-20230603174900840"></p>
+<h1 id="环境变量"><a href="#环境变量" class="headerlink" title="环境变量"></a>环境变量</h1><p>在 <code>path</code>里边增加 <code>mysql/bin</code>的路径</p>
+<p><img src="https://npm.elemecdn.com/aboyzy_blogstatic//img/202306031825085.webp" alt="image-20230603175124018"></p>
+<p>测试登录</p>
+<p><img src="https://npm.elemecdn.com/aboyzy_blogstatic//img/202306031825700.webp" alt="image-20230603175231867"></p>
+<h1 id="MySQL服务器的启动和关闭"><a href="#MySQL服务器的启动和关闭" class="headerlink" title="MySQL服务器的启动和关闭"></a>MySQL服务器的启动和关闭</h1><div class="highlight-wrap" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">net stop mysql57 //mysql57是刚才配置的名称 执行需要管理员权限不然会报错</span><br><span class="line">net start mysql57</span><br></pre></td></tr></table></figure></div>
+
+<p><img src="https://npm.elemecdn.com/aboyzy_blogstatic//img/202306031825100.webp" alt="image-20230603175504554"></p>
+<h1 id="可视化管理工具Navicat安装与注册"><a href="#可视化管理工具Navicat安装与注册" class="headerlink" title="可视化管理工具Navicat安装与注册"></a>可视化管理工具Navicat安装与注册</h1><p>下载地址<a target="_blank" rel="noopener" href="https://navicat.com.cn/download/navicat-premium" title="navicat-premium">https://navicat.com.cn/download/navicat-premium</a></p>
+<p>下载安装就不演示了 完成之后先不要打开</p>
+<p>激活器下载地址 <a target="_blank" rel="noopener" href="https://xiaozoutx.lanzouj.com/idyin0y53gji">https://xiaozoutx.lanzouj.com/idyin0y53gji</a></p>
+<ol>
+<li><p>打开下载的激活器</p>
+</li>
+<li><p>右键【以管理员身份运行】<strong>NavicatCracker.exe</strong></p>
+</li>
+<li><p>选择navicat的路径 确定没问题之后 点击【Patch】（点击之前不要打开Navicat）</p>
+<p>[noway]只可Patch一次，重复操作时需重装Navicat[&#x2F;noway]</p>
+<p><img src="https://npm.elemecdn.com/aboyzy_blogstatic//img/202306031826081.webp" alt="afd2a33d6c7939ac8e7c3143ff4371e1"></p>
+</li>
+<li><p>弹框选择【是】</p>
+</li>
+<li><p>打开【Navicat】软件，点击【注册】</p>
+</li>
+<li><p>点击【Generate】，生成激活码，复制激活码至Navicat</p>
+<blockquote>
+<p>(注意点击前确认【Version】与【Production】的选择应与您安装的Navicat版本一致）</p>
+</blockquote>
+</li>
+</ol>
+<blockquote>
+</blockquote>
+<ol start="7">
+<li><p>点击【Generate】，生成激活码，复制激活码至Navicat</p>
+<p><img src="https://npm.elemecdn.com/aboyzy_blogstatic//img/202306031826707.webp" alt="image-20230603181723149"></p>
+</li>
+<li><p>点击【手动激活】</p>
+<p>[warning]无法出现该选项，请断网重试[&#x2F;warning]</p>
+<p><img src="https://npm.elemecdn.com/aboyzy_blogstatic//img/202306031826859.webp" alt="b32895a654049ec67aa72ed0126c302e"></p>
+</li>
+<li><p>将【请求码】复制到激活软件中；点击【Generate Activation Code】；将生成的【激活码】复制到Navicat中；点击【激活】</p>
+<p><img src="https://npm.elemecdn.com/aboyzy_blogstatic//img/202306031826398.webp" alt="c08d39e43587371d545ba0a77a44dcdc"></p>
+<blockquote>
+<p>注：注册参考链接<a target="_blank" rel="noopener" href="https://github.com/shuhongfan/NavicatCracker">https://github.com/shuhongfan/NavicatCracker</a></p>
+</blockquote>
+</li>
+</ol>
+<blockquote>
+</blockquote>
+
+  </div>
+</article>
+
+
+
+    <div class="blog-post-comments">
+        <div id="waline_thread"></div>
+    </div>
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">首页</a></li>
+        
+          <li><a href="/categories/%E8%AF%B4%E8%AF%B4/">说说</a></li>
+        
+          <li><a href="/archives/">归档</a></li>
+        
+          <li><a href="/pages/">导航</a></li>
+        
+          <li><a href="/about/">关于</a></li>
+        
+          <li><a href="/search/">搜索</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BDmysql"><span class="toc-number">2.</span> <span class="toc-text">下载mysql</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%89%E8%A3%85"><span class="toc-number">3.</span> <span class="toc-text">安装</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E9%80%89%E6%8B%A9%E8%AE%BE%E7%BD%AE%E7%B1%BB%E5%9E%8B"><span class="toc-number">3.1.</span> <span class="toc-text">1. 选择设置类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E9%80%89%E6%8B%A9%E5%AE%89%E8%A3%85%E7%9B%AE%E5%BD%95"><span class="toc-number">3.2.</span> <span class="toc-text">2.选择安装目录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%AE%89%E8%A3%85"><span class="toc-number">3.3.</span> <span class="toc-text">3.安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E9%80%89%E6%8B%A9%E5%AE%89%E8%A3%85%E7%B1%BB%E5%9E%8B"><span class="toc-number">3.4.</span> <span class="toc-text">4.选择安装类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E8%AE%BE%E7%BD%AEmysql%E5%AF%86%E7%A0%81"><span class="toc-number">3.5.</span> <span class="toc-text">5.设置mysql密码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E6%9C%80%E5%90%8E"><span class="toc-number">3.6.</span> <span class="toc-text">6.最后</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-MySQL-Router-Configuration"><span class="toc-number">3.7.</span> <span class="toc-text">7.MySQL Router Configuration</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-%E5%AE%89%E8%A3%85%E5%AE%8C%E6%88%90"><span class="toc-number">3.8.</span> <span class="toc-text">8.安装完成</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="toc-number">4.</span> <span class="toc-text">环境变量</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MySQL%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E5%90%AF%E5%8A%A8%E5%92%8C%E5%85%B3%E9%97%AD"><span class="toc-number">5.</span> <span class="toc-text">MySQL服务器的启动和关闭</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%AF%E8%A7%86%E5%8C%96%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7Navicat%E5%AE%89%E8%A3%85%E4%B8%8E%E6%B3%A8%E5%86%8C"><span class="toc-number">6.</span> <span class="toc-text">可视化管理工具Navicat安装与注册</span></a></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="mailto:?subject=Windows MySQL的安装&body=Check out this article: http://example.com/2023/06/03/%E6%95%99%E7%A8%8B/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/win-MySQL/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+ </ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2022-2025
+    稚
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/categories/%E8%AF%B4%E8%AF%B4/">说说</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a href="/pages/">导航</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="/search/">搜索</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://s4.zstatic.net/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://s4.zstatic.net/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板！\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功！");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+
+<!-- Waline Comments -->
+
+<script type="module">
+    import { init } from 'http://s4.zstatic.net/npm/@waline/client@v2/dist/waline.mjs';
+
+    var EMOJI = ['//unpkg.com/@waline/emojis@1.2.0/qq']
+    var META = ['nick', 'mail', 'link'];
+    var REQUIREDFIELDS = ['nick', 'mail', 'link'];
+
+    var emoji = 'https://npm.elemecdn.com/@waline/emojis@1.2.0/bilibili'.split(',').filter(function(item){
+        return item !== ''; // filter()返回满足不为空item
+    });
+    emoji = emoji.length == 0 ? EMOJI : emoji;
+
+    var meta = 'nick,mail,link'.split(',').filter(function(item){
+        return META.indexOf(item) > -1; // filter()返回满足META.indexOf(item) > -1为true的item
+    });
+    meta = meta.length == 0 ? META : meta;
+
+    var requiredFields = 'nick,mail'.split(',').filter(function(item){
+        return REQUIREDFIELDS.indexOf(item) > -1; // filter()返回满足META.indexOf(item) > -1为true的item
+    });
+    requiredFields = requiredFields.length == 0 ? REQUIREDFIELDS : requiredFields;
+
+    document.addEventListener('DOMContentLoaded', function () {
+
+        const walineElement = document.getElementById('waline_thread');
+
+        if (walineElement) {
+            init({
+                el: '#waline_thread',
+                serverURL: 'https://waline.aboyzy.top/', // Waline 的服务端地址
+                path: '' == '' ? window.location.pathname : '', // 当前文章页路径，用于区分不同的文章页，以保证正确读取该文章页下的评论列表
+                lang: 'zh-CN' == '' ? 'zh-CN' : 'zh-CN', // 多语言支持，未设置默认英文
+                emoji: emoji,
+                dark: '', // 暗黑模式适配
+                commentSorting: '' == '' ? 'latest' : '', // 评论列表排序方式
+                meta: meta, // 评论者相关属性
+                requiredFields: requiredFields, // 设置必填项，默认匿名
+                login: '', // 登录模式状态
+                wordLimit: '', // 评论字数限制
+                pageSize: '10' == '' ? 10 : '10', // 评论列表分页，每页条数
+                imageUploader: '', // 自定义图片上传方法
+                highlighter: '', // 代码高亮
+                placeholder: '',
+                avatar: 'mm',
+                visitor: 'false',
+                comment_count: 'false',
+            });
+        }
+    });
+</script>
+
+</body>
+</html>

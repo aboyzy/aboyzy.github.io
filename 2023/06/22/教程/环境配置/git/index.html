@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="下载首先打开官网  点击 Download for Windows  阿里镜像：查看  选择下载  下载过慢可以去阿里云镜像下载 安装我安装的版本是 Git-2.41.0版本 1. 使用许可声明这个界面主要展示了 GPL协议的内容，点击 [next] 到第二步。  2. 选择安装目录可点击 Browse… 更换目录  3. 选择安装组件根据自己的需要选择勾选。点击 [next] 到第四步   注：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Git安装与配置">
+<meta property="og:url" content="http://example.com/2023/06/22/%E6%95%99%E7%A8%8B/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/git/index.html">
+<meta property="og:site_name" content="稚的小窝">
+<meta property="og:description" content="下载首先打开官网  点击 Download for Windows  阿里镜像：查看  选择下载  下载过慢可以去阿里云镜像下载 安装我安装的版本是 Git-2.41.0版本 1. 使用许可声明这个界面主要展示了 GPL协议的内容，点击 [next] 到第二步。  2. 选择安装目录可点击 Browse… 更换目录  3. 选择安装组件根据自己的需要选择勾选。点击 [next] 到第四步   注：">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/aboyzy/pic_tuchuang@main/img/202306221809543.webp">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/aboyzy/pic_tuchuang@main/img/202306221809383.webp">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/aboyzy/pic_tuchuang@main/img/202306221810075.webp">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/aboyzy/pic_tuchuang@main/img/202306221810260.webp">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/aboyzy/pic_tuchuang@main/img/202306221810774.webp">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/aboyzy/pic_tuchuang@main/img/202306221810841.webp">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/aboyzy/pic_tuchuang@main/img/202306221810668.webp">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/aboyzy/pic_tuchuang@main/img/202306221810041.webp">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/aboyzy/pic_tuchuang@main/img/202306221810398.webp">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/aboyzy/pic_tuchuang@main/img/202306221810150.webp">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/aboyzy/pic_tuchuang@main/img/202306221810215.webp">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/aboyzy/pic_tuchuang@main/img/202306221810361.webp">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/aboyzy/pic_tuchuang@main/img/202306221810604.webp">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/aboyzy/pic_tuchuang@main/img/202306221811769.webp">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/aboyzy/pic_tuchuang@main/img/202306221811324.webp">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/aboyzy/pic_tuchuang@main/img/202306221811754.webp">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/aboyzy/pic_tuchuang@main/img/202306221811362.webp">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/aboyzy/pic_tuchuang@main/img/202306221811055.webp">
+<meta property="article:published_time" content="2023-06-22T10:12:51.000Z">
+<meta property="article:modified_time" content="2025-03-08T10:13:27.616Z">
+<meta property="article:author" content="稚">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://jsd.cdn.zzko.cn/gh/aboyzy/pic_tuchuang@main/img/202306221809543.webp">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="https://npm.elemecdn.com/aboyzy_blogstatic/img/%E5%A4%B4%E5%83%8F.webp">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="https://npm.elemecdn.com/aboyzy_blogstatic/img/%E5%A4%B4%E5%83%8F.webp" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="https://npm.elemecdn.com/aboyzy_blogstatic/img/%E5%A4%B4%E5%83%8F.webp">
+        
+      
+    
+    <!-- title -->
+    <title>Git安装与配置</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+
+    <!-- Waline Comments -->
+    
+        <link rel="stylesheet" href="http://s4.zstatic.net/npm/@waline/client@v2/dist/waline.css"/>
+    
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/rss2.xml" title="稚的小窝" type="application/rss+xml">
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="顶部" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/categories/%E8%AF%B4%E8%AF%B4/">说说</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a href="/pages/">导航</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="/search/">搜索</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="上一篇" href="/2023/06/22/%E6%95%99%E7%A8%8B/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/nvm/"><i class="fa-solid fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="下一篇" href="/2023/06/22/%E6%95%99%E7%A8%8B/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/python-install/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="返回顶部" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="分享文章" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="mailto:?subject=Git安装与配置&body=Check out this article: http://example.com/2023/06/22/%E6%95%99%E7%A8%8B/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/git/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+ </ul>
+
+    </div>
+<!--    -->
+<!--    -->
+<!--      <div id="toc">-->
+<!--        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD"><span class="toc-number">1.</span> <span class="toc-text">下载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85"><span class="toc-number">2.</span> <span class="toc-text">安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E4%BD%BF%E7%94%A8%E8%AE%B8%E5%8F%AF%E5%A3%B0%E6%98%8E"><span class="toc-number">2.1.</span> <span class="toc-text">1. 使用许可声明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E9%80%89%E6%8B%A9%E5%AE%89%E8%A3%85%E7%9B%AE%E5%BD%95"><span class="toc-number">2.2.</span> <span class="toc-text">2. 选择安装目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E9%80%89%E6%8B%A9%E5%AE%89%E8%A3%85%E7%BB%84%E4%BB%B6"><span class="toc-number">2.3.</span> <span class="toc-text">3. 选择安装组件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E9%80%89%E6%8B%A9%E5%BC%80%E5%A7%8B%E8%8F%9C%E5%8D%95%E6%96%87%E4%BB%B6%E5%A4%B9"><span class="toc-number">2.4.</span> <span class="toc-text">4. 选择开始菜单文件夹</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E9%80%89%E6%8B%A9-Git-%E9%BB%98%E8%AE%A4%E7%BC%96%E8%BE%91%E5%99%A8"><span class="toc-number">2.5.</span> <span class="toc-text">5. 选择 Git 默认编辑器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%E5%86%B3%E5%AE%9A%E5%88%9D%E5%A7%8B%E5%8C%96%E6%96%B0%E9%A1%B9%E7%9B%AE-%E4%BB%93%E5%BA%93-%E7%9A%84%E4%B8%BB%E5%B9%B2%E5%90%8D%E5%AD%97"><span class="toc-number">2.6.</span> <span class="toc-text">6. 决定初始化新项目(仓库)的主干名字</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-%E8%B0%83%E6%95%B4%E4%BD%A0%E7%9A%84-path-%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="toc-number">2.7.</span> <span class="toc-text">7. 调整你的 path 环境变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-%E9%80%89%E6%8B%A9-SSH-%E6%89%A7%E8%A1%8C%E6%96%87%E4%BB%B6"><span class="toc-number">2.8.</span> <span class="toc-text">8. 选择 SSH 执行文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-%E9%80%89%E6%8B%A9HTTPS%E5%90%8E%E7%AB%AF%E4%BC%A0%E8%BE%93"><span class="toc-number">2.9.</span> <span class="toc-text">9. 选择HTTPS后端传输</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-%E9%85%8D%E7%BD%AE%E8%A1%8C%E5%B0%BE%E7%AC%A6%E5%8F%B7%E8%BD%AC%E6%8D%A2"><span class="toc-number">2.10.</span> <span class="toc-text">10. 配置行尾符号转换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-%E9%85%8D%E7%BD%AE%E7%BB%88%E7%AB%AF%E6%A8%A1%E6%8B%9F%E5%99%A8%E4%BB%A5%E4%B8%8E-Git-Bash-%E4%B8%80%E8%B5%B7%E4%BD%BF%E7%94%A8"><span class="toc-number">2.11.</span> <span class="toc-text">11. 配置终端模拟器以与 Git Bash 一起使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-%E9%80%89%E6%8B%A9%E9%BB%98%E8%AE%A4%E7%9A%84-git-pull%E8%A1%8C%E4%B8%BA"><span class="toc-number">2.12.</span> <span class="toc-text">12. 选择默认的 git pull行为</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13-%E9%80%89%E6%8B%A9%E4%B8%80%E4%B8%AA%E5%87%AD%E8%AF%81%E5%B8%AE%E5%8A%A9%E7%A8%8B%E5%BA%8F"><span class="toc-number">2.13.</span> <span class="toc-text">13. 选择一个凭证帮助程序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#14-%E9%85%8D%E7%BD%AE%E9%A2%9D%E5%A4%96%E7%9A%84%E9%80%89%E9%A1%B9"><span class="toc-number">2.14.</span> <span class="toc-text">14. 配置额外的选项</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#15-%E9%85%8D%E7%BD%AE%E5%AE%9E%E9%AA%8C%E6%80%A7%E9%80%89%E9%A1%B9"><span class="toc-number">2.15.</span> <span class="toc-text">15.配置实验性选项</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#16-%E5%AE%89%E8%A3%85%E6%88%90%E5%8A%9F"><span class="toc-number">2.16.</span> <span class="toc-text">16. 安装成功</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE"><span class="toc-number">3.</span> <span class="toc-text">配置</span></a></li></ol>-->
+<!--      </div>-->
+<!--    -->
+    <div id="toc">
+  <div id="toc-div" class="toc-article" >
+    
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD"><span class="toc-number">1.</span> <span class="toc-text">下载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85"><span class="toc-number">2.</span> <span class="toc-text">安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E4%BD%BF%E7%94%A8%E8%AE%B8%E5%8F%AF%E5%A3%B0%E6%98%8E"><span class="toc-number">2.1.</span> <span class="toc-text">1. 使用许可声明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E9%80%89%E6%8B%A9%E5%AE%89%E8%A3%85%E7%9B%AE%E5%BD%95"><span class="toc-number">2.2.</span> <span class="toc-text">2. 选择安装目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E9%80%89%E6%8B%A9%E5%AE%89%E8%A3%85%E7%BB%84%E4%BB%B6"><span class="toc-number">2.3.</span> <span class="toc-text">3. 选择安装组件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E9%80%89%E6%8B%A9%E5%BC%80%E5%A7%8B%E8%8F%9C%E5%8D%95%E6%96%87%E4%BB%B6%E5%A4%B9"><span class="toc-number">2.4.</span> <span class="toc-text">4. 选择开始菜单文件夹</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E9%80%89%E6%8B%A9-Git-%E9%BB%98%E8%AE%A4%E7%BC%96%E8%BE%91%E5%99%A8"><span class="toc-number">2.5.</span> <span class="toc-text">5. 选择 Git 默认编辑器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%E5%86%B3%E5%AE%9A%E5%88%9D%E5%A7%8B%E5%8C%96%E6%96%B0%E9%A1%B9%E7%9B%AE-%E4%BB%93%E5%BA%93-%E7%9A%84%E4%B8%BB%E5%B9%B2%E5%90%8D%E5%AD%97"><span class="toc-number">2.6.</span> <span class="toc-text">6. 决定初始化新项目(仓库)的主干名字</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-%E8%B0%83%E6%95%B4%E4%BD%A0%E7%9A%84-path-%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="toc-number">2.7.</span> <span class="toc-text">7. 调整你的 path 环境变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-%E9%80%89%E6%8B%A9-SSH-%E6%89%A7%E8%A1%8C%E6%96%87%E4%BB%B6"><span class="toc-number">2.8.</span> <span class="toc-text">8. 选择 SSH 执行文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-%E9%80%89%E6%8B%A9HTTPS%E5%90%8E%E7%AB%AF%E4%BC%A0%E8%BE%93"><span class="toc-number">2.9.</span> <span class="toc-text">9. 选择HTTPS后端传输</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-%E9%85%8D%E7%BD%AE%E8%A1%8C%E5%B0%BE%E7%AC%A6%E5%8F%B7%E8%BD%AC%E6%8D%A2"><span class="toc-number">2.10.</span> <span class="toc-text">10. 配置行尾符号转换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-%E9%85%8D%E7%BD%AE%E7%BB%88%E7%AB%AF%E6%A8%A1%E6%8B%9F%E5%99%A8%E4%BB%A5%E4%B8%8E-Git-Bash-%E4%B8%80%E8%B5%B7%E4%BD%BF%E7%94%A8"><span class="toc-number">2.11.</span> <span class="toc-text">11. 配置终端模拟器以与 Git Bash 一起使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-%E9%80%89%E6%8B%A9%E9%BB%98%E8%AE%A4%E7%9A%84-git-pull%E8%A1%8C%E4%B8%BA"><span class="toc-number">2.12.</span> <span class="toc-text">12. 选择默认的 git pull行为</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13-%E9%80%89%E6%8B%A9%E4%B8%80%E4%B8%AA%E5%87%AD%E8%AF%81%E5%B8%AE%E5%8A%A9%E7%A8%8B%E5%BA%8F"><span class="toc-number">2.13.</span> <span class="toc-text">13. 选择一个凭证帮助程序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#14-%E9%85%8D%E7%BD%AE%E9%A2%9D%E5%A4%96%E7%9A%84%E9%80%89%E9%A1%B9"><span class="toc-number">2.14.</span> <span class="toc-text">14. 配置额外的选项</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#15-%E9%85%8D%E7%BD%AE%E5%AE%9E%E9%AA%8C%E6%80%A7%E9%80%89%E9%A1%B9"><span class="toc-number">2.15.</span> <span class="toc-text">15.配置实验性选项</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#16-%E5%AE%89%E8%A3%85%E6%88%90%E5%8A%9F"><span class="toc-number">2.16.</span> <span class="toc-text">16. 安装成功</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE"><span class="toc-number">3.</span> <span class="toc-text">配置</span></a></li></ol>
+    
+  </div>
+</div>
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        Git安装与配置
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">稚</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2023-06-22T10:12:51.000Z" class="dt-published" itemprop="datePublished">2023-06-22</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fa-solid fa-archive"></i>
+        <a class="category-link" href="/categories/%E6%95%99%E7%A8%8B/">教程</a> › <a class="category-link" href="/categories/%E6%95%99%E7%A8%8B/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">环境配置</a>
+    </div>
+
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><p>首先打开<a target="_blank" rel="noopener" href="https://git-scm.com/">官网</a>  点击 <code>Download for Windows </code> 阿里镜像：<a target="_blank" rel="noopener" href="https://registry.npmmirror.com/binary.html?path=git-for-windows/">查看</a></p>
+<p><img src="https://jsd.cdn.zzko.cn/gh/aboyzy/pic_tuchuang@main/img/202306221809543.webp" alt="image-20230622172243914"></p>
+<p>选择下载</p>
+<p><img src="https://jsd.cdn.zzko.cn/gh/aboyzy/pic_tuchuang@main/img/202306221809383.webp" alt="image-20230622172441101"></p>
+<p>下载过慢可以去阿里云镜像下载</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>我安装的版本是 <code>Git-2.41.0</code>版本</p>
+<h3 id="1-使用许可声明"><a href="#1-使用许可声明" class="headerlink" title="1. 使用许可声明"></a>1. 使用许可声明</h3><p>这个界面主要展示了 GPL协议的内容，点击 [next] 到第二步。</p>
+<p><img src="https://jsd.cdn.zzko.cn/gh/aboyzy/pic_tuchuang@main/img/202306221810075.webp" alt="image-20230622173018607"></p>
+<h3 id="2-选择安装目录"><a href="#2-选择安装目录" class="headerlink" title="2. 选择安装目录"></a>2. 选择安装目录</h3><p>可点击 <code>Browse…</code> 更换目录</p>
+<p><img src="https://jsd.cdn.zzko.cn/gh/aboyzy/pic_tuchuang@main/img/202306221810260.webp" alt="image-20230622173044827"></p>
+<h3 id="3-选择安装组件"><a href="#3-选择安装组件" class="headerlink" title="3. 选择安装组件"></a>3. 选择安装组件</h3><p>根据自己的需要选择勾选。点击 [next] 到第四步</p>
+<p><img src="https://jsd.cdn.zzko.cn/gh/aboyzy/pic_tuchuang@main/img/202306221810774.webp" alt="image-20230622173436589"></p>
+<blockquote>
+<p>注：最后一个选项打勾的话，需要下载 Windows Terminal 配合 Git Bash使用</p>
+</blockquote>
+<h3 id="4-选择开始菜单文件夹"><a href="#4-选择开始菜单文件夹" class="headerlink" title="4. 选择开始菜单文件夹"></a>4. 选择开始菜单文件夹</h3><p>方框内 Git 可改为其他名字，也可点击 “<code>Browse...</code>” 选择其他文件夹或者给”<code>Don&#39;t create a Start Menu folder</code>“ 打勾不要文件夹，点击 [next] 到第五步。</p>
+<p><img src="https://jsd.cdn.zzko.cn/gh/aboyzy/pic_tuchuang@main/img/202306221810841.webp" alt="image-20230622173620661"></p>
+<h3 id="5-选择-Git-默认编辑器"><a href="#5-选择-Git-默认编辑器" class="headerlink" title="5. 选择 Git 默认编辑器"></a>5. 选择 Git 默认编辑器</h3><p>Git 安装程序里面内置了 10 种编辑器供你挑选，比如 <code>Atom</code>、<code>Notepad</code>、<code>Notepad++</code>、<code>Sublime Text</code>、<code>Visual Studio Code</code>、<code>Vim</code> 等等，默认的是 Vim ，选择 Vim 后可以直接进行到下一步.如果想使用其他软件的那么请先将软件配置到环境变量之后再使用</p>
+<p><img src="https://jsd.cdn.zzko.cn/gh/aboyzy/pic_tuchuang@main/img/202306221810668.webp" alt="image-20230622173740298"></p>
+<h3 id="6-决定初始化新项目-仓库-的主干名字"><a href="#6-决定初始化新项目-仓库-的主干名字" class="headerlink" title="6. 决定初始化新项目(仓库)的主干名字"></a>6. 决定初始化新项目(仓库)的主干名字</h3><p>第一种是让 Git 自己选择，名字是 <code>master</code> ，但是未来也有可能会改为其他名字；第二种是我们自行决定，默认是 <code>main</code>，当然，你也可以改为其他的名字。</p>
+<p><img src="https://jsd.cdn.zzko.cn/gh/aboyzy/pic_tuchuang@main/img/202306221810041.webp" alt="image-20230622174035832"></p>
+<h3 id="7-调整你的-path-环境变量"><a href="#7-调整你的-path-环境变量" class="headerlink" title="7. 调整你的 path 环境变量"></a>7. 调整你的 path 环境变量</h3><p><img src="https://jsd.cdn.zzko.cn/gh/aboyzy/pic_tuchuang@main/img/202306221810398.webp" alt="image-20230622174131694"></p>
+<ul>
+<li>第一种是仅从 Git Bash 使用 Git。这个的意思就是你只能通过 Git 安装后的 Git Bash 来使用 Git ，其他的什么命令提示符啊等第三方软件都不行。</li>
+<li>第二种是从命令行以及第三方软件进行 Git。这个就是在第一种基础上进行第三方支持，你将能够从 Git Bash，命令提示符(cmd) 和 Windows PowerShell 以及可以从 Windows 系统环境变量中寻找 Git 的任何第三方软件中使用 Git。推荐使用这个。</li>
+<li>第三种是从命令提示符使用 Git 和可选的 Unix 工具。选择这种将覆盖 Windows 工具，如 “ find 和 sort ”。只有在了解其含义后才使用此选项。</li>
+</ul>
+<h3 id="8-选择-SSH-执行文件"><a href="#8-选择-SSH-执行文件" class="headerlink" title="8. 选择 SSH 执行文件"></a>8. 选择 SSH 执行文件</h3><p><img src="https://jsd.cdn.zzko.cn/gh/aboyzy/pic_tuchuang@main/img/202306221810150.webp" alt="image-20230622174308707"></p>
+<ul>
+<li>第一种是使用捆绑的 OpenSSH 这使用的 ssh.exe 是 Git 自带的 。<code>默认第一种</code></li>
+<li>第二种是使用外部 OpenSSH 新！这使用外部 ssh.exe 文件。Git 不会安装自己的 OpenSSH（和相关）二进制文件，而是使用在环境变量 PATH 中找到的它们。</li>
+</ul>
+<h3 id="9-选择HTTPS后端传输"><a href="#9-选择HTTPS后端传输" class="headerlink" title="9. 选择HTTPS后端传输"></a>9. 选择HTTPS后端传输</h3><p><img src="https://jsd.cdn.zzko.cn/gh/aboyzy/pic_tuchuang@main/img/202306221810215.webp" alt="image-20230622174449734"></p>
+<ul>
+<li>第一种是：使用 OpenSSL 库 服务器证书将使用 ca-bundle.crt 文件进行验证。<code>默认第一种</code></li>
+<li>第二种是：使用本机 Windows 安全通道库 服务器证书将使用 Windows 证书存储进行验证。此选项还允许您使用公司内部分发的内部根 CA 证书，例如通过 Active Directory 域服务。</li>
+</ul>
+<h3 id="10-配置行尾符号转换"><a href="#10-配置行尾符号转换" class="headerlink" title="10. 配置行尾符号转换"></a>10. 配置行尾符号转换</h3><p><img src="https://jsd.cdn.zzko.cn/gh/aboyzy/pic_tuchuang@main/img/202306221810361.webp" alt="image-20230622174838480"></p>
+<ul>
+<li>第一种是：签出 Windows 样式，提交 Unix 样式的行结尾。<code>windows用户选择第一种</code></li>
+<li>第二种是：按原样签出，提交Unix样式的行结尾</li>
+<li>第三种是：按原样签出，按原样提交</li>
+</ul>
+<h3 id="11-配置终端模拟器以与-Git-Bash-一起使用"><a href="#11-配置终端模拟器以与-Git-Bash-一起使用" class="headerlink" title="11. 配置终端模拟器以与 Git Bash 一起使用"></a>11. 配置终端模拟器以与 Git Bash 一起使用</h3><p><img src="https://jsd.cdn.zzko.cn/gh/aboyzy/pic_tuchuang@main/img/202306221810604.webp" alt="image-20230622175107698"></p>
+<ul>
+<li>第一种：使用 MinTTY（MSYS2的默认终端）<code>默认就可以了</code></li>
+<li>第二种： 使用 Windows 的默认控制台窗口</li>
+</ul>
+<h3 id="12-选择默认的-git-pull行为"><a href="#12-选择默认的-git-pull行为" class="headerlink" title="12. 选择默认的 git pull行为"></a>12. 选择默认的 <code>git pull</code>行为</h3><p><img src="https://jsd.cdn.zzko.cn/gh/aboyzy/pic_tuchuang@main/img/202306221811769.webp" alt="image-20230622175256819"></p>
+<p>默认就可以了</p>
+<h3 id="13-选择一个凭证帮助程序"><a href="#13-选择一个凭证帮助程序" class="headerlink" title="13. 选择一个凭证帮助程序"></a>13. 选择一个凭证帮助程序</h3><p><img src="https://jsd.cdn.zzko.cn/gh/aboyzy/pic_tuchuang@main/img/202306221811324.webp" alt="image-20230622175511215"></p>
+<p>默认</p>
+<h3 id="14-配置额外的选项"><a href="#14-配置额外的选项" class="headerlink" title="14. 配置额外的选项"></a>14. 配置额外的选项</h3><p><img src="https://jsd.cdn.zzko.cn/gh/aboyzy/pic_tuchuang@main/img/202306221811754.webp" alt="image-20230622175609798"></p>
+<p>默认</p>
+<h3 id="15-配置实验性选项"><a href="#15-配置实验性选项" class="headerlink" title="15.配置实验性选项"></a>15.配置实验性选项</h3><p><img src="https://jsd.cdn.zzko.cn/gh/aboyzy/pic_tuchuang@main/img/202306221811362.webp" alt="image-20230622175646742"></p>
+<p>默认都不开启</p>
+<p>之后就开始安装了</p>
+<h3 id="16-安装成功"><a href="#16-安装成功" class="headerlink" title="16. 安装成功"></a>16. 安装成功</h3><p><img src="https://jsd.cdn.zzko.cn/gh/aboyzy/pic_tuchuang@main/img/202306221811055.webp" alt="image-20230622175819440"></p>
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><p>打开 <code>git bash</code>配置邮箱和用户名(–global表示全局配置)</p>
+<div class="highlight-wrap" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">配置用户名</span></span><br><span class="line">git config --global user.name &quot;aboyzy&quot;</span><br></pre></td></tr></table></figure></div>
+
+<div class="highlight-wrap" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">配置邮箱</span></span><br><span class="line">git config --global user.email  &quot;xiaozoutx@outlook.com&quot;</span><br></pre></td></tr></table></figure></div>
+
+<p>查询配置：</p>
+<div class="highlight-wrap" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global --list</span><br></pre></td></tr></table></figure></div>
+
+<p>生成ssh密钥输入命令然后三次回车就可以了</p>
+<div class="highlight-wrap" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa</span><br></pre></td></tr></table></figure></div>
+
+<p>默认存储在 <code>C:\Users\用户名\.ssh</code>文件夹下将 <code> id_rsa.pub</code>上传到GitHub设置中就可以链接到GitHub了</p>
+
+  </div>
+</article>
+
+
+
+    <div class="blog-post-comments">
+        <div id="waline_thread"></div>
+    </div>
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">首页</a></li>
+        
+          <li><a href="/categories/%E8%AF%B4%E8%AF%B4/">说说</a></li>
+        
+          <li><a href="/archives/">归档</a></li>
+        
+          <li><a href="/pages/">导航</a></li>
+        
+          <li><a href="/about/">关于</a></li>
+        
+          <li><a href="/search/">搜索</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD"><span class="toc-number">1.</span> <span class="toc-text">下载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85"><span class="toc-number">2.</span> <span class="toc-text">安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E4%BD%BF%E7%94%A8%E8%AE%B8%E5%8F%AF%E5%A3%B0%E6%98%8E"><span class="toc-number">2.1.</span> <span class="toc-text">1. 使用许可声明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E9%80%89%E6%8B%A9%E5%AE%89%E8%A3%85%E7%9B%AE%E5%BD%95"><span class="toc-number">2.2.</span> <span class="toc-text">2. 选择安装目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E9%80%89%E6%8B%A9%E5%AE%89%E8%A3%85%E7%BB%84%E4%BB%B6"><span class="toc-number">2.3.</span> <span class="toc-text">3. 选择安装组件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E9%80%89%E6%8B%A9%E5%BC%80%E5%A7%8B%E8%8F%9C%E5%8D%95%E6%96%87%E4%BB%B6%E5%A4%B9"><span class="toc-number">2.4.</span> <span class="toc-text">4. 选择开始菜单文件夹</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E9%80%89%E6%8B%A9-Git-%E9%BB%98%E8%AE%A4%E7%BC%96%E8%BE%91%E5%99%A8"><span class="toc-number">2.5.</span> <span class="toc-text">5. 选择 Git 默认编辑器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%E5%86%B3%E5%AE%9A%E5%88%9D%E5%A7%8B%E5%8C%96%E6%96%B0%E9%A1%B9%E7%9B%AE-%E4%BB%93%E5%BA%93-%E7%9A%84%E4%B8%BB%E5%B9%B2%E5%90%8D%E5%AD%97"><span class="toc-number">2.6.</span> <span class="toc-text">6. 决定初始化新项目(仓库)的主干名字</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-%E8%B0%83%E6%95%B4%E4%BD%A0%E7%9A%84-path-%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="toc-number">2.7.</span> <span class="toc-text">7. 调整你的 path 环境变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-%E9%80%89%E6%8B%A9-SSH-%E6%89%A7%E8%A1%8C%E6%96%87%E4%BB%B6"><span class="toc-number">2.8.</span> <span class="toc-text">8. 选择 SSH 执行文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-%E9%80%89%E6%8B%A9HTTPS%E5%90%8E%E7%AB%AF%E4%BC%A0%E8%BE%93"><span class="toc-number">2.9.</span> <span class="toc-text">9. 选择HTTPS后端传输</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-%E9%85%8D%E7%BD%AE%E8%A1%8C%E5%B0%BE%E7%AC%A6%E5%8F%B7%E8%BD%AC%E6%8D%A2"><span class="toc-number">2.10.</span> <span class="toc-text">10. 配置行尾符号转换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-%E9%85%8D%E7%BD%AE%E7%BB%88%E7%AB%AF%E6%A8%A1%E6%8B%9F%E5%99%A8%E4%BB%A5%E4%B8%8E-Git-Bash-%E4%B8%80%E8%B5%B7%E4%BD%BF%E7%94%A8"><span class="toc-number">2.11.</span> <span class="toc-text">11. 配置终端模拟器以与 Git Bash 一起使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-%E9%80%89%E6%8B%A9%E9%BB%98%E8%AE%A4%E7%9A%84-git-pull%E8%A1%8C%E4%B8%BA"><span class="toc-number">2.12.</span> <span class="toc-text">12. 选择默认的 git pull行为</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13-%E9%80%89%E6%8B%A9%E4%B8%80%E4%B8%AA%E5%87%AD%E8%AF%81%E5%B8%AE%E5%8A%A9%E7%A8%8B%E5%BA%8F"><span class="toc-number">2.13.</span> <span class="toc-text">13. 选择一个凭证帮助程序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#14-%E9%85%8D%E7%BD%AE%E9%A2%9D%E5%A4%96%E7%9A%84%E9%80%89%E9%A1%B9"><span class="toc-number">2.14.</span> <span class="toc-text">14. 配置额外的选项</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#15-%E9%85%8D%E7%BD%AE%E5%AE%9E%E9%AA%8C%E6%80%A7%E9%80%89%E9%A1%B9"><span class="toc-number">2.15.</span> <span class="toc-text">15.配置实验性选项</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#16-%E5%AE%89%E8%A3%85%E6%88%90%E5%8A%9F"><span class="toc-number">2.16.</span> <span class="toc-text">16. 安装成功</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE"><span class="toc-number">3.</span> <span class="toc-text">配置</span></a></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="mailto:?subject=Git安装与配置&body=Check out this article: http://example.com/2023/06/22/%E6%95%99%E7%A8%8B/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/git/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+ </ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2022-2025
+    稚
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/categories/%E8%AF%B4%E8%AF%B4/">说说</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a href="/pages/">导航</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="/search/">搜索</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://s4.zstatic.net/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://s4.zstatic.net/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板！\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功！");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+
+<!-- Waline Comments -->
+
+<script type="module">
+    import { init } from 'http://s4.zstatic.net/npm/@waline/client@v2/dist/waline.mjs';
+
+    var EMOJI = ['//unpkg.com/@waline/emojis@1.2.0/qq']
+    var META = ['nick', 'mail', 'link'];
+    var REQUIREDFIELDS = ['nick', 'mail', 'link'];
+
+    var emoji = 'https://npm.elemecdn.com/@waline/emojis@1.2.0/bilibili'.split(',').filter(function(item){
+        return item !== ''; // filter()返回满足不为空item
+    });
+    emoji = emoji.length == 0 ? EMOJI : emoji;
+
+    var meta = 'nick,mail,link'.split(',').filter(function(item){
+        return META.indexOf(item) > -1; // filter()返回满足META.indexOf(item) > -1为true的item
+    });
+    meta = meta.length == 0 ? META : meta;
+
+    var requiredFields = 'nick,mail'.split(',').filter(function(item){
+        return REQUIREDFIELDS.indexOf(item) > -1; // filter()返回满足META.indexOf(item) > -1为true的item
+    });
+    requiredFields = requiredFields.length == 0 ? REQUIREDFIELDS : requiredFields;
+
+    document.addEventListener('DOMContentLoaded', function () {
+
+        const walineElement = document.getElementById('waline_thread');
+
+        if (walineElement) {
+            init({
+                el: '#waline_thread',
+                serverURL: 'https://waline.aboyzy.top/', // Waline 的服务端地址
+                path: '' == '' ? window.location.pathname : '', // 当前文章页路径，用于区分不同的文章页，以保证正确读取该文章页下的评论列表
+                lang: 'zh-CN' == '' ? 'zh-CN' : 'zh-CN', // 多语言支持，未设置默认英文
+                emoji: emoji,
+                dark: '', // 暗黑模式适配
+                commentSorting: '' == '' ? 'latest' : '', // 评论列表排序方式
+                meta: meta, // 评论者相关属性
+                requiredFields: requiredFields, // 设置必填项，默认匿名
+                login: '', // 登录模式状态
+                wordLimit: '', // 评论字数限制
+                pageSize: '10' == '' ? 10 : '10', // 评论列表分页，每页条数
+                imageUploader: '', // 自定义图片上传方法
+                highlighter: '', // 代码高亮
+                placeholder: '',
+                avatar: 'mm',
+                visitor: 'false',
+                comment_count: 'false',
+            });
+        }
+    });
+</script>
+
+</body>
+</html>
