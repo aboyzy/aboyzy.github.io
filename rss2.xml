@@ -9,7 +9,7 @@
     <atom:link href="https://blog.aboyzy.top/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description></description>
-    <pubDate>Sat, 08 Mar 2025 10:01:23 GMT</pubDate>
+    <pubDate>Sun, 09 Mar 2025 07:35:37 GMT</pubDate>
     <generator>http://hexo.io/</generator>
     
     <item>
@@ -18,10 +18,44 @@
       <guid>https://blog.aboyzy.top/5210/05/21/blog/</guid>
       <pubDate>Fri, 21 May 5210 05:36:01 GMT</pubDate>
       
+        
+        
+          
+          
+      <description>&lt;p&gt;&lt;a href=&quot;/2024/06/21/%E6%95%99%E7%A8%8B/Jetbrains/&quot;&gt;Jetbrains系列激活&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a</description>
+          
+        
       
       
       
       
+      
+      
+    </item>
+    
+    <item>
+      <title>2025年后游记</title>
+      <link>https://blog.aboyzy.top/2025/03/09/%E8%AF%B4%E8%AF%B4/2025new-go/</link>
+      <guid>https://blog.aboyzy.top/2025/03/09/%E8%AF%B4%E8%AF%B4/2025new-go/</guid>
+      <pubDate>Sun, 09 Mar 2025 08:50:56 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h1 id=&quot;想法&quot;&gt;&lt;a href=&quot;#想法&quot; class=&quot;headerlink&quot; title=&quot;想法&quot;&gt;&lt;/a&gt;想法&lt;/h1&gt;&lt;p&gt;哦莫 </description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://blog.aboyzy.top/categories/%E8%AF%B4%E8%AF%B4/">说说</category>
+      
+      
+      
+      <comments>https://blog.aboyzy.top/2025/03/09/%E8%AF%B4%E8%AF%B4/2025new-go/#disqus_thread</comments>
       
     </item>
     
@@ -119,7 +153,7 @@
     </item>
     
     <item>
-      <title>Cloudflare-r2</title>
+      <title>Cloudflare R2存储</title>
       <link>https://blog.aboyzy.top/2024/11/13/%E6%95%99%E7%A8%8B/Cloudflare-r2/</link>
       <guid>https://blog.aboyzy.top/2024/11/13/%E6%95%99%E7%A8%8B/Cloudflare-r2/</guid>
       <pubDate>Wed, 13 Nov 2024 05:50:03 GMT</pubDate>
@@ -222,8 +256,8 @@
         
           
           
-      <description>&lt;p&gt;一些之前写的和加速镜像链接&lt;/p&gt;
-&lt;h2 id=&quot;脚本&quot;&gt;&lt;a href=&quot;#脚本&quot; class=&quot;headerlink&quot; title=&quot;脚本&quot;&gt;&lt;/a&gt;脚本&lt;/h2&gt;&lt;h3 id=&quot;python&quot;&gt;&lt;a href=&quot;#python&quot;</description>
+      <description>&lt;p&gt;一些之前写的和加速镜像链接 欢迎提供更多加速地址&lt;/p&gt;
+&lt;h1 id=&quot;加速链接&quot;&gt;&lt;a href=&quot;#加速链接&quot; class=&quot;headerlink&quot; title=&quot;加速链接&quot;&gt;&lt;/a&gt;加速链接&lt;/h1&gt;&lt;h2 id=&quot;镜像站点&quot;&gt;&lt;a href=&quot;#镜像站点&quot;</description>
           
         
       
@@ -466,32 +500,6 @@
       
       
       <comments>https://blog.aboyzy.top/2023/12/23/%E8%AF%B4%E8%AF%B4/2023/#disqus_thread</comments>
-      
-    </item>
-    
-    <item>
-      <title>python实现邮件收发</title>
-      <link>https://blog.aboyzy.top/2023/12/07/%E8%87%AA%E6%90%93%E4%BB%A3%E7%A0%81/python-mail/</link>
-      <guid>https://blog.aboyzy.top/2023/12/07/%E8%87%AA%E6%90%93%E4%BB%A3%E7%A0%81/python-mail/</guid>
-      <pubDate>Thu, 07 Dec 2023 14:51:42 GMT</pubDate>
-      
-        
-        
-          
-          
-      <description>&lt;p&gt;课程设计周互联网协议分析课程需要写一个与协议相关的程序 我们小组挑选到了邮件收发器 刚好顺便练习一下&lt;code&gt;python&lt;/code&gt;&lt;/p&gt;
-&lt;h1 id=&quot;程序代码&quot;&gt;&lt;a href=&quot;#程序代码&quot; class=&quot;headerlink&quot;</description>
-          
-        
-      
-      
-      
-      
-      <category domain="https://blog.aboyzy.top/categories/%E8%87%AA%E6%90%93%E4%BB%A3%E7%A0%81/">自搓代码</category>
-      
-      
-      
-      <comments>https://blog.aboyzy.top/2023/12/07/%E8%87%AA%E6%90%93%E4%BB%A3%E7%A0%81/python-mail/#disqus_thread</comments>
       
     </item>
     
