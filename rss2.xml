@@ -9,7 +9,7 @@
     <atom:link href="https://blog.aboyzy.top/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description></description>
-    <pubDate>Sun, 09 Mar 2025 07:35:37 GMT</pubDate>
+    <pubDate>Sun, 16 Mar 2025 08:57:07 GMT</pubDate>
     <generator>http://hexo.io/</generator>
     
     <item>
@@ -31,6 +31,32 @@
       
       
       
+      
+    </item>
+    
+    <item>
+      <title>Clash+Yacd docker配置</title>
+      <link>https://blog.aboyzy.top/2025/03/16/%E6%95%99%E7%A8%8B/clash_yacd/</link>
+      <guid>https://blog.aboyzy.top/2025/03/16/%E6%95%99%E7%A8%8B/clash_yacd/</guid>
+      <pubDate>Sun, 16 Mar 2025 08:52:03 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h1 id=&quot;代理服务器设置&quot;&gt;&lt;a href=&quot;#代理服务器设置&quot; class=&quot;headerlink&quot; title=&quot;代理服务器设置&quot;&gt;&lt;/a&gt;代理服务器设置&lt;/h1&gt;&lt;p&gt;仅供自我研究docker 参考使用 请勿传播&lt;/p&gt;
+&lt;h2 id=&quot;安装&quot;&gt;&lt;a</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://blog.aboyzy.top/categories/%E6%95%99%E7%A8%8B/">教程</category>
+      
+      
+      
+      <comments>https://blog.aboyzy.top/2025/03/16/%E6%95%99%E7%A8%8B/clash_yacd/#disqus_thread</comments>
       
     </item>
     
@@ -475,31 +501,6 @@
       
       
       <comments>https://blog.aboyzy.top/2024/03/05/%E6%95%99%E7%A8%8B/Typora-free/#disqus_thread</comments>
-      
-    </item>
-    
-    <item>
-      <title>2023年终随笔</title>
-      <link>https://blog.aboyzy.top/2023/12/23/%E8%AF%B4%E8%AF%B4/2023/</link>
-      <guid>https://blog.aboyzy.top/2023/12/23/%E8%AF%B4%E8%AF%B4/2023/</guid>
-      <pubDate>Sat, 23 Dec 2023 05:16:37 GMT</pubDate>
-      
-        
-        
-          
-          
-      <description>&lt;p&gt;转眼间我的网站建立一年了，起初最开始的时候只是想记录一下搞过的一些东西防止忘记，现在更多的是给我的朋友们分享一些东西。方便共享今天躺在床上没有事情做想着把网站优化一下然后emm 搞了四五个小时。胡思乱想了很久然后忽然发现已经建立网站快一年了 感觉过的好快啊  我丢</description>
-          
-        
-      
-      
-      
-      
-      <category domain="https://blog.aboyzy.top/categories/%E8%AF%B4%E8%AF%B4/">说说</category>
-      
-      
-      
-      <comments>https://blog.aboyzy.top/2023/12/23/%E8%AF%B4%E8%AF%B4/2023/#disqus_thread</comments>
       
     </item>
     
