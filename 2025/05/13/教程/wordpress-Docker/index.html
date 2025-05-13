@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="我想在内网保留我之前的wordpress文章所以就起了个服务，记录一下方便查询。 初始化脚本创建初始化脚本并运行 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970#!&#x2F;bin&#x2F;bash#">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Docker部署Wordpress">
+<meta property="og:url" content="https://blog.aboyzy.top/2025/05/13/%E6%95%99%E7%A8%8B/wordpress-Docker/index.html">
+<meta property="og:site_name" content="稚的小窝">
+<meta property="og:description" content="我想在内网保留我之前的wordpress文章所以就起了个服务，记录一下方便查询。 初始化脚本创建初始化脚本并运行 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970#!&#x2F;bin&#x2F;bash#">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-05-13T09:26:13.000Z">
+<meta property="article:modified_time" content="2025-05-13T09:32:32.071Z">
+<meta property="article:author" content="稚">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="https://npm.elemecdn.com/aboyzy_blogstatic/img/%E5%A4%B4%E5%83%8F.webp">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="https://npm.elemecdn.com/aboyzy_blogstatic/img/%E5%A4%B4%E5%83%8F.webp" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="https://npm.elemecdn.com/aboyzy_blogstatic/img/%E5%A4%B4%E5%83%8F.webp">
+        
+      
+    
+    <!-- title -->
+    <title>Docker部署Wordpress</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+
+    <!-- Waline Comments -->
+    
+        <link rel="stylesheet" href="https://s4.zstatic.net/npm/@waline/client@2.15.8/dist/waline.css"/>
+    
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/rss2.xml" title="稚的小窝" type="application/rss+xml">
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="顶部" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/categories/%E8%AF%B4%E8%AF%B4/">说说</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a href="/pages/">导航</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="https://pan.aboyzy.top/">网盘</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="/search/">搜索</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="上一篇" href="/5210/05/21/blog/"><i class="fa-solid fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="下一篇" href="/2025/05/11/%E8%AF%B4%E8%AF%B4/xi-an-vlog/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="返回顶部" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="分享文章" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="mailto:?subject=Docker部署Wordpress&body=Check out this article: https://blog.aboyzy.top/2025/05/13/%E6%95%99%E7%A8%8B/wordpress-Docker/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+ </ul>
+
+    </div>
+<!--    -->
+<!--    -->
+<!--      <div id="toc">-->
+<!--        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96%E8%84%9A%E6%9C%AC"><span class="toc-number">1.</span> <span class="toc-text">初始化脚本</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Docker-compose"><span class="toc-number">2.</span> <span class="toc-text">Docker-compose</span></a></li></ol>-->
+<!--      </div>-->
+<!--    -->
+    <div id="toc">
+  <div id="toc-div" class="toc-article" >
+    
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96%E8%84%9A%E6%9C%AC"><span class="toc-number">1.</span> <span class="toc-text">初始化脚本</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Docker-compose"><span class="toc-number">2.</span> <span class="toc-text">Docker-compose</span></a></li></ol>
+    
+  </div>
+</div>
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        Docker部署Wordpress
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">稚</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2025-05-13T09:26:13.000Z" class="dt-published" itemprop="datePublished">2025-05-13</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fa-solid fa-archive"></i>
+        <a class="category-link" href="/categories/%E6%95%99%E7%A8%8B/">教程</a>
+    </div>
+
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <p>我想在内网保留我之前的wordpress文章所以就起了个服务，记录一下方便查询。</p>
+<h1 id="初始化脚本"><a href="#初始化脚本" class="headerlink" title="初始化脚本"></a>初始化脚本</h1><p>创建初始化脚本并运行</p>
+<div class="highlight-wrap" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">!/bin/bash</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">定义可修改的变量</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">数据库root密码</span></span><br><span class="line">MYSQL_ROOT_PASSWORD=&quot;123456&quot;</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">wordpress数据库账户</span></span><br><span class="line">WORDPRESS_DB_USER=&quot;wordpress_user&quot;</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">wordpress数据库密码</span></span><br><span class="line">WORDPRESS_DB_PASSWORD=&quot;wordpress_password&quot;</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">定义要创建的目录列表</span></span><br><span class="line">directories=(</span><br><span class="line">    &quot;mysql/data&quot;</span><br><span class="line">    &quot;mysql/conf&quot;</span><br><span class="line">    &quot;mysql/logs&quot;</span><br><span class="line">    &quot;wordpress&quot;</span><br><span class="line">)</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">创建目录</span></span><br><span class="line">for dir in &quot;$&#123;directories[@]&#125;&quot;</span><br><span class="line">do</span><br><span class="line">    mkdir -p &quot;$dir&quot;</span><br><span class="line">    echo &quot;Created directory: $dir&quot;</span><br><span class="line">done</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">生成 init.sql 文件内容</span></span><br><span class="line">init_sql_content=$(cat &lt;&lt;EOF</span><br><span class="line">-- 创建名为 $WORDPRESS_DB_USER 的用户，密码为 $WORDPRESS_DB_PASSWORD</span><br><span class="line">CREATE USER &#x27;$WORDPRESS_DB_USER&#x27;@&#x27;%&#x27; IDENTIFIED BY &#x27;$WORDPRESS_DB_PASSWORD&#x27;;</span><br><span class="line">-- 授予 $WORDPRESS_DB_USER 用户对 wordpress 数据库的所有权限</span><br><span class="line">GRANT ALL PRIVILEGES ON wordpress.* TO &#x27;$WORDPRESS_DB_USER&#x27;@&#x27;%&#x27;;</span><br><span class="line">-- 刷新权限使更改生效</span><br><span class="line">FLUSH PRIVILEGES;</span><br><span class="line">-- 创建一个名为 wordpress 的数据库</span><br><span class="line">CREATE DATABASE wordpress;</span><br><span class="line">EOF</span><br><span class="line">)</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">写入 init.sql 文件</span></span><br><span class="line">echo &quot;$init_sql_content&quot; &gt; init.sql</span><br><span class="line">echo &quot;Created file: init.sql&quot;</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">生成 .<span class="built_in">env</span> 文件内容</span></span><br><span class="line">env_content=$(cat &lt;&lt;EOF</span><br><span class="line">MYSQL_ROOT_PASSWORD=$MYSQL_ROOT_PASSWORD</span><br><span class="line">WORDPRESS_DB_USER=$WORDPRESS_DB_USER</span><br><span class="line">WORDPRESS_DB_PASSWORD=$WORDPRESS_DB_PASSWORD</span><br><span class="line">EOF</span><br><span class="line">)</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">写入 .<span class="built_in">env</span> 文件</span></span><br><span class="line">echo &quot;$env_content&quot; &gt; .env</span><br><span class="line">echo &quot;Created file: .env&quot;</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">生成 uploads.ini 文件内容</span></span><br><span class="line">uploads_ini_content=$(cat &lt;&lt;EOF</span><br><span class="line">memory_limit = 64M</span><br><span class="line">upload_max_filesize = 64M</span><br><span class="line">post_max_size = 64M</span><br><span class="line">max_execution_time = 300</span><br><span class="line">EOF</span><br><span class="line">)</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">写入 uploads.ini 文件</span></span><br><span class="line">echo &quot;$uploads_ini_content&quot; &gt; ./wordpress/uploads.ini</span><br><span class="line">echo &quot;Created file: uploads.ini&quot;</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">输出提示信息</span></span><br><span class="line">echo &quot;All directories and files have been created successfully.&quot;</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
+<p>赋予运行权限并运行</p>
+<h1 id="Docker-compose"><a href="#Docker-compose" class="headerlink" title="Docker-compose"></a>Docker-compose</h1><p>与初始化脚本放在同一个文件夹内运行。</p>
+<div class="highlight-wrap" data-rel="Dockerfile"><figure class="iseeu highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">version: <span class="string">&#x27;3.8&#x27;</span></span><br><span class="line"></span><br><span class="line">services:</span><br><span class="line">  mysql:</span><br><span class="line">    image: mysql:<span class="number">8</span></span><br><span class="line">    container_name: mysql</span><br><span class="line">    volumes:</span><br><span class="line">      - ./mysql/data:/var/lib/mysql</span><br><span class="line">      - ./mysql/conf:/etc/mysql/conf.d</span><br><span class="line">      - ./mysql/logs:/var/log/mysql</span><br><span class="line">      - ./init.sql:/docker-<span class="keyword">entrypoint</span><span class="language-bash">-initdb.d/init.sql</span></span><br><span class="line">    ports:</span><br><span class="line">      - <span class="string">&quot;3306:3306&quot;</span></span><br><span class="line">    environment:</span><br><span class="line">      <span class="comment"># 从 .env 文件获取 MySQL root 密码</span></span><br><span class="line">      MYSQL_ROOT_PASSWORD: $&#123;MYSQL_ROOT_PASSWORD&#125;</span><br><span class="line">    restart: always</span><br><span class="line"></span><br><span class="line">  wordpress:</span><br><span class="line">    image: wordpress</span><br><span class="line">    container_name: wordpress</span><br><span class="line">    depends_on:</span><br><span class="line">      - mysql</span><br><span class="line">    volumes:</span><br><span class="line">      - ./wordpress:/var/www/html</span><br><span class="line">      - ./wordpress/uploads.ini:/usr/local/etc/php/conf.d/uploads.ini</span><br><span class="line">    ports:</span><br><span class="line">      - <span class="string">&quot;80:80&quot;</span></span><br><span class="line">    environment:</span><br><span class="line">      <span class="comment"># 连接 MySQL 的主机地址，使用服务名 mysql</span></span><br><span class="line">      WORDPRESS_DB_HOST: mysql</span><br><span class="line">      <span class="comment"># 从 .env 文件获取数据库用户名</span></span><br><span class="line">      WORDPRESS_DB_USER: $&#123;WORDPRESS_DB_USER&#125;</span><br><span class="line">      <span class="comment"># 从 .env 文件获取数据库用户密码</span></span><br><span class="line">      WORDPRESS_DB_PASSWORD: $&#123;WORDPRESS_DB_PASSWORD&#125;</span><br><span class="line">      WORDPRESS_DB_NAME: wordpress</span><br><span class="line">    restart: always</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
+
+  </div>
+</article>
+
+
+
+    <div class="blog-post-comments">
+        <div id="waline_thread"></div>
+    </div>
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">首页</a></li>
+        
+          <li><a href="/categories/%E8%AF%B4%E8%AF%B4/">说说</a></li>
+        
+          <li><a href="/archives/">归档</a></li>
+        
+          <li><a href="/pages/">导航</a></li>
+        
+          <li><a target="_blank" rel="noopener" href="https://pan.aboyzy.top/">网盘</a></li>
+        
+          <li><a href="/about/">关于</a></li>
+        
+          <li><a href="/search/">搜索</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96%E8%84%9A%E6%9C%AC"><span class="toc-number">1.</span> <span class="toc-text">初始化脚本</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Docker-compose"><span class="toc-number">2.</span> <span class="toc-text">Docker-compose</span></a></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="mailto:?subject=Docker部署Wordpress&body=Check out this article: https://blog.aboyzy.top/2025/05/13/%E6%95%99%E7%A8%8B/wordpress-Docker/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+ </ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2022-2025
+    稚
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/categories/%E8%AF%B4%E8%AF%B4/">说说</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a href="/pages/">导航</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="https://pan.aboyzy.top/">网盘</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="/search/">搜索</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+  <script src="https://s4.zstatic.net/npm/aboyzy-live2d@1.0.1/static/TweenLite.js"></script>
+  <script src="https://s4.zstatic.net/npm/aboyzy-live2d@1.0.1/static/live2Dcubismcore.min.js"></script>
+  <script src="https://s4.zstatic.net/npm/aboyzy-live2d@1.0.1/static/pixi.min.js"></script>
+  <script src="https://s4.zstatic.net/npm/aboyzy-live2d@1.0.1/static/cubism4.min.js"></script>
+  <link href="https://s4.zstatic.net/npm/aboyzy-live2d@1.0.0/static/pio.css" rel="stylesheet" type="text/css"/>
+  <script src="https://s4.zstatic.net/npm/aboyzy-live2d@1.0.1/static/pio.js"></script>
+  <script src="https://s4.zstatic.net/npm/aboyzy-live2d@1.0.1/static/pio_sdk4.js"></script>
+  <script src="https://s4.zstatic.net/npm/aboyzy-live2d@1.0.1/static/load.js"></script>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://s4.zstatic.net/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://s4.zstatic.net/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板！\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功！");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+
+<!-- Waline Comments -->
+
+<script type="module">
+    import { init } from 'https://s4.zstatic.net/npm/@waline/client@2.15.8/dist/waline.mjs';
+
+    var EMOJI = ['//unpkg.com/@waline/emojis@1.2.0/qq']
+    var META = ['nick', 'mail', 'link'];
+    var REQUIREDFIELDS = ['nick', 'mail', 'link'];
+
+    var emoji = 'https://npm.elemecdn.com/@waline/emojis@1.2.0/bilibili'.split(',').filter(function(item){
+        return item !== ''; // filter()返回满足不为空item
+    });
+    emoji = emoji.length == 0 ? EMOJI : emoji;
+
+    var meta = 'nick,mail,link'.split(',').filter(function(item){
+        return META.indexOf(item) > -1; // filter()返回满足META.indexOf(item) > -1为true的item
+    });
+    meta = meta.length == 0 ? META : meta;
+
+    var requiredFields = 'nick,mail'.split(',').filter(function(item){
+        return REQUIREDFIELDS.indexOf(item) > -1; // filter()返回满足META.indexOf(item) > -1为true的item
+    });
+    requiredFields = requiredFields.length == 0 ? REQUIREDFIELDS : requiredFields;
+
+    document.addEventListener('DOMContentLoaded', function () {
+
+        const walineElement = document.getElementById('waline_thread');
+
+        if (walineElement) {
+            init({
+                el: '#waline_thread',
+                serverURL: 'https://waline.aboyzy.top/', // Waline 的服务端地址
+                path: '' == '' ? window.location.pathname : '', // 当前文章页路径，用于区分不同的文章页，以保证正确读取该文章页下的评论列表
+                lang: 'zh-CN' == '' ? 'zh-CN' : 'zh-CN', // 多语言支持，未设置默认英文
+                emoji: emoji,
+                dark: '', // 暗黑模式适配
+                commentSorting: '' == '' ? 'latest' : '', // 评论列表排序方式
+                meta: meta, // 评论者相关属性
+                requiredFields: requiredFields, // 设置必填项，默认匿名
+                login: '', // 登录模式状态
+                wordLimit: '', // 评论字数限制
+                pageSize: '10' == '' ? 10 : '10', // 评论列表分页，每页条数
+                imageUploader: '', // 自定义图片上传方法
+                highlighter: '', // 代码高亮
+                placeholder: '',
+                avatar: 'mm',
+                visitor: 'false',
+                comment_count: 'false',
+            });
+        }
+    });
+</script>
+
+</body>
+</html>

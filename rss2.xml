@@ -35,6 +35,32 @@
     </item>
     
     <item>
+      <title>Docker部署Wordpress</title>
+      <link>https://blog.aboyzy.top/2025/05/13/%E6%95%99%E7%A8%8B/wordpress-Docker/</link>
+      <guid>https://blog.aboyzy.top/2025/05/13/%E6%95%99%E7%A8%8B/wordpress-Docker/</guid>
+      <pubDate>Tue, 13 May 2025 09:26:13 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;p&gt;我想在内网保留我之前的wordpress文章所以就起了个服务，记录一下方便查询。&lt;/p&gt;
+&lt;h1 id=&quot;初始化脚本&quot;&gt;&lt;a href=&quot;#初始化脚本&quot; class=&quot;headerlink&quot;</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://blog.aboyzy.top/categories/%E6%95%99%E7%A8%8B/">教程</category>
+      
+      
+      
+      <comments>https://blog.aboyzy.top/2025/05/13/%E6%95%99%E7%A8%8B/wordpress-Docker/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
       <title>西安游记</title>
       <link>https://blog.aboyzy.top/2025/05/11/%E8%AF%B4%E8%AF%B4/xi-an-vlog/</link>
       <guid>https://blog.aboyzy.top/2025/05/11/%E8%AF%B4%E8%AF%B4/xi-an-vlog/</guid>
@@ -472,34 +498,6 @@
       
       
       <comments>https://blog.aboyzy.top/2024/07/06/%E6%95%99%E7%A8%8B/ayit-network/#disqus_thread</comments>
-      
-    </item>
-    
-    <item>
-      <title>Jetbrains系列激活</title>
-      <link>https://blog.aboyzy.top/2024/06/21/%E6%95%99%E7%A8%8B/Jetbrains/</link>
-      <guid>https://blog.aboyzy.top/2024/06/21/%E6%95%99%E7%A8%8B/Jetbrains/</guid>
-      <pubDate>Fri, 21 Jun 2024 08:23:14 GMT</pubDate>
-      
-        
-        
-          
-          
-      <description>&lt;blockquote&gt;
-&lt;p&gt;做个激活攻略方便分享&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&quot;下载软件&quot;&gt;&lt;a href=&quot;#下载软件&quot; class=&quot;headerlink&quot; title=&quot;下载软件&quot;&gt;&lt;/a&gt;下载软件&lt;/h2&gt;&lt;p&gt;这个就不用说了吧直接去官网 &lt;a</description>
-          
-        
-      
-      
-      
-      
-      <category domain="https://blog.aboyzy.top/categories/%E6%95%99%E7%A8%8B/">教程</category>
-      
-      
-      
-      <comments>https://blog.aboyzy.top/2024/06/21/%E6%95%99%E7%A8%8B/Jetbrains/#disqus_thread</comments>
       
     </item>
     
