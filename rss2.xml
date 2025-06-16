@@ -35,6 +35,33 @@
     </item>
     
     <item>
+      <title>浪潮NF5280M6安装Windows server 2016</title>
+      <link>https://blog.aboyzy.top/2025/06/12/%E6%95%99%E7%A8%8B/%E5%B7%A5%E4%BD%9C/NF5280M6%E5%AE%89%E8%A3%85Windows-server-2016/</link>
+      <guid>https://blog.aboyzy.top/2025/06/12/%E6%95%99%E7%A8%8B/%E5%B7%A5%E4%BD%9C/NF5280M6%E5%AE%89%E8%A3%85Windows-server-2016/</guid>
+      <pubDate>Thu, 12 Jun 2025 03:12:46 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h1 id=&quot;浪潮元脑服务器NF5280M6安装Windows-server-2016&quot;&gt;&lt;a href=&quot;#浪潮元脑服务器NF5280M6安装Windows-server-2016&quot; class=&quot;headerlink&quot;</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://blog.aboyzy.top/categories/%E6%95%99%E7%A8%8B/">教程</category>
+      
+      <category domain="https://blog.aboyzy.top/categories/%E6%95%99%E7%A8%8B/%E5%B7%A5%E4%BD%9C/">工作</category>
+      
+      
+      
+      <comments>https://blog.aboyzy.top/2025/06/12/%E6%95%99%E7%A8%8B/%E5%B7%A5%E4%BD%9C/NF5280M6%E5%AE%89%E8%A3%85Windows-server-2016/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
       <title>Docker部署Wordpress</title>
       <link>https://blog.aboyzy.top/2025/05/13/%E6%95%99%E7%A8%8B/wordpress-Docker/</link>
       <guid>https://blog.aboyzy.top/2025/05/13/%E6%95%99%E7%A8%8B/wordpress-Docker/</guid>
@@ -473,31 +500,6 @@
       
       
       <comments>https://blog.aboyzy.top/2024/08/05/%E8%AF%B4%E8%AF%B4/synology-boom/#disqus_thread</comments>
-      
-    </item>
-    
-    <item>
-      <title>安阳工学院宽带更新自动更新脚本[可能已失效]</title>
-      <link>https://blog.aboyzy.top/2024/07/06/%E6%95%99%E7%A8%8B/ayit-network/</link>
-      <guid>https://blog.aboyzy.top/2024/07/06/%E6%95%99%E7%A8%8B/ayit-network/</guid>
-      <pubDate>Sat, 06 Jul 2024 08:20:04 GMT</pubDate>
-      
-        
-        
-          
-          
-      <description>&lt;p&gt;七月五号的时候ayit更新了dr.com的认证方式，更换了Portal认证的方式，原来的脚本没有办法使用了。又抓了下包分析了一波，还好是网页认证比较好搞。以前的时候是直接发post包就可以了，现在需要&lt;code&gt;1.1.1.1&lt;/code&gt;重定向给你分配&lt;code&gt;wlan</description>
-          
-        
-      
-      
-      
-      
-      <category domain="https://blog.aboyzy.top/categories/%E6%95%99%E7%A8%8B/">教程</category>
-      
-      
-      
-      <comments>https://blog.aboyzy.top/2024/07/06/%E6%95%99%E7%A8%8B/ayit-network/#disqus_thread</comments>
       
     </item>
     

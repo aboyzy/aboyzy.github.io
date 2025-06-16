@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="浪潮元脑服务器NF5280M6安装Windows server 2016BMC管理地址配置（选配）开机按del键进入bios  选择Server mgmt  选择BMC network configuration 里边的最后一个选项 配置静态选择 Manual和static 配置地址掩码和网关 （网关一定要写不然不成功）  然后按esc返回 会出现Set BMc Network Config  选">
+<meta property="og:type" content="article">
+<meta property="og:title" content="浪潮NF5280M6安装Windows server 2016">
+<meta property="og:url" content="https://blog.aboyzy.top/2025/06/12/%E6%95%99%E7%A8%8B/%E5%B7%A5%E4%BD%9C/NF5280M6%E5%AE%89%E8%A3%85Windows-server-2016/index.html">
+<meta property="og:site_name" content="稚的小窝">
+<meta property="og:description" content="浪潮元脑服务器NF5280M6安装Windows server 2016BMC管理地址配置（选配）开机按del键进入bios  选择Server mgmt  选择BMC network configuration 里边的最后一个选项 配置静态选择 Manual和static 配置地址掩码和网关 （网关一定要写不然不成功）  然后按esc返回 会出现Set BMc Network Config  选">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://524524d.webp.li/photo/2025_06_12_20250612100954598.webp">
+<meta property="og:image" content="https://524524d.webp.li/photo/2025_06_12_20250612101014959.webp">
+<meta property="og:image" content="https://524524d.webp.li/photo/2025_06_12_20250612101003372.webp">
+<meta property="og:image" content="https://524524d.webp.li/photo/2025_06_12_20250612101005133.webp">
+<meta property="og:image" content="https://524524d.webp.li/photo/2025_06_12_20250612101006638.webp">
+<meta property="og:image" content="https://524524d.webp.li/photo/2025_06_12_20250612101026228.webp">
+<meta property="og:image" content="https://524524d.webp.li/photo/2025_06_12_20250612101028894.webp">
+<meta property="og:image" content="https://524524d.webp.li/photo/2025_06_12_20250612101036851.webp">
+<meta property="og:image" content="https://524524d.webp.li/photo/2025_06_12_20250612101039686.webp">
+<meta property="og:image" content="https://524524d.webp.li/photo/2025_06_12_20250612101101082.webp">
+<meta property="og:image" content="https://524524d.webp.li/photo/2025_06_12_20250612101044556.webp">
+<meta property="og:image" content="https://524524d.webp.li/photo/2025_06_12_20250612101112209.webp">
+<meta property="og:image" content="https://524524d.webp.li/photo/2025_06_12_20250612101117572.webp">
+<meta property="article:published_time" content="2025-06-12T03:12:46.000Z">
+<meta property="article:modified_time" content="2025-06-16T09:17:24.088Z">
+<meta property="article:author" content="稚">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://524524d.webp.li/photo/2025_06_12_20250612100954598.webp">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="https://npm.elemecdn.com/aboyzy_blogstatic/img/%E5%A4%B4%E5%83%8F.webp">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="https://npm.elemecdn.com/aboyzy_blogstatic/img/%E5%A4%B4%E5%83%8F.webp" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="https://npm.elemecdn.com/aboyzy_blogstatic/img/%E5%A4%B4%E5%83%8F.webp">
+        
+      
+    
+    <!-- title -->
+    <title>浪潮NF5280M6安装Windows server 2016</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+
+    <!-- Waline Comments -->
+    
+        <link rel="stylesheet" href="https://s4.zstatic.net/npm/@waline/client@2.15.8/dist/waline.css"/>
+    
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/rss2.xml" title="稚的小窝" type="application/rss+xml">
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="顶部" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/categories/%E8%AF%B4%E8%AF%B4/">说说</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a href="/pages/">导航</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="https://pan.aboyzy.top/">网盘</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="/search/">搜索</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="上一篇" href="/5210/05/21/blog/"><i class="fa-solid fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="下一篇" href="/2025/05/13/%E6%95%99%E7%A8%8B/wordpress-Docker/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="返回顶部" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="分享文章" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="mailto:?subject=浪潮NF5280M6安装Windows server 2016&body=Check out this article: https://blog.aboyzy.top/2025/06/12/%E6%95%99%E7%A8%8B/%E5%B7%A5%E4%BD%9C/NF5280M6%E5%AE%89%E8%A3%85Windows-server-2016/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+ </ul>
+
+    </div>
+<!--    -->
+<!--    -->
+<!--      <div id="toc">-->
+<!--        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B5%AA%E6%BD%AE%E5%85%83%E8%84%91%E6%9C%8D%E5%8A%A1%E5%99%A8NF5280M6%E5%AE%89%E8%A3%85Windows-server-2016"><span class="toc-number">1.</span> <span class="toc-text">浪潮元脑服务器NF5280M6安装Windows server 2016</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#BMC%E7%AE%A1%E7%90%86%E5%9C%B0%E5%9D%80%E9%85%8D%E7%BD%AE%EF%BC%88%E9%80%89%E9%85%8D%EF%BC%89"><span class="toc-number">1.1.</span> <span class="toc-text">BMC管理地址配置（选配）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AERead1"><span class="toc-number">1.2.</span> <span class="toc-text">配置Read1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E7%B3%BB%E7%BB%9F"><span class="toc-number">1.3.</span> <span class="toc-text">安装系统</span></a></li></ol></li></ol>-->
+<!--      </div>-->
+<!--    -->
+    <div id="toc">
+  <div id="toc-div" class="toc-article" >
+    
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B5%AA%E6%BD%AE%E5%85%83%E8%84%91%E6%9C%8D%E5%8A%A1%E5%99%A8NF5280M6%E5%AE%89%E8%A3%85Windows-server-2016"><span class="toc-number">1.</span> <span class="toc-text">浪潮元脑服务器NF5280M6安装Windows server 2016</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#BMC%E7%AE%A1%E7%90%86%E5%9C%B0%E5%9D%80%E9%85%8D%E7%BD%AE%EF%BC%88%E9%80%89%E9%85%8D%EF%BC%89"><span class="toc-number">1.1.</span> <span class="toc-text">BMC管理地址配置（选配）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AERead1"><span class="toc-number">1.2.</span> <span class="toc-text">配置Read1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E7%B3%BB%E7%BB%9F"><span class="toc-number">1.3.</span> <span class="toc-text">安装系统</span></a></li></ol></li></ol>
+    
+  </div>
+</div>
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        浪潮NF5280M6安装Windows server 2016
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">稚</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2025-06-12T03:12:46.000Z" class="dt-published" itemprop="datePublished">2025-06-12</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fa-solid fa-archive"></i>
+        <a class="category-link" href="/categories/%E6%95%99%E7%A8%8B/">教程</a> › <a class="category-link" href="/categories/%E6%95%99%E7%A8%8B/%E5%B7%A5%E4%BD%9C/">工作</a>
+    </div>
+
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <h1 id="浪潮元脑服务器NF5280M6安装Windows-server-2016"><a href="#浪潮元脑服务器NF5280M6安装Windows-server-2016" class="headerlink" title="浪潮元脑服务器NF5280M6安装Windows server 2016"></a>浪潮元脑服务器NF5280M6安装Windows server 2016</h1><h2 id="BMC管理地址配置（选配）"><a href="#BMC管理地址配置（选配）" class="headerlink" title="BMC管理地址配置（选配）"></a>BMC管理地址配置（选配）</h2><p>开机按<code>del</code>键进入<code>bios</code></p>
+<p><img src="https://524524d.webp.li/photo/2025_06_12_20250612100954598.webp" alt="PixPin_2025-06-12_09-39-00"></p>
+<p>选择<code>Server mgmt</code></p>
+<p><img src="https://524524d.webp.li/photo/2025_06_12_20250612101014959.webp" alt="c8a6051a016c47a1987b4a0906bc243"></p>
+<p>选择<code>BMC network configuration</code> 里边的最后一个选项 配置静态选择 <code>Manual</code>和<code>static</code> 配置地址掩码和网关 （网关一定要写不然不成功）</p>
+<p><img src="https://524524d.webp.li/photo/2025_06_12_20250612101003372.webp" alt="PixPin_2025-06-12_09-41-01"></p>
+<p>然后按<code>esc</code>返回 会出现<code>Set BMc Network Config</code>  选择是 然后回再次弹窗提示是否配置成功 然后f10 保存重启就可以</p>
+<h2 id="配置Read1"><a href="#配置Read1" class="headerlink" title="配置Read1"></a>配置Read1</h2><p>客户要求两块盘做raid1 使用 在高级设置<code>Advanced</code>中找到阵列卡 一般为最后</p>
+<p><img src="https://524524d.webp.li/photo/2025_06_12_20250612101005133.webp" alt="PixPin_2025-06-12_09-44-25"></p>
+<p>选择<code>Main menu</code></p>
+<p><img src="https://524524d.webp.li/photo/2025_06_12_20250612101006638.webp" alt="PixPin_2025-06-12_09-44-38"></p>
+<p>选择<code>configuration Management</code></p>
+<p><img src="https://524524d.webp.li/photo/2025_06_12_20250612101026228.webp" alt="PixPin_2025-06-12_09-45-09"></p>
+<p>因为我们是新设备没有做配置所以选择<code>create virtual drive</code> 创建虚拟卷</p>
+<p><img src="https://524524d.webp.li/photo/2025_06_12_20250612101028894.webp" alt="PixPin_2025-06-12_09-46-13"></p>
+<p>选择raid类型</p>
+<p><img src="https://524524d.webp.li/photo/2025_06_12_20250612101036851.webp" alt="PixPin_2025-06-12_09-46-41"></p>
+<p>选择<code>Select Drive</code> 回车进入选择硬盘界面</p>
+<p><img src="https://524524d.webp.li/photo/2025_06_12_20250612101039686.webp" alt="PixPin_2025-06-12_09-47-02"></p>
+<p>选择你要的组raid的硬盘设置为enabled</p>
+<p><img src="https://524524d.webp.li/photo/2025_06_12_20250612101101082.webp" alt="PixPin_2025-06-12_09-47-55"></p>
+<p>然后到最下边选择apply change</p>
+<p><img src="https://524524d.webp.li/photo/2025_06_12_20250612101044556.webp" alt="PixPin_2025-06-12_09-48-28"></p>
+<p>会进行两次确认然后回到raid配置界面 配置写策略（这个为啥也不知道 官方文档推荐做）</p>
+<p><img src="https://524524d.webp.li/photo/2025_06_12_20250612101112209.webp" alt="PixPin_2025-06-12_09-49-43"></p>
+<p>然后保存会进行两次确认</p>
+<p><img src="https://524524d.webp.li/photo/2025_06_12_20250612101117572.webp" alt="PixPin_2025-06-12_09-50-02"></p>
+<h2 id="安装系统"><a href="#安装系统" class="headerlink" title="安装系统"></a>安装系统</h2><p>将系统盘插上后 重启系统 按<code>F11</code> 进入选择u盘启动器进行安装 应该提前将raid卡驱动启动拷贝到u盘上 因为安装时可能无法识别raid的硬盘需要手动导入  <a target="_blank" rel="noopener" href="https://support.ieisystem.com/eportal/ui?pageId=2317460">Raid卡驱动</a> 选择外部插件 -&gt;Raid卡 选择自己的版本 下载解压到u盘  在安装系统<a target="_blank" rel="noopener" href="https://www.ieisystem.com/qa/system/14572.html">参考</a>这个文档  安装完成之后还需要安装对应的网卡驱动和芯片组驱动 <a target="_blank" rel="noopener" href="http://support.ieisystem.com/eportal/ui/">搜索对应版本驱动下载</a> </p>
+
+  </div>
+</article>
+
+
+
+    <div class="blog-post-comments">
+        <div id="waline_thread"></div>
+    </div>
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">首页</a></li>
+        
+          <li><a href="/categories/%E8%AF%B4%E8%AF%B4/">说说</a></li>
+        
+          <li><a href="/archives/">归档</a></li>
+        
+          <li><a href="/pages/">导航</a></li>
+        
+          <li><a target="_blank" rel="noopener" href="https://pan.aboyzy.top/">网盘</a></li>
+        
+          <li><a href="/about/">关于</a></li>
+        
+          <li><a href="/search/">搜索</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B5%AA%E6%BD%AE%E5%85%83%E8%84%91%E6%9C%8D%E5%8A%A1%E5%99%A8NF5280M6%E5%AE%89%E8%A3%85Windows-server-2016"><span class="toc-number">1.</span> <span class="toc-text">浪潮元脑服务器NF5280M6安装Windows server 2016</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#BMC%E7%AE%A1%E7%90%86%E5%9C%B0%E5%9D%80%E9%85%8D%E7%BD%AE%EF%BC%88%E9%80%89%E9%85%8D%EF%BC%89"><span class="toc-number">1.1.</span> <span class="toc-text">BMC管理地址配置（选配）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AERead1"><span class="toc-number">1.2.</span> <span class="toc-text">配置Read1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E7%B3%BB%E7%BB%9F"><span class="toc-number">1.3.</span> <span class="toc-text">安装系统</span></a></li></ol></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="mailto:?subject=浪潮NF5280M6安装Windows server 2016&body=Check out this article: https://blog.aboyzy.top/2025/06/12/%E6%95%99%E7%A8%8B/%E5%B7%A5%E4%BD%9C/NF5280M6%E5%AE%89%E8%A3%85Windows-server-2016/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+ </ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2022-2025
+    稚
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/categories/%E8%AF%B4%E8%AF%B4/">说说</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a href="/pages/">导航</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="https://pan.aboyzy.top/">网盘</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="/search/">搜索</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+  <script src="https://s4.zstatic.net/npm/aboyzy-live2d@1.0.1/static/TweenLite.js"></script>
+  <script src="https://s4.zstatic.net/npm/aboyzy-live2d@1.0.1/static/live2Dcubismcore.min.js"></script>
+  <script src="https://s4.zstatic.net/npm/aboyzy-live2d@1.0.1/static/pixi.min.js"></script>
+  <script src="https://s4.zstatic.net/npm/aboyzy-live2d@1.0.1/static/cubism4.min.js"></script>
+  <link href="https://s4.zstatic.net/npm/aboyzy-live2d@1.0.0/static/pio.css" rel="stylesheet" type="text/css"/>
+  <script src="https://s4.zstatic.net/npm/aboyzy-live2d@1.0.1/static/pio.js"></script>
+  <script src="https://s4.zstatic.net/npm/aboyzy-live2d@1.0.1/static/pio_sdk4.js"></script>
+  <script src="https://s4.zstatic.net/npm/aboyzy-live2d@1.0.1/static/load.js"></script>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://s4.zstatic.net/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://s4.zstatic.net/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板！\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功！");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+
+<!-- Waline Comments -->
+
+<script type="module">
+    import { init } from 'https://s4.zstatic.net/npm/@waline/client@2.15.8/dist/waline.mjs';
+
+    var EMOJI = ['//unpkg.com/@waline/emojis@1.2.0/qq']
+    var META = ['nick', 'mail', 'link'];
+    var REQUIREDFIELDS = ['nick', 'mail', 'link'];
+
+    var emoji = 'https://npm.elemecdn.com/@waline/emojis@1.2.0/bilibili'.split(',').filter(function(item){
+        return item !== ''; // filter()返回满足不为空item
+    });
+    emoji = emoji.length == 0 ? EMOJI : emoji;
+
+    var meta = 'nick,mail,link'.split(',').filter(function(item){
+        return META.indexOf(item) > -1; // filter()返回满足META.indexOf(item) > -1为true的item
+    });
+    meta = meta.length == 0 ? META : meta;
+
+    var requiredFields = 'nick,mail'.split(',').filter(function(item){
+        return REQUIREDFIELDS.indexOf(item) > -1; // filter()返回满足META.indexOf(item) > -1为true的item
+    });
+    requiredFields = requiredFields.length == 0 ? REQUIREDFIELDS : requiredFields;
+
+    document.addEventListener('DOMContentLoaded', function () {
+
+        const walineElement = document.getElementById('waline_thread');
+
+        if (walineElement) {
+            init({
+                el: '#waline_thread',
+                serverURL: 'https://waline.aboyzy.top/', // Waline 的服务端地址
+                path: '' == '' ? window.location.pathname : '', // 当前文章页路径，用于区分不同的文章页，以保证正确读取该文章页下的评论列表
+                lang: 'zh-CN' == '' ? 'zh-CN' : 'zh-CN', // 多语言支持，未设置默认英文
+                emoji: emoji,
+                dark: '', // 暗黑模式适配
+                commentSorting: '' == '' ? 'latest' : '', // 评论列表排序方式
+                meta: meta, // 评论者相关属性
+                requiredFields: requiredFields, // 设置必填项，默认匿名
+                login: '', // 登录模式状态
+                wordLimit: '', // 评论字数限制
+                pageSize: '10' == '' ? 10 : '10', // 评论列表分页，每页条数
+                imageUploader: '', // 自定义图片上传方法
+                highlighter: '', // 代码高亮
+                placeholder: '',
+                avatar: 'mm',
+                visitor: 'false',
+                comment_count: 'false',
+            });
+        }
+    });
+</script>
+
+</body>
+</html>
