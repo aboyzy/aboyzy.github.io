@@ -1708,7 +1708,7 @@ code {
 }
 .highlight .line {
   word-wrap: break-word; /* 自动换行，长单词会换行 */
-  white-space: normal; /* 默认情况下会让文本换行 */
+  white-space: pre-wrap; /* 默认情况下会让文本换行 */
   height: 22px;
 }
 #header-post #actions {
