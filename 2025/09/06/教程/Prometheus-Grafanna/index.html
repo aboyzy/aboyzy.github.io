@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="很早之前就听说了Grafana这个工具，但是之前的时候没有用，最近的时候NAS总是Down 所以想监控一下 于是就部署了一个，既然部署了那就把内网的服务器全给监控一下，所以就写了这篇文章 Grafana 只是用来展示数据的，我们需要有收集数据的工具和不同的平台上报数据，我使用收集数据的是Prometheus  ，Prometheus需要Exporter来上报数据。根据不同的平台选择不同的Expor">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Prometheus+Grafanna部署">
+<meta property="og:url" content="https://blog.aboyzy.top/2025/09/06/%E6%95%99%E7%A8%8B/Prometheus-Grafanna/index.html">
+<meta property="og:site_name" content="稚的小窝">
+<meta property="og:description" content="很早之前就听说了Grafana这个工具，但是之前的时候没有用，最近的时候NAS总是Down 所以想监控一下 于是就部署了一个，既然部署了那就把内网的服务器全给监控一下，所以就写了这篇文章 Grafana 只是用来展示数据的，我们需要有收集数据的工具和不同的平台上报数据，我使用收集数据的是Prometheus  ，Prometheus需要Exporter来上报数据。根据不同的平台选择不同的Expor">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-09-06T02:40:06.000Z">
+<meta property="article:modified_time" content="2025-09-06T02:58:33.211Z">
+<meta property="article:author" content="稚">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="https://npm.elemecdn.com/aboyzy_blogstatic/img/%E5%A4%B4%E5%83%8F.webp">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="https://npm.elemecdn.com/aboyzy_blogstatic/img/%E5%A4%B4%E5%83%8F.webp" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="https://npm.elemecdn.com/aboyzy_blogstatic/img/%E5%A4%B4%E5%83%8F.webp">
+        
+      
+    
+    <!-- title -->
+    <title>Prometheus+Grafanna部署</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+
+    <!-- Waline Comments -->
+    
+        <link rel="stylesheet" href="https://s4.zstatic.net/npm/@waline/client@2.15.8/dist/waline.css"/>
+    
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/rss2.xml" title="稚的小窝" type="application/rss+xml">
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="顶部" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/categories/%E8%AF%B4%E8%AF%B4/">说说</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a href="/pages/">导航</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="https://pan.aboyzy.top/">网盘</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="/search/">搜索</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="上一篇" href="/5210/05/21/blog/"><i class="fa-solid fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="下一篇" href="/2025/08/14/%E8%AF%B4%E8%AF%B4/guian-huawei/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="返回顶部" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="分享文章" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="mailto:?subject=Prometheus+Grafanna部署&body=Check out this article: https://blog.aboyzy.top/2025/09/06/%E6%95%99%E7%A8%8B/Prometheus-Grafanna/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+ </ul>
+
+    </div>
+<!--    -->
+<!--    -->
+<!--      <div id="toc">-->
+<!--        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85"><span class="toc-number">1.</span> <span class="toc-text">安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Grafanna"><span class="toc-number">1.1.</span> <span class="toc-text">Grafanna</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Prometheus%E8%8A%82%E7%82%B9"><span class="toc-number">1.2.</span> <span class="toc-text">Prometheus节点</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Node-Exporter"><span class="toc-number">1.2.1.</span> <span class="toc-text">Node Exporter</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#VM-Exporter"><span class="toc-number">1.2.2.</span> <span class="toc-text">VM Exporter</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#cadvisor"><span class="toc-number">1.2.3.</span> <span class="toc-text">cadvisor</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#windows-exporter"><span class="toc-number">1.2.4.</span> <span class="toc-text">windows_exporter</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Prometheus%E5%AE%89%E8%A3%85"><span class="toc-number">1.3.</span> <span class="toc-text">Prometheus安装</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E8%81%94%E5%8A%A8"><span class="toc-number">2.</span> <span class="toc-text">配置联动</span></a></li></ol>-->
+<!--      </div>-->
+<!--    -->
+    <div id="toc">
+  <div id="toc-div" class="toc-article" >
+    
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85"><span class="toc-number">1.</span> <span class="toc-text">安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Grafanna"><span class="toc-number">1.1.</span> <span class="toc-text">Grafanna</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Prometheus%E8%8A%82%E7%82%B9"><span class="toc-number">1.2.</span> <span class="toc-text">Prometheus节点</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Node-Exporter"><span class="toc-number">1.2.1.</span> <span class="toc-text">Node Exporter</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#VM-Exporter"><span class="toc-number">1.2.2.</span> <span class="toc-text">VM Exporter</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#cadvisor"><span class="toc-number">1.2.3.</span> <span class="toc-text">cadvisor</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#windows-exporter"><span class="toc-number">1.2.4.</span> <span class="toc-text">windows_exporter</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Prometheus%E5%AE%89%E8%A3%85"><span class="toc-number">1.3.</span> <span class="toc-text">Prometheus安装</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E8%81%94%E5%8A%A8"><span class="toc-number">2.</span> <span class="toc-text">配置联动</span></a></li></ol>
+    
+  </div>
+</div>
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        Prometheus+Grafanna部署
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">稚</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2025-09-06T02:40:06.000Z" class="dt-published" itemprop="datePublished">2025-09-06</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fa-solid fa-archive"></i>
+        <a class="category-link" href="/categories/%E6%95%99%E7%A8%8B/">教程</a>
+    </div>
+
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <p>很早之前就听说了<code>Grafana</code>这个工具，但是之前的时候没有用，最近的时候<code>NAS</code>总是Down 所以想监控一下 于是就部署了一个，既然部署了那就把内网的服务器全给监控一下，所以就写了这篇文章</p>
+<p><strong>Grafana</strong> 只是用来展示数据的，我们需要有收集数据的工具和不同的平台上报数据，我使用收集数据的是<strong>Prometheus</strong>  ，Prometheus需要<strong>Exporter</strong>来上报数据。根据不同的平台选择不同的Exporter。</p>
+<ul>
+<li>Node Exporter，负责收集所属节点的硬件和操作系统数据。</li>
+<li>VM Exporter ，负责虚拟机的数据</li>
+<li>cadvisor ，收集容器的数据</li>
+<li>windows_exporter，收集Windows数据</li>
+</ul>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><h3 id="Grafanna"><a href="#Grafanna" class="headerlink" title="Grafanna"></a>Grafanna</h3><p>使用docker安装Grafana</p>
+<div class="highlight-wrap" data-rel="Dockerfile"><figure class="iseeu highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">services:</span><br><span class="line">  grafana:</span><br><span class="line">    image: grafana/grafana:latest</span><br><span class="line">    container_name: grafana</span><br><span class="line">    ports:</span><br><span class="line">      - <span class="string">&quot;3888:3000&quot;</span></span><br><span class="line">    environment:</span><br><span class="line">      - GF_SECURITY_ADMIN_PASSWORD=admin123</span><br><span class="line">    volumes:</span><br><span class="line">      - /etc/localtime:/etc/localtime:ro</span><br><span class="line">    restart: unless-stopped</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
+
+<h3 id="Prometheus节点"><a href="#Prometheus节点" class="headerlink" title="Prometheus节点"></a>Prometheus节点</h3><p>在你需要监控的设备上，根据不同的设备类型安装不同的节点</p>
+<h4 id="Node-Exporter"><a href="#Node-Exporter" class="headerlink" title="Node Exporter"></a>Node Exporter</h4><p>一般为Linux主机节点  我是用的是docker安装  也可以直接下载安装</p>
+<div class="highlight-wrap" data-rel="Dockerfile"><figure class="iseeu highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">services:</span><br><span class="line">  node_exporter:</span><br><span class="line">    image: quay.io/prometheus/node-exporter:latest</span><br><span class="line">    container_name: node_exporter</span><br><span class="line">    command:</span><br><span class="line">      - <span class="string">&#x27;--path.rootfs=/host&#x27;</span></span><br><span class="line">      - <span class="string">&#x27;--collector.timex&#x27;</span>    <span class="comment"># 显式启用 timex 收集器（默认已启用）</span></span><br><span class="line">    network_mode: host</span><br><span class="line">    pid: host</span><br><span class="line">    restart: unless-stopped</span><br><span class="line">    cap_add:</span><br><span class="line">      - SYS_TIME               <span class="comment"># 用于 timex 收集器（时钟状态监控）</span></span><br><span class="line">      - SYS_NICE               <span class="comment"># 用于 perf 收集器（性能监控）</span></span><br><span class="line">      - SYS_ADMIN              <span class="comment"># 多种系统管理操作</span></span><br><span class="line">      - IPC_LOCK               <span class="comment"># 锁定内存（可能用于某些性能监控）</span></span><br><span class="line">    privileged: false          <span class="comment"># 明确不使用特权模式（更安全）</span></span><br><span class="line">    volumes:</span><br><span class="line">      - <span class="string">&#x27;/:/host:ro,rslave&#x27;</span></span><br><span class="line">    <span class="keyword">user</span>: root                 <span class="comment"># 明确以 root 用户运行（需要访问系统信息）</span></span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
+
+<p>下载安装地址GitHub:<a target="_blank" rel="noopener" href="https://github.com/prometheus/node_exporter/releases">https://github.com/prometheus/node_exporter&#x2F;releases</a></p>
+<h4 id="VM-Exporter"><a href="#VM-Exporter" class="headerlink" title="VM Exporter"></a>VM Exporter</h4><p>EXSI使用</p>
+<div class="highlight-wrap" data-rel="Dockerfile"><figure class="iseeu highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">services:</span><br><span class="line">  vmware-exporter:</span><br><span class="line">    image: pryorda/vmware_exporter:latest</span><br><span class="line">    container_name: vmware_exporter</span><br><span class="line">    restart: unless-stopped</span><br><span class="line">    ports:</span><br><span class="line">      - <span class="string">&quot;9272:9272&quot;</span>  <span class="comment"># 暴露监控指标端口</span></span><br><span class="line">    environment:</span><br><span class="line">      - VSPHERE_USER=root  <span class="comment"># vSphere用户名</span></span><br><span class="line">      - VSPHERE_PASSWORD=<span class="number">123</span>       <span class="comment"># vSphere密码</span></span><br><span class="line">      - VSPHERE_HOST=<span class="number">192.168</span>.<span class="number">31.3</span>               <span class="comment"># vCenter服务器地址</span></span><br><span class="line">      - VSPHERE_IGNORE_SSL=true                   <span class="comment"># 忽略SSL证书验证</span></span><br><span class="line">      - VSPHERE_SPECS_SIZE=<span class="number">2000</span>                   <span class="comment"># 规格大小</span></span><br><span class="line">    networks:</span><br><span class="line">      - monitoring</span><br><span class="line">networks:</span><br><span class="line">  monitoring:</span><br><span class="line">    driver: bridge</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
+
+
+
+<p>GitHub:<a target="_blank" rel="noopener" href="https://github.com/pryorda/vmware_exporter">https://github.com/pryorda/vmware_exporter</a></p>
+<h4 id="cadvisor"><a href="#cadvisor" class="headerlink" title="cadvisor"></a>cadvisor</h4><p>最开始pull镜像安装之后会出现问题<code>cadvisor  | F0904 08:24:28.483987       1 cadvisor.go:146] Failed to create a Container Manager: mountpoint for cpu not found</code>  因为cgroup 可能使用 cgroup2 或者挂载点位置发生了变化，<code>mount | grep cgroup</code>查完确定使用的cgroup2 换了个其他，就可以了</p>
+<div class="highlight-wrap" data-rel="Dockerfile"><figure class="iseeu highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">services:</span><br><span class="line">  cadvisor:</span><br><span class="line">    image: lagoudocker/cadvisor:v0.<span class="number">37.0</span></span><br><span class="line">    container_name: cadvisor</span><br><span class="line">    privileged: true</span><br><span class="line">    restart: unless-stopped</span><br><span class="line">    ports:</span><br><span class="line">      - <span class="string">&quot;8333:8080&quot;</span></span><br><span class="line">    volumes:</span><br><span class="line">      - <span class="string">&quot;/:/rootfs:ro&quot;</span></span><br><span class="line">      - <span class="string">&quot;/var/run:/var/run:ro&quot;</span></span><br><span class="line">      - <span class="string">&quot;/sys:/sys:ro&quot;</span></span><br><span class="line">      - <span class="string">&quot;/var/lib/docker/:/var/lib/docker:ro&quot;</span></span><br><span class="line">      - <span class="string">&quot;/dev/disk/:/dev/disk:ro&quot;</span></span><br><span class="line">    devices:</span><br><span class="line">      - <span class="string">&quot;/dev/kmsg:/dev/kmsg&quot;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
+
+<p>我在群晖上也部署了这个 ，但是群晖的硬盘映射和普通Linux不太一样所以做了些许更改下方为群晖使用的</p>
+<div class="highlight-wrap" data-rel="Dockerfile"><figure class="iseeu highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">services:</span><br><span class="line">  cadvisor:</span><br><span class="line">    image: lagoudocker/cadvisor:v0.<span class="number">37.0</span></span><br><span class="line">    container_name: cadvisor</span><br><span class="line">    privileged: true</span><br><span class="line">    restart: unless-stopped</span><br><span class="line">    ports:</span><br><span class="line">      - <span class="string">&quot;8333:8080&quot;</span></span><br><span class="line">    volumes:</span><br><span class="line">      - <span class="string">&quot;/:/rootfs:ro&quot;</span></span><br><span class="line">      - <span class="string">&quot;/var/run:/var/run:ro&quot;</span></span><br><span class="line">      - <span class="string">&quot;/sys:/sys:ro&quot;</span></span><br><span class="line">      - <span class="string">&quot;/volume1/docker:/var/lib/docker:ro&quot;</span></span><br><span class="line">    devices:</span><br><span class="line">      - <span class="string">&quot;/dev/kmsg:/dev/kmsg&quot;</span></span><br></pre></td></tr></table></figure></div>
+
+
+
+<p>GitHub:<a target="_blank" rel="noopener" href="https://github.com/google/cadvisor">https://github.com/google/cadvisor</a></p>
+<h4 id="windows-exporter"><a href="#windows-exporter" class="headerlink" title="windows_exporter"></a>windows_exporter</h4><p>下载安装即可</p>
+<p>GitHub:<a target="_blank" rel="noopener" href="https://github.com/prometheus-community/windows_exporter/releases">https://github.com/prometheus-community/windows_exporter&#x2F;releases</a></p>
+<h3 id="Prometheus安装"><a href="#Prometheus安装" class="headerlink" title="Prometheus安装"></a>Prometheus安装</h3><p>在哪安装都行  只要与node是互通的 我用的docker安装的</p>
+<p>需要首先更改配置文件<code>Prometheus.yml</code></p>
+<div class="highlight-wrap" data-rel="Yml"><figure class="iseeu highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 全局配置</span></span><br><span class="line"><span class="attr">global:</span></span><br><span class="line">  <span class="attr">scrape_interval:</span>     <span class="string">15s</span> <span class="comment"># 设置抓取间隔为每15秒一次。默认为每分钟一次</span></span><br><span class="line">  <span class="attr">evaluation_interval:</span> <span class="string">15s</span> <span class="comment"># 每15秒评估一次规则。默认为每分钟一次</span></span><br><span class="line">  <span class="comment"># 抓取超时时间设置为全局默认值（10秒）</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Alertmanager配置</span></span><br><span class="line"><span class="attr">alerting:</span></span><br><span class="line">  <span class="attr">alertmanagers:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">static_configs:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">targets:</span></span><br><span class="line">      <span class="comment"># - alertmanager:9093</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 加载规则文件并根据全局&#x27;evaluation_interval&#x27;定期评估</span></span><br><span class="line"><span class="attr">rule_files:</span></span><br><span class="line">  <span class="comment"># - &quot;first_rules.yml&quot;</span></span><br><span class="line">  <span class="comment"># - &quot;second_rules.yml&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 抓取配置，包含一个要抓取的端点：</span></span><br><span class="line"><span class="comment"># 这里是Prometheus自身</span></span><br><span class="line"><span class="attr">scrape_configs:</span></span><br><span class="line">  <span class="comment"># 任务名称会作为标签`job=&lt;job_name&gt;`添加到从此配置抓取的任何时间序列中</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">job_name:</span> <span class="string">&#x27;n100 winserver&#x27;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># metrics_path 默认为&#x27;/metrics&#x27;</span></span><br><span class="line">    <span class="comment"># scheme 默认为&#x27;http&#x27;</span></span><br><span class="line"></span><br><span class="line">    <span class="attr">static_configs:</span></span><br><span class="line">    <span class="comment">#监听地址</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">targets:</span> [<span class="string">&#x27;192.168.31.53:9100&#x27;</span>]</span><br><span class="line"></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">job_name:</span> <span class="string">&#x27;exsi&#x27;</span></span><br><span class="line">    <span class="attr">static_configs:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">targets:</span> [<span class="string">&#x27;192.168.31.54:9272&#x27;</span>]</span><br><span class="line"></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">job_name:</span> <span class="string">&#x27;n100windows&#x27;</span></span><br><span class="line">    <span class="attr">static_configs:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">targets:</span> [<span class="string">&#x27;192.168.31.55:9182&#x27;</span>]</span><br><span class="line"></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">job_name:</span> <span class="string">&#x27;docker&#x27;</span></span><br><span class="line">    <span class="attr">static_configs:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">targets:</span> [<span class="string">&#x27;192.168.31.33:8333&#x27;</span>,<span class="string">&#x27;192.168.31.34:8333&#x27;</span>]</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
+
+<p>平台安装</p>
+<div class="highlight-wrap" data-rel="Dockerfile"><figure class="iseeu highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">services:</span><br><span class="line">  prometheus:</span><br><span class="line">    image: prom/prometheus:latest</span><br><span class="line">    container_name: prometheus</span><br><span class="line">    ports:</span><br><span class="line">      - <span class="string">&quot;8989:9090&quot;</span></span><br><span class="line">    volumes:</span><br><span class="line">      - ./prometheus.yml:/etc/prometheus/prometheus.yml</span><br><span class="line">      - /etc/localtime:/etc/localtime:ro</span><br><span class="line">    restart: unless-stopped</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
+
+<p>GitHub:<a target="_blank" rel="noopener" href="https://github.com/prometheus/prometheus">https://github.com/prometheus/prometheus</a></p>
+<p>成功之后可以使用浏览器访问<code>http://ip:8989/targets</code>来查看节点是否都上线</p>
+<h2 id="配置联动"><a href="#配置联动" class="headerlink" title="配置联动"></a>配置联动</h2><p>登录Grafana</p>
+<ul>
+<li>设置中文 点击右上角头像 选择 第一个然后语言中选择中文就可以了</li>
+<li>添加数据源：左侧选择连接，数据源 添加Prometheus 添加url保存测试就可以了</li>
+<li>增加仪表盘：点击仪表盘，新建，导入，输入id</li>
+</ul>
+<p>我推荐的id :</p>
+<ul>
+<li>Node Ezxporter:8919</li>
+<li>Docker:19908</li>
+</ul>
+
+  </div>
+</article>
+
+
+
+    <div class="blog-post-comments">
+        <div id="waline_thread"></div>
+    </div>
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">首页</a></li>
+        
+          <li><a href="/categories/%E8%AF%B4%E8%AF%B4/">说说</a></li>
+        
+          <li><a href="/archives/">归档</a></li>
+        
+          <li><a href="/pages/">导航</a></li>
+        
+          <li><a target="_blank" rel="noopener" href="https://pan.aboyzy.top/">网盘</a></li>
+        
+          <li><a href="/about/">关于</a></li>
+        
+          <li><a href="/search/">搜索</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85"><span class="toc-number">1.</span> <span class="toc-text">安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Grafanna"><span class="toc-number">1.1.</span> <span class="toc-text">Grafanna</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Prometheus%E8%8A%82%E7%82%B9"><span class="toc-number">1.2.</span> <span class="toc-text">Prometheus节点</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Node-Exporter"><span class="toc-number">1.2.1.</span> <span class="toc-text">Node Exporter</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#VM-Exporter"><span class="toc-number">1.2.2.</span> <span class="toc-text">VM Exporter</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#cadvisor"><span class="toc-number">1.2.3.</span> <span class="toc-text">cadvisor</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#windows-exporter"><span class="toc-number">1.2.4.</span> <span class="toc-text">windows_exporter</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Prometheus%E5%AE%89%E8%A3%85"><span class="toc-number">1.3.</span> <span class="toc-text">Prometheus安装</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E8%81%94%E5%8A%A8"><span class="toc-number">2.</span> <span class="toc-text">配置联动</span></a></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="mailto:?subject=Prometheus+Grafanna部署&body=Check out this article: https://blog.aboyzy.top/2025/09/06/%E6%95%99%E7%A8%8B/Prometheus-Grafanna/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+ </ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2022-2025
+    稚
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/categories/%E8%AF%B4%E8%AF%B4/">说说</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a href="/pages/">导航</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="https://pan.aboyzy.top/">网盘</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="/search/">搜索</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+  <script src="https://s4.zstatic.net/npm/aboyzy-live2d@1.0.1/static/TweenLite.js"></script>
+  <script src="https://s4.zstatic.net/npm/aboyzy-live2d@1.0.1/static/live2Dcubismcore.min.js"></script>
+  <script src="https://s4.zstatic.net/npm/aboyzy-live2d@1.0.1/static/pixi.min.js"></script>
+  <script src="https://s4.zstatic.net/npm/aboyzy-live2d@1.0.1/static/cubism4.min.js"></script>
+  <link href="https://s4.zstatic.net/npm/aboyzy-live2d@1.0.0/static/pio.css" rel="stylesheet" type="text/css"/>
+  <script src="https://s4.zstatic.net/npm/aboyzy-live2d@1.0.1/static/pio.js"></script>
+  <script src="https://s4.zstatic.net/npm/aboyzy-live2d@1.0.1/static/pio_sdk4.js"></script>
+  <script src="https://s4.zstatic.net/npm/aboyzy-live2d@1.0.1/static/load.js"></script>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://s4.zstatic.net/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://s4.zstatic.net/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板！\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功！");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+
+<!-- Waline Comments -->
+
+<script type="module">
+    import { init } from 'https://s4.zstatic.net/npm/@waline/client@2.15.8/dist/waline.mjs';
+
+    var EMOJI = ['//unpkg.com/@waline/emojis@1.2.0/qq']
+    var META = ['nick', 'mail', 'link'];
+    var REQUIREDFIELDS = ['nick', 'mail', 'link'];
+
+    var emoji = 'https://npm.elemecdn.com/@waline/emojis@1.2.0/bilibili'.split(',').filter(function(item){
+        return item !== ''; // filter()返回满足不为空item
+    });
+    emoji = emoji.length == 0 ? EMOJI : emoji;
+
+    var meta = 'nick,mail,link'.split(',').filter(function(item){
+        return META.indexOf(item) > -1; // filter()返回满足META.indexOf(item) > -1为true的item
+    });
+    meta = meta.length == 0 ? META : meta;
+
+    var requiredFields = 'nick,mail'.split(',').filter(function(item){
+        return REQUIREDFIELDS.indexOf(item) > -1; // filter()返回满足META.indexOf(item) > -1为true的item
+    });
+    requiredFields = requiredFields.length == 0 ? REQUIREDFIELDS : requiredFields;
+
+    document.addEventListener('DOMContentLoaded', function () {
+
+        const walineElement = document.getElementById('waline_thread');
+
+        if (walineElement) {
+            init({
+                el: '#waline_thread',
+                serverURL: 'https://waline.aboyzy.top/', // Waline 的服务端地址
+                path: '' == '' ? window.location.pathname : '', // 当前文章页路径，用于区分不同的文章页，以保证正确读取该文章页下的评论列表
+                lang: 'zh-CN' == '' ? 'zh-CN' : 'zh-CN', // 多语言支持，未设置默认英文
+                emoji: emoji,
+                dark: '', // 暗黑模式适配
+                commentSorting: '' == '' ? 'latest' : '', // 评论列表排序方式
+                meta: meta, // 评论者相关属性
+                requiredFields: requiredFields, // 设置必填项，默认匿名
+                login: '', // 登录模式状态
+                wordLimit: '', // 评论字数限制
+                pageSize: '10' == '' ? 10 : '10', // 评论列表分页，每页条数
+                imageUploader: '', // 自定义图片上传方法
+                highlighter: '', // 代码高亮
+                placeholder: '',
+                avatar: 'mm',
+                visitor: 'false',
+                comment_count: 'false',
+            });
+        }
+    });
+</script>
+
+</body>
+</html>

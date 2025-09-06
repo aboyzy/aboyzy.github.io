@@ -35,6 +35,110 @@
     </item>
     
     <item>
+      <title>Prometheus+Grafanna部署</title>
+      <link>https://blog.aboyzy.top/2025/09/06/%E6%95%99%E7%A8%8B/Prometheus-Grafanna/</link>
+      <guid>https://blog.aboyzy.top/2025/09/06/%E6%95%99%E7%A8%8B/Prometheus-Grafanna/</guid>
+      <pubDate>Sat, 06 Sep 2025 02:40:06 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;p&gt;很早之前就听说了&lt;code&gt;Grafana&lt;/code&gt;这个工具，但是之前的时候没有用，最近的时候&lt;code&gt;NAS&lt;/code&gt;总是Down 所以想监控一下</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://blog.aboyzy.top/categories/%E6%95%99%E7%A8%8B/">教程</category>
+      
+      
+      
+      <comments>https://blog.aboyzy.top/2025/09/06/%E6%95%99%E7%A8%8B/Prometheus-Grafanna/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>贵安华为一周班RUN记录</title>
+      <link>https://blog.aboyzy.top/2025/08/14/%E8%AF%B4%E8%AF%B4/guian-huawei/</link>
+      <guid>https://blog.aboyzy.top/2025/08/14/%E8%AF%B4%E8%AF%B4/guian-huawei/</guid>
+      <pubDate>Thu, 14 Aug 2025 05:12:18 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;p&gt;在来四川之前就找好工作了，在贵安那边的华为园区，面试的时候没有聊清楚，我想的是华为园区偏僻应该也还可以把，毕竟那么大个园区，谁知到到了之后真的好偏，就带了一周就回了。但是该说不说，环境真的还是很不错的。&lt;/p&gt;
+&lt;p&gt;&lt;img</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://blog.aboyzy.top/categories/%E8%AF%B4%E8%AF%B4/">说说</category>
+      
+      
+      
+      <comments>https://blog.aboyzy.top/2025/08/14/%E8%AF%B4%E8%AF%B4/guian-huawei/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>重庆两日游</title>
+      <link>https://blog.aboyzy.top/2025/08/01/%E8%AF%B4%E8%AF%B4/chongqing-two-day/</link>
+      <guid>https://blog.aboyzy.top/2025/08/01/%E8%AF%B4%E8%AF%B4/chongqing-two-day/</guid>
+      <pubDate>Fri, 01 Aug 2025 05:12:37 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;p&gt;从郑州被辞退之后，没有地方去转，刚好我老妈回老家了，家里边车没人开，就想着开车出去玩一玩，之前一直想去重庆玩，一直都没去，这次有时间了就想着过去耍一下。&lt;/p&gt;
+&lt;p&gt;从郑州机场到成都&lt;/p&gt;
+&lt;p&gt;&lt;img</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://blog.aboyzy.top/categories/%E8%AF%B4%E8%AF%B4/">说说</category>
+      
+      
+      
+      <comments>https://blog.aboyzy.top/2025/08/01/%E8%AF%B4%E8%AF%B4/chongqing-two-day/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>2025 I AM GLORIA G.E.M演唱会</title>
+      <link>https://blog.aboyzy.top/2025/07/27/%E8%AF%B4%E8%AF%B4/I-AM-GLORIA/</link>
+      <guid>https://blog.aboyzy.top/2025/07/27/%E8%AF%B4%E8%AF%B4/I-AM-GLORIA/</guid>
+      <pubDate>Sun, 27 Jul 2025 11:30:00 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;p&gt;落地洛阳，先去小街天府干个饭。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://524524d.webp.li/photo/2025_09_06_20250906125937370.webp&quot;</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://blog.aboyzy.top/categories/%E8%AF%B4%E8%AF%B4/">说说</category>
+      
+      
+      
+      <comments>https://blog.aboyzy.top/2025/07/27/%E8%AF%B4%E8%AF%B4/I-AM-GLORIA/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
       <title>浪潮NF5280M6安装Windows server 2016</title>
       <link>https://blog.aboyzy.top/2025/06/12/%E6%95%99%E7%A8%8B/%E5%B7%A5%E4%BD%9C/NF5280M6%E5%AE%89%E8%A3%85Windows-server-2016/</link>
       <guid>https://blog.aboyzy.top/2025/06/12/%E6%95%99%E7%A8%8B/%E5%B7%A5%E4%BD%9C/NF5280M6%E5%AE%89%E8%A3%85Windows-server-2016/</guid>
@@ -398,108 +502,6 @@
       <category domain="https://blog.aboyzy.top/categories/%E6%95%99%E7%A8%8B/">教程</category>
       
       
-      
-    </item>
-    
-    <item>
-      <title>一些脚本和加速链接</title>
-      <link>https://blog.aboyzy.top/2024/08/15/jiasu/</link>
-      <guid>https://blog.aboyzy.top/2024/08/15/jiasu/</guid>
-      <pubDate>Thu, 15 Aug 2024 08:16:25 GMT</pubDate>
-      
-        
-        
-          
-          
-      <description>&lt;p&gt;一些之前写的和加速镜像链接 欢迎提供更多加速地址&lt;/p&gt;
-&lt;h1 id=&quot;加速链接&quot;&gt;&lt;a href=&quot;#加速链接&quot; class=&quot;headerlink&quot; title=&quot;加速链接&quot;&gt;&lt;/a&gt;加速链接&lt;/h1&gt;&lt;h2 id=&quot;镜像站点&quot;&gt;&lt;a href=&quot;#镜像站点&quot;</description>
-          
-        
-      
-      
-      
-      
-      
-      
-      <comments>https://blog.aboyzy.top/2024/08/15/jiasu/#disqus_thread</comments>
-      
-    </item>
-    
-    <item>
-      <title>白嫖某度CDN当博客图床[已失效]</title>
-      <link>https://blog.aboyzy.top/2024/08/15/%E6%95%99%E7%A8%8B/baiduCDN/</link>
-      <guid>https://blog.aboyzy.top/2024/08/15/%E6%95%99%E7%A8%8B/baiduCDN/</guid>
-      <pubDate>Thu, 15 Aug 2024 08:15:07 GMT</pubDate>
-      
-        
-        
-          
-          
-      <description>&lt;p&gt;某度的首页存在一个 bug，「自定义换肤」上传的图片会留在云端不删除，并且图片直链不会鉴定 cookie 和 referer。&lt;/p&gt;
-&lt;p&gt;可以直接使用百度来做图床存储图片 (安全性未知) 但是速度快啊:sunglasses:&lt;/p&gt;
-&lt;h1 id=&quot;思路&quot;&gt;&lt;a</description>
-          
-        
-      
-      
-      
-      
-      <category domain="https://blog.aboyzy.top/categories/%E6%95%99%E7%A8%8B/">教程</category>
-      
-      
-      
-      <comments>https://blog.aboyzy.top/2024/08/15/%E6%95%99%E7%A8%8B/baiduCDN/#disqus_thread</comments>
-      
-    </item>
-    
-    <item>
-      <title>Sublime Text汉化以及激活</title>
-      <link>https://blog.aboyzy.top/2024/08/13/%E6%95%99%E7%A8%8B/Sublime-Text/</link>
-      <guid>https://blog.aboyzy.top/2024/08/13/%E6%95%99%E7%A8%8B/Sublime-Text/</guid>
-      <pubDate>Tue, 13 Aug 2024 08:17:09 GMT</pubDate>
-      
-        
-        
-          
-          
-      <description>&lt;h2 id=&quot;汉化&quot;&gt;&lt;a href=&quot;#汉化&quot; class=&quot;headerlink&quot; title=&quot;汉化&quot;&gt;&lt;/a&gt;汉化&lt;/h2&gt;&lt;p&gt;点击 tools -&amp;gt;Install Package Control&lt;/p&gt;
-&lt;p&gt;&lt;img</description>
-          
-        
-      
-      
-      
-      
-      <category domain="https://blog.aboyzy.top/categories/%E6%95%99%E7%A8%8B/">教程</category>
-      
-      
-      
-      <comments>https://blog.aboyzy.top/2024/08/13/%E6%95%99%E7%A8%8B/Sublime-Text/#disqus_thread</comments>
-      
-    </item>
-    
-    <item>
-      <title>群晖硬盘&#39;勘用&#39;</title>
-      <link>https://blog.aboyzy.top/2024/08/05/%E8%AF%B4%E8%AF%B4/synology-boom/</link>
-      <guid>https://blog.aboyzy.top/2024/08/05/%E8%AF%B4%E8%AF%B4/synology-boom/</guid>
-      <pubDate>Mon, 05 Aug 2024 08:18:16 GMT</pubDate>
-      
-        
-        
-          
-          
-      <description>&lt;p&gt;前几天的时候群晖给报了一个硬盘勘用的警告，我一月份刚换的硬盘两块紫盘做的read1有一块硬盘无法识别了首先先登录了系统然后再数据存储上边查找原因，在网上照的解决方法都是可以识别出来原因而且盘还在，但是我的硬盘直接读取不出来了。因为我在异地无法物理查看硬盘，我先进行了重启</description>
-          
-        
-      
-      
-      
-      
-      <category domain="https://blog.aboyzy.top/categories/%E8%AF%B4%E8%AF%B4/">说说</category>
-      
-      
-      
-      <comments>https://blog.aboyzy.top/2024/08/05/%E8%AF%B4%E8%AF%B4/synology-boom/#disqus_thread</comments>
       
     </item>
     
