@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="前提昨天登录网站2FA的时候遇到了一个问题，说服务器与浏览器的时间相差一分钟无法认证，我服务器查了之后才发现时间不对今天是19号了，电脑显示才12号 linux查看时间命令 date 我有查看了下时区,这是修改之后的了,修改前是使用的时区0000和ntp.ubuntu.comntp使用的是官方的服务器无法通信，导致时间无法同步 排查查看时区配置 123456789aboyzy@exsiubuntu">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ubuntu时钟同步问题">
+<meta property="og:url" content="https://blog.aboyzy.top/2025/12/19/%E6%95%99%E7%A8%8B/ubuntu-time/index.html">
+<meta property="og:site_name" content="稚的小窝">
+<meta property="og:description" content="前提昨天登录网站2FA的时候遇到了一个问题，说服务器与浏览器的时间相差一分钟无法认证，我服务器查了之后才发现时间不对今天是19号了，电脑显示才12号 linux查看时间命令 date 我有查看了下时区,这是修改之后的了,修改前是使用的时区0000和ntp.ubuntu.comntp使用的是官方的服务器无法通信，导致时间无法同步 排查查看时区配置 123456789aboyzy@exsiubuntu">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-12-19T07:15:38.000Z">
+<meta property="article:modified_time" content="2025-12-19T07:22:01.030Z">
+<meta property="article:author" content="稚">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="https://npm.elemecdn.com/aboyzy_blogstatic/img/%E5%A4%B4%E5%83%8F.webp">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="https://npm.elemecdn.com/aboyzy_blogstatic/img/%E5%A4%B4%E5%83%8F.webp" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="https://npm.elemecdn.com/aboyzy_blogstatic/img/%E5%A4%B4%E5%83%8F.webp">
+        
+      
+    
+    <!-- title -->
+    <title>ubuntu时钟同步问题</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+
+    <!-- Waline Comments -->
+    
+        <link rel="stylesheet" href="https://s4.zstatic.net/npm/@waline/client@2.15.8/dist/waline.css"/>
+    
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/rss2.xml" title="稚的小窝" type="application/rss+xml">
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="顶部" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/categories/%E8%AF%B4%E8%AF%B4/">说说</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a href="/pages/">导航</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="https://pan.aboyzy.top/">网盘</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="/search/">搜索</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="上一篇" href="/5210/05/21/blog/"><i class="fa-solid fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="下一篇" href="/2025/09/06/%E6%95%99%E7%A8%8B/Prometheus-Grafanna/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="返回顶部" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="分享文章" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="mailto:?subject=ubuntu时钟同步问题&body=Check out this article: https://blog.aboyzy.top/2025/12/19/%E6%95%99%E7%A8%8B/ubuntu-time/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+ </ul>
+
+    </div>
+<!--    -->
+<!--    -->
+<!--      <div id="toc">-->
+<!--        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E6%8F%90"><span class="toc-number">1.</span> <span class="toc-text">前提</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8E%92%E6%9F%A5"><span class="toc-number">1.1.</span> <span class="toc-text">排查</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E5%8A%9E%E6%B3%95"><span class="toc-number">1.2.</span> <span class="toc-text">修改办法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#timesyncd-conf%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E"><span class="toc-number">1.2.1.</span> <span class="toc-text">timesyncd.conf参数说明</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8-NTP-%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8F%82%E8%80%83%E8%A1%A8%E6%A0%BC"><span class="toc-number">1.3.</span> <span class="toc-text">常用 NTP 服务器参考表格</span></a></li></ol></li></ol>-->
+<!--      </div>-->
+<!--    -->
+    <div id="toc">
+  <div id="toc-div" class="toc-article" >
+    
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E6%8F%90"><span class="toc-number">1.</span> <span class="toc-text">前提</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8E%92%E6%9F%A5"><span class="toc-number">1.1.</span> <span class="toc-text">排查</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E5%8A%9E%E6%B3%95"><span class="toc-number">1.2.</span> <span class="toc-text">修改办法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#timesyncd-conf%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E"><span class="toc-number">1.2.1.</span> <span class="toc-text">timesyncd.conf参数说明</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8-NTP-%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8F%82%E8%80%83%E8%A1%A8%E6%A0%BC"><span class="toc-number">1.3.</span> <span class="toc-text">常用 NTP 服务器参考表格</span></a></li></ol></li></ol>
+    
+  </div>
+</div>
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        ubuntu时钟同步问题
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">稚</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2025-12-19T07:15:38.000Z" class="dt-published" itemprop="datePublished">2025-12-19</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fa-solid fa-archive"></i>
+        <a class="category-link" href="/categories/%E6%95%99%E7%A8%8B/">教程</a>
+    </div>
+
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <h1 id="前提"><a href="#前提" class="headerlink" title="前提"></a>前提</h1><p>昨天登录网站2FA的时候遇到了一个问题，说服务器与浏览器的时间相差一分钟无法认证，我服务器查了之后才发现时间不对今天是19号了，电脑显示才12号</p>
+<p>linux查看时间命令 <code>date</code></p>
+<p>我有查看了下时区,这是修改之后的了,修改前是使用的<code>时区0000</code>和<code>ntp.ubuntu.com</code>ntp使用的是官方的服务器无法通信，导致时间无法同步</p>
+<h2 id="排查"><a href="#排查" class="headerlink" title="排查"></a>排查</h2><p>查看时区配置</p>
+<div class="highlight-wrap" data-rel="Sh"><figure class="iseeu highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">aboyzy@exsiubuntu:~$ timedatectl</span><br><span class="line">               Local <span class="keyword">time</span>: Fri 2025-12-19 11:17:57 CST</span><br><span class="line">           Universal <span class="keyword">time</span>: Fri 2025-12-19 03:17:57 UTC</span><br><span class="line">                 RTC <span class="keyword">time</span>: Fri 2025-12-19 03:17:56</span><br><span class="line">                Time zone: Asia/Shanghai (CST, +0800)</span><br><span class="line">System clock synchronized: <span class="built_in">yes</span></span><br><span class="line">              NTP service: active</span><br><span class="line">          RTC <span class="keyword">in</span> <span class="built_in">local</span> TZ: no</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
+
+<p>查看服务进程</p>
+<div class="highlight-wrap" data-rel="Sh"><figure class="iseeu highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">systemctl status systemd-timesyncd</span><br><span class="line">● systemd-timesyncd.service - Network Time Synchronization</span><br><span class="line">    Loaded: loaded (/usr/lib/systemd/system/systemd-timesyncd.service; enabled&gt;</span><br><span class="line">    Active: active (running) since Fri 2025-12-19 06:00:31 CST; 5h 18min ago</span><br><span class="line">      Docs: man:systemd-timesyncd.service(8)</span><br><span class="line">  Main PID: 13692 (systemd-timesyn)</span><br><span class="line">    Status: <span class="string">&quot;Contacted time server 106.55.184.199:123 (ntp.tencent.com).&quot;</span></span><br><span class="line">     Tasks: 2 (<span class="built_in">limit</span>: 9436)</span><br><span class="line">    Memory: 1.4M (peak: 1.9M)</span><br><span class="line">       CPU: 225ms</span><br><span class="line">    CGroup: /system.slice/systemd-timesyncd.service</span><br><span class="line">            └─13692 /usr/lib/systemd/systemd-timesyncd</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
+
+<h2 id="修改办法"><a href="#修改办法" class="headerlink" title="修改办法"></a>修改办法</h2><p>修改时区</p>
+<div class="highlight-wrap" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># 查看所有时区</span><br><span class="line">timedatectl list-timezones</span><br><span class="line"></span><br><span class="line"># 设置为亚洲/上海（北京时间）</span><br><span class="line">sudo timedatectl set-timezone Asia/Shanghai</span><br><span class="line"></span><br><span class="line"># 启用网络时间同步 没开ntp的记得开ntp</span><br><span class="line">sudo timedatectl set-ntp true</span><br></pre></td></tr></table></figure></div>
+
+<p>配置完时区发现，mtd官方ntp服务器的速度太慢了，换个阿里云和腾讯的</p>
+<p>编辑配置文件：</p>
+<div class="highlight-wrap" data-rel="Sh"><figure class="iseeu highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> vim /etc/systemd/timesyncd.conf</span><br></pre></td></tr></table></figure></div>
+
+<p>取消<code>[Time]</code>下的注释并配置</p>
+<p>修改内容示例：</p>
+<div class="highlight-wrap" data-rel="Ini"><figure class="iseeu highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[Time]</span></span><br><span class="line"><span class="attr">NTP</span>=ntp.aliyun.com time1.aliyun.com ntp.tencent.com</span><br><span class="line"><span class="attr">FallbackNTP</span>=ntp.ubuntu.com</span><br><span class="line"><span class="attr">RootDistanceMaxSec</span>=<span class="number">5</span></span><br><span class="line"><span class="attr">PollIntervalMinSec</span>=<span class="number">32</span></span><br><span class="line"><span class="attr">PollIntervalMaxSec</span>=<span class="number">2048</span></span><br></pre></td></tr></table></figure></div>
+
+<p>修改后重启</p>
+<div class="highlight-wrap" data-rel="Sh"><figure class="iseeu highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> systemctl restart systemd-timesyncd</span><br><span class="line"><span class="built_in">sudo</span> systemctl daemon-reload</span><br></pre></td></tr></table></figure></div>
+
+<p>查看时间同步详细信息</p>
+<div class="highlight-wrap" data-rel="Sh"><figure class="iseeu highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">aboyzy@exsiubuntu:~$  timedatectl timesync-status</span><br><span class="line">       Server: 106.55.184.199 (ntp.tencent.com)</span><br><span class="line">Poll interval: 34min 8s (min: 32s; max 34min 8s)</span><br><span class="line">         Leap: normal</span><br><span class="line">      Version: 4</span><br><span class="line">      Stratum: 2</span><br><span class="line">    Reference: 647A24C4</span><br><span class="line">    Precision: 1us (-23)</span><br><span class="line">Root distance: 27.976ms (max: 5s)</span><br><span class="line">       Offset: -599us</span><br><span class="line">        Delay: 34.400ms</span><br><span class="line">       Jitter: 2.854ms</span><br><span class="line"> Packet count: 29</span><br><span class="line">    Frequency: +40.799ppm</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
+
+
+
+<h3 id="timesyncd-conf参数说明"><a href="#timesyncd-conf参数说明" class="headerlink" title="timesyncd.conf参数说明"></a><code>timesyncd.conf</code>参数说明</h3><p>AI说的</p>
+<table>
+<thead>
+<tr>
+<th align="left">参数</th>
+<th align="left">示例值</th>
+<th align="left">单位</th>
+<th align="left">默认值</th>
+<th align="left">作用</th>
+<th align="left">说明</th>
+<th align="left">推荐配置场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><strong>NTP</strong></td>
+<td align="left"><code>ntp.aliyun.com time1.aliyun.com</code></td>
+<td align="left">-</td>
+<td align="left"><code>空</code></td>
+<td align="left">主要 NTP 服务器列表</td>
+<td align="left">1. 指定优先使用的 NTP 服务器 2. 可设置多个，用空格分隔 3. 按顺序尝试连接 4. 支持域名和 IP 地址</td>
+<td align="left"><strong>生产环境</strong>：<code>ntp.aliyun.com ntp.tencent.com</code> <strong>国际环境</strong>：<code>pool.ntp.org time.google.com</code></td>
+</tr>
+<tr>
+<td align="left"><strong>FallbackNTP</strong></td>
+<td align="left"><code>ntp.ubuntu.com</code></td>
+<td align="left">-</td>
+<td align="left"><code>空</code></td>
+<td align="left">备用 NTP 服务器</td>
+<td align="left">1. 所有主服务器失败时使用 2. 确保最低可用性 3. 通常设置为稳定的公共服务器</td>
+<td align="left"><strong>通用配置</strong>：<code>ntp.ubuntu.com</code> <strong>国内用户</strong>：<code>cn.pool.ntp.org</code> <strong>备用方案</strong>：<code>time.cloudflare.com</code></td>
+</tr>
+<tr>
+<td align="left"><strong>RootDistanceMaxSec</strong></td>
+<td align="left"><code>5</code></td>
+<td align="left">秒</td>
+<td align="left"><code>5</code></td>
+<td align="left">最大根距离限制</td>
+<td align="left">1. 衡量 NTP 服务器准确性 2. 根距离 &#x3D; 层级距离 + 网络延迟 3. 拒绝超过此值的服务器 4. 越小要求越严格</td>
+<td align="left"><strong>高精度</strong>：<code>2</code> (金融交易) <strong>标准</strong>：<code>5</code> (服务器) <strong>宽松</strong>：<code>10</code> (桌面&#x2F;移动)</td>
+</tr>
+<tr>
+<td align="left"><strong>PollIntervalMinSec</strong></td>
+<td align="left"><code>32</code></td>
+<td align="left">秒</td>
+<td align="left"><code>32</code></td>
+<td align="left">最小轮询间隔</td>
+<td align="left">1. 最短同步时间间隔 2. 必须是 2 的幂 3. 时钟不稳定时使用此频率 4. 防止时钟漂移过大</td>
+<td align="left"><strong>频繁同步</strong>：<code>16</code> (时间敏感应用) <strong>标准</strong>：<code>32</code> (大多数服务器) <strong>省电</strong>：<code>64</code> (笔记本&#x2F;移动)</td>
+</tr>
+<tr>
+<td align="left"><strong>PollIntervalMaxSec</strong></td>
+<td align="left"><code>2048</code></td>
+<td align="left">秒</td>
+<td align="left"><code>2048</code></td>
+<td align="left">最大轮询间隔</td>
+<td align="left">1. 最长同步时间间隔 2. 必须是 2 的幂 3. 时钟稳定时使用此频率 4. 减少网络流量和负载</td>
+<td align="left"><strong>频繁监控</strong>：<code>1024</code> (17分钟) <strong>标准</strong>：<code>2048</code> (34分钟) <strong>低负载</strong>：<code>4096</code> (68分钟)</td>
+</tr>
+</tbody></table>
+<h2 id="常用-NTP-服务器参考表格"><a href="#常用-NTP-服务器参考表格" class="headerlink" title="常用 NTP 服务器参考表格"></a>常用 NTP 服务器参考表格</h2><table>
+<thead>
+<tr>
+<th align="left">服务器</th>
+<th align="left">运营商&#x2F;组织</th>
+<th align="left">地区</th>
+<th align="left">特点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>ntp.aliyun.com</code></td>
+<td align="left">阿里云</td>
+<td align="left">中国</td>
+<td align="left">国内访问快，稳定性好</td>
+</tr>
+<tr>
+<td align="left"><code>ntp.tencent.com</code></td>
+<td align="left">腾讯云</td>
+<td align="left">中国</td>
+<td align="left">国内节点多，可靠性高</td>
+</tr>
+<tr>
+<td align="left"><code>cn.pool.ntp.org</code></td>
+<td align="left">NTP Pool</td>
+<td align="left">中国</td>
+<td align="left">国内公共池，负载均衡</td>
+</tr>
+<tr>
+<td align="left"><code>ntp.sjtu.edu.cn</code></td>
+<td align="left">上海交大</td>
+<td align="left">中国</td>
+<td align="left">教育网，免费公共服务器</td>
+</tr>
+<tr>
+<td align="left"><code>time.cloudflare.com</code></td>
+<td align="left">Cloudflare</td>
+<td align="left">全球</td>
+<td align="left">Anycast，延迟低，免费</td>
+</tr>
+<tr>
+<td align="left"><code>time.google.com</code></td>
+<td align="left">Google</td>
+<td align="left">全球</td>
+<td align="left">谷歌公共 NTP，稳定</td>
+</tr>
+<tr>
+<td align="left"><code>pool.ntp.org</code></td>
+<td align="left">NTP Pool</td>
+<td align="left">全球</td>
+<td align="left">全球公共池，最常用</td>
+</tr>
+<tr>
+<td align="left"><code>time.windows.com</code></td>
+<td align="left">Microsoft</td>
+<td align="left">全球</td>
+<td align="left">Windows 默认，兼容性好</td>
+</tr>
+<tr>
+<td align="left"><code>ntp.ubuntu.com</code></td>
+<td align="left">Ubuntu</td>
+<td align="left">全球</td>
+<td align="left">Ubuntu 官方，稳定可靠</td>
+</tr>
+</tbody></table>
+
+  </div>
+</article>
+
+
+
+    <div class="blog-post-comments">
+        <div id="waline_thread"></div>
+    </div>
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">首页</a></li>
+        
+          <li><a href="/categories/%E8%AF%B4%E8%AF%B4/">说说</a></li>
+        
+          <li><a href="/archives/">归档</a></li>
+        
+          <li><a href="/pages/">导航</a></li>
+        
+          <li><a target="_blank" rel="noopener" href="https://pan.aboyzy.top/">网盘</a></li>
+        
+          <li><a href="/about/">关于</a></li>
+        
+          <li><a href="/search/">搜索</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E6%8F%90"><span class="toc-number">1.</span> <span class="toc-text">前提</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8E%92%E6%9F%A5"><span class="toc-number">1.1.</span> <span class="toc-text">排查</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E5%8A%9E%E6%B3%95"><span class="toc-number">1.2.</span> <span class="toc-text">修改办法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#timesyncd-conf%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E"><span class="toc-number">1.2.1.</span> <span class="toc-text">timesyncd.conf参数说明</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8-NTP-%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8F%82%E8%80%83%E8%A1%A8%E6%A0%BC"><span class="toc-number">1.3.</span> <span class="toc-text">常用 NTP 服务器参考表格</span></a></li></ol></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="mailto:?subject=ubuntu时钟同步问题&body=Check out this article: https://blog.aboyzy.top/2025/12/19/%E6%95%99%E7%A8%8B/ubuntu-time/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+ </ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2022-2025
+    稚
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/categories/%E8%AF%B4%E8%AF%B4/">说说</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a href="/pages/">导航</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="https://pan.aboyzy.top/">网盘</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="/search/">搜索</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+  <script src="https://s4.zstatic.net/npm/aboyzy-live2d@1.0.1/static/TweenLite.js"></script>
+  <script src="https://s4.zstatic.net/npm/aboyzy-live2d@1.0.1/static/live2Dcubismcore.min.js"></script>
+  <script src="https://s4.zstatic.net/npm/aboyzy-live2d@1.0.1/static/pixi.min.js"></script>
+  <script src="https://s4.zstatic.net/npm/aboyzy-live2d@1.0.1/static/cubism4.min.js"></script>
+  <link href="https://s4.zstatic.net/npm/aboyzy-live2d@1.0.0/static/pio.css" rel="stylesheet" type="text/css"/>
+  <script src="https://s4.zstatic.net/npm/aboyzy-live2d@1.0.1/static/pio.js"></script>
+  <script src="https://s4.zstatic.net/npm/aboyzy-live2d@1.0.1/static/pio_sdk4.js"></script>
+  <script src="https://s4.zstatic.net/npm/aboyzy-live2d@1.0.1/static/load.js"></script>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://s4.zstatic.net/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://s4.zstatic.net/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板！\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功！");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+
+<!-- Waline Comments -->
+
+<script type="module">
+    import { init } from 'https://s4.zstatic.net/npm/@waline/client@2.15.8/dist/waline.mjs';
+
+    var EMOJI = ['//unpkg.com/@waline/emojis@1.2.0/qq']
+    var META = ['nick', 'mail', 'link'];
+    var REQUIREDFIELDS = ['nick', 'mail', 'link'];
+
+    var emoji = 'https://npm.elemecdn.com/@waline/emojis@1.2.0/bilibili'.split(',').filter(function(item){
+        return item !== ''; // filter()返回满足不为空item
+    });
+    emoji = emoji.length == 0 ? EMOJI : emoji;
+
+    var meta = 'nick,mail,link'.split(',').filter(function(item){
+        return META.indexOf(item) > -1; // filter()返回满足META.indexOf(item) > -1为true的item
+    });
+    meta = meta.length == 0 ? META : meta;
+
+    var requiredFields = 'nick,mail'.split(',').filter(function(item){
+        return REQUIREDFIELDS.indexOf(item) > -1; // filter()返回满足META.indexOf(item) > -1为true的item
+    });
+    requiredFields = requiredFields.length == 0 ? REQUIREDFIELDS : requiredFields;
+
+    document.addEventListener('DOMContentLoaded', function () {
+
+        const walineElement = document.getElementById('waline_thread');
+
+        if (walineElement) {
+            init({
+                el: '#waline_thread',
+                serverURL: 'https://waline.aboyzy.top/', // Waline 的服务端地址
+                path: '' == '' ? window.location.pathname : '', // 当前文章页路径，用于区分不同的文章页，以保证正确读取该文章页下的评论列表
+                lang: 'zh-CN' == '' ? 'zh-CN' : 'zh-CN', // 多语言支持，未设置默认英文
+                emoji: emoji,
+                dark: '', // 暗黑模式适配
+                commentSorting: '' == '' ? 'latest' : '', // 评论列表排序方式
+                meta: meta, // 评论者相关属性
+                requiredFields: requiredFields, // 设置必填项，默认匿名
+                login: '', // 登录模式状态
+                wordLimit: '', // 评论字数限制
+                pageSize: '10' == '' ? 10 : '10', // 评论列表分页，每页条数
+                imageUploader: '', // 自定义图片上传方法
+                highlighter: '', // 代码高亮
+                placeholder: '',
+                avatar: 'mm',
+                visitor: 'false',
+                comment_count: 'false',
+            });
+        }
+    });
+</script>
+
+</body>
+</html>

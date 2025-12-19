@@ -35,6 +35,31 @@
     </item>
     
     <item>
+      <title>ubuntu时钟同步问题</title>
+      <link>https://blog.aboyzy.top/2025/12/19/%E6%95%99%E7%A8%8B/ubuntu-time/</link>
+      <guid>https://blog.aboyzy.top/2025/12/19/%E6%95%99%E7%A8%8B/ubuntu-time/</guid>
+      <pubDate>Fri, 19 Dec 2025 07:15:38 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h1 id=&quot;前提&quot;&gt;&lt;a href=&quot;#前提&quot; class=&quot;headerlink&quot;</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://blog.aboyzy.top/categories/%E6%95%99%E7%A8%8B/">教程</category>
+      
+      
+      
+      <comments>https://blog.aboyzy.top/2025/12/19/%E6%95%99%E7%A8%8B/ubuntu-time/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
       <title>Prometheus+Grafanna部署</title>
       <link>https://blog.aboyzy.top/2025/09/06/%E6%95%99%E7%A8%8B/Prometheus-Grafanna/</link>
       <guid>https://blog.aboyzy.top/2025/09/06/%E6%95%99%E7%A8%8B/Prometheus-Grafanna/</guid>
@@ -485,23 +510,6 @@
       
       
       <comments>https://blog.aboyzy.top/2024/09/10/%E7%BE%A4%E6%99%96/synology-ame/#disqus_thread</comments>
-      
-    </item>
-    
-    <item>
-      <title>IPsec VPN 搭建</title>
-      <link>https://blog.aboyzy.top/2024/09/05/%E6%95%99%E7%A8%8B/IPsec/</link>
-      <guid>https://blog.aboyzy.top/2024/09/05/%E6%95%99%E7%A8%8B/IPsec/</guid>
-      <pubDate>Thu, 05 Sep 2024 06:19:41 GMT</pubDate>
-      
-      <description>有东西被加密了, 请输入密码查看.</description>
-      
-      
-      
-      
-      <category domain="https://blog.aboyzy.top/categories/%E6%95%99%E7%A8%8B/">教程</category>
-      
-      
       
     </item>
     
