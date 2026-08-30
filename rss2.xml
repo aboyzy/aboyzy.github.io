@@ -1,0 +1,522 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0"
+  xmlns:atom="http://www.w3.org/2005/Atom"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>稚的小窝</title>
+    <link>https://blog.aboyzy.top/</link>
+    
+    <atom:link href="https://blog.aboyzy.top/rss2.xml" rel="self" type="application/rss+xml"/>
+    
+    <description></description>
+    <pubDate>Sun, 30 Aug 2026 07:29:22 GMT</pubDate>
+    <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>博客文章推荐</title>
+      <link>https://blog.aboyzy.top/5210/05/21/blog/</link>
+      <guid>https://blog.aboyzy.top/5210/05/21/blog/</guid>
+      <pubDate>Fri, 21 May 5210 05:36:01 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;div class=&quot;nav-section&quot;&gt;&lt;div class=&quot;nav-section-title&quot;&gt;常用推荐&lt;/div&gt;&lt;div class=&quot;nav-cards nav-cards-cols-3&quot;&gt;&lt;a class=&quot;nav-card&quot;</description>
+          
+        
+      
+      
+      
+      
+      
+      
+    </item>
+    
+    <item>
+      <title>Gitea + Runner 部署配置</title>
+      <link>https://blog.aboyzy.top/2026/08/04/%E6%95%99%E7%A8%8B/gitea-and-runner/</link>
+      <guid>https://blog.aboyzy.top/2026/08/04/%E6%95%99%E7%A8%8B/gitea-and-runner/</guid>
+      <pubDate>Tue, 04 Aug 2026 12:31:58 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h2 id=&quot;Gitea&quot;&gt;&lt;a href=&quot;#Gitea&quot; class=&quot;headerlink&quot;</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://blog.aboyzy.top/categories/%E6%95%99%E7%A8%8B/">教程</category>
+      
+      
+      
+      <comments>https://blog.aboyzy.top/2026/08/04/%E6%95%99%E7%A8%8B/gitea-and-runner/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>Memos SQLite → PostgreSQL 迁移指南</title>
+      <link>https://blog.aboyzy.top/2026/08/02/%E6%95%99%E7%A8%8B/Memos_SQLite_to_PostgreSQL/</link>
+      <guid>https://blog.aboyzy.top/2026/08/02/%E6%95%99%E7%A8%8B/Memos_SQLite_to_PostgreSQL/</guid>
+      <pubDate>Sun, 02 Aug 2026 10:57:08 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;ul&gt;
+&lt;li&gt;版本：v0.3 | 环境：pgsql v18.0（均为 Docker 部署）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&quot;前提条件&quot;&gt;&lt;a href=&quot;#前提条件&quot; class=&quot;headerlink&quot;</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://blog.aboyzy.top/categories/%E6%95%99%E7%A8%8B/">教程</category>
+      
+      
+      
+      <comments>https://blog.aboyzy.top/2026/08/02/%E6%95%99%E7%A8%8B/Memos_SQLite_to_PostgreSQL/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>Minio迁移Rustfs</title>
+      <link>https://blog.aboyzy.top/2026/07/26/%E6%95%99%E7%A8%8B/Minio_to_Rustfs/</link>
+      <guid>https://blog.aboyzy.top/2026/07/26/%E6%95%99%E7%A8%8B/Minio_to_Rustfs/</guid>
+      <pubDate>Sun, 26 Jul 2026 10:02:56 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h2 id=&quot;原因&quot;&gt;&lt;a href=&quot;#原因&quot; class=&quot;headerlink&quot; title=&quot;原因&quot;&gt;&lt;/a&gt;原因&lt;/h2&gt;&lt;p&gt;之前使用的一直都是&lt;code&gt;minio&lt;/code&gt;</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://blog.aboyzy.top/categories/%E6%95%99%E7%A8%8B/">教程</category>
+      
+      
+      
+      <comments>https://blog.aboyzy.top/2026/07/26/%E6%95%99%E7%A8%8B/Minio_to_Rustfs/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>群晖桌面软件安装插件</title>
+      <link>https://blog.aboyzy.top/2026/05/26/%E7%BE%A4%E6%99%96/image-assistant/</link>
+      <guid>https://blog.aboyzy.top/2026/05/26/%E7%BE%A4%E6%99%96/image-assistant/</guid>
+      <pubDate>Tue, 26 May 2026 06:18:52 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h1 id=&quot;插件下载&quot;&gt;&lt;a href=&quot;#插件下载&quot; class=&quot;headerlink&quot; title=&quot;插件下载&quot;&gt;&lt;/a&gt;插件下载&lt;/h1&gt;&lt;p&gt;synology image</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://blog.aboyzy.top/categories/%E7%BE%A4%E6%99%96/">群晖</category>
+      
+      
+      
+      <comments>https://blog.aboyzy.top/2026/05/26/%E7%BE%A4%E6%99%96/image-assistant/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>常用软件记录</title>
+      <link>https://blog.aboyzy.top/2026/01/06/ruanjian/</link>
+      <guid>https://blog.aboyzy.top/2026/01/06/ruanjian/</guid>
+      <pubDate>Tue, 06 Jan 2026 08:39:17 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;div class=&quot;nav-section&quot;&gt;&lt;div class=&quot;nav-section-title&quot;&gt;7-zip&lt;/div&gt;&lt;div class=&quot;nav-cards nav-cards-cols-2&quot;&gt;&lt;a class=&quot;nav-card&quot;</description>
+          
+        
+      
+      
+      
+      
+      
+      
+    </item>
+    
+    <item>
+      <title>成都周边游玩记</title>
+      <link>https://blog.aboyzy.top/2025/12/23/%E8%AF%B4%E8%AF%B4/chenddu-2025down/</link>
+      <guid>https://blog.aboyzy.top/2025/12/23/%E8%AF%B4%E8%AF%B4/chenddu-2025down/</guid>
+      <pubDate>Tue, 23 Dec 2025 07:59:00 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;p&gt;从贵安离职之后，回到了成都，是父母也在这边，想着有个住的地方还不用操心所以就在成都这边找了个工作，本来以为是网工的运维，来了之后发现是做桌面的活更多哎。每天养老，摸鱼就这样过着。&lt;/p&gt;
+&lt;p&gt;这段时间算是把成都周边给转完了，很无聊，每周周末都在找去哪里转转，在家呆着真的很</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://blog.aboyzy.top/categories/%E8%AF%B4%E8%AF%B4/">说说</category>
+      
+      
+      
+      <comments>https://blog.aboyzy.top/2025/12/23/%E8%AF%B4%E8%AF%B4/chenddu-2025down/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>ubuntu时钟同步问题</title>
+      <link>https://blog.aboyzy.top/2025/12/19/%E6%95%99%E7%A8%8B/ubuntu-time/</link>
+      <guid>https://blog.aboyzy.top/2025/12/19/%E6%95%99%E7%A8%8B/ubuntu-time/</guid>
+      <pubDate>Fri, 19 Dec 2025 07:15:38 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h1 id=&quot;前提&quot;&gt;&lt;a href=&quot;#前提&quot; class=&quot;headerlink&quot;</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://blog.aboyzy.top/categories/%E6%95%99%E7%A8%8B/">教程</category>
+      
+      
+      
+      <comments>https://blog.aboyzy.top/2025/12/19/%E6%95%99%E7%A8%8B/ubuntu-time/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>Prometheus+Grafanna部署</title>
+      <link>https://blog.aboyzy.top/2025/09/06/%E6%95%99%E7%A8%8B/Prometheus-Grafanna/</link>
+      <guid>https://blog.aboyzy.top/2025/09/06/%E6%95%99%E7%A8%8B/Prometheus-Grafanna/</guid>
+      <pubDate>Sat, 06 Sep 2025 02:40:06 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;p&gt;很早之前就听说了&lt;code&gt;Grafana&lt;/code&gt;这个工具，但是之前的时候没有用，最近的时候&lt;code&gt;NAS&lt;/code&gt;总是Down 所以想监控一下</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://blog.aboyzy.top/categories/%E6%95%99%E7%A8%8B/">教程</category>
+      
+      
+      
+      <comments>https://blog.aboyzy.top/2025/09/06/%E6%95%99%E7%A8%8B/Prometheus-Grafanna/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>贵安华为一周班RUN记录</title>
+      <link>https://blog.aboyzy.top/2025/08/14/%E8%AF%B4%E8%AF%B4/guian-huawei/</link>
+      <guid>https://blog.aboyzy.top/2025/08/14/%E8%AF%B4%E8%AF%B4/guian-huawei/</guid>
+      <pubDate>Thu, 14 Aug 2025 05:12:18 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;p&gt;在来四川之前就找好工作了，在贵安那边的华为园区，面试的时候没有聊清楚，我想的是华为园区偏僻应该也还可以把，毕竟那么大个园区，谁知到到了之后真的好偏，就带了一周就回了。但是该说不说，环境真的还是很不错的。&lt;/p&gt;
+&lt;p&gt;&lt;img</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://blog.aboyzy.top/categories/%E8%AF%B4%E8%AF%B4/">说说</category>
+      
+      
+      
+      <comments>https://blog.aboyzy.top/2025/08/14/%E8%AF%B4%E8%AF%B4/guian-huawei/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>重庆两日游</title>
+      <link>https://blog.aboyzy.top/2025/08/01/%E8%AF%B4%E8%AF%B4/chongqing-two-day/</link>
+      <guid>https://blog.aboyzy.top/2025/08/01/%E8%AF%B4%E8%AF%B4/chongqing-two-day/</guid>
+      <pubDate>Fri, 01 Aug 2025 05:12:37 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;p&gt;从郑州被辞退之后，没有地方去转，刚好我老妈回老家了，家里边车没人开，就想着开车出去玩一玩，之前一直想去重庆玩，一直都没去，这次有时间了就想着过去耍一下。&lt;/p&gt;
+&lt;p&gt;从郑州机场到成都&lt;/p&gt;
+&lt;p&gt;&lt;img</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://blog.aboyzy.top/categories/%E8%AF%B4%E8%AF%B4/">说说</category>
+      
+      
+      
+      <comments>https://blog.aboyzy.top/2025/08/01/%E8%AF%B4%E8%AF%B4/chongqing-two-day/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>2025 I AM GLORIA G.E.M演唱会</title>
+      <link>https://blog.aboyzy.top/2025/07/27/%E8%AF%B4%E8%AF%B4/I-AM-GLORIA/</link>
+      <guid>https://blog.aboyzy.top/2025/07/27/%E8%AF%B4%E8%AF%B4/I-AM-GLORIA/</guid>
+      <pubDate>Sun, 27 Jul 2025 11:30:00 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;p&gt;落地洛阳，先去小街天府干个饭。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://524524d.webp.li/photo/2025_09_06_20250906125937370.webp&quot;</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://blog.aboyzy.top/categories/%E8%AF%B4%E8%AF%B4/">说说</category>
+      
+      
+      
+      <comments>https://blog.aboyzy.top/2025/07/27/%E8%AF%B4%E8%AF%B4/I-AM-GLORIA/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>浪潮NF5280M6安装Windows server 2016</title>
+      <link>https://blog.aboyzy.top/2025/06/12/%E6%95%99%E7%A8%8B/%E5%B7%A5%E4%BD%9C/NF5280M6%E5%AE%89%E8%A3%85Windows-server-2016/</link>
+      <guid>https://blog.aboyzy.top/2025/06/12/%E6%95%99%E7%A8%8B/%E5%B7%A5%E4%BD%9C/NF5280M6%E5%AE%89%E8%A3%85Windows-server-2016/</guid>
+      <pubDate>Thu, 12 Jun 2025 03:12:46 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h1 id=&quot;浪潮元脑服务器NF5280M6安装Windows-server-2016&quot;&gt;&lt;a href=&quot;#浪潮元脑服务器NF5280M6安装Windows-server-2016&quot; class=&quot;headerlink&quot;</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://blog.aboyzy.top/categories/%E6%95%99%E7%A8%8B/">教程</category>
+      
+      <category domain="https://blog.aboyzy.top/categories/%E6%95%99%E7%A8%8B/%E5%B7%A5%E4%BD%9C/">工作</category>
+      
+      
+      
+      <comments>https://blog.aboyzy.top/2025/06/12/%E6%95%99%E7%A8%8B/%E5%B7%A5%E4%BD%9C/NF5280M6%E5%AE%89%E8%A3%85Windows-server-2016/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>Docker部署Wordpress</title>
+      <link>https://blog.aboyzy.top/2025/05/13/%E6%95%99%E7%A8%8B/wordpress-Docker/</link>
+      <guid>https://blog.aboyzy.top/2025/05/13/%E6%95%99%E7%A8%8B/wordpress-Docker/</guid>
+      <pubDate>Tue, 13 May 2025 09:26:13 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;p&gt;我想在内网保留我之前的wordpress文章所以就起了个服务，记录一下方便查询。&lt;/p&gt;
+&lt;h1 id=&quot;初始化脚本&quot;&gt;&lt;a href=&quot;#初始化脚本&quot; class=&quot;headerlink&quot;</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://blog.aboyzy.top/categories/%E6%95%99%E7%A8%8B/">教程</category>
+      
+      
+      
+      <comments>https://blog.aboyzy.top/2025/05/13/%E6%95%99%E7%A8%8B/wordpress-Docker/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>西安游记</title>
+      <link>https://blog.aboyzy.top/2025/05/11/%E8%AF%B4%E8%AF%B4/xi-an-vlog/</link>
+      <guid>https://blog.aboyzy.top/2025/05/11/%E8%AF%B4%E8%AF%B4/xi-an-vlog/</guid>
+      <pubDate>Sun, 11 May 2025 09:19:21 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;p&gt;最开始是想只去爬个华山的，但是刚好看到西安就在旁边，也是想着估计就来这一次，就也去了西安玩了一圈。&lt;/p&gt;
+&lt;h1 id=&quot;华山&quot;&gt;&lt;a href=&quot;#华山&quot; class=&quot;headerlink&quot;</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://blog.aboyzy.top/categories/%E8%AF%B4%E8%AF%B4/">说说</category>
+      
+      
+      
+      <comments>https://blog.aboyzy.top/2025/05/11/%E8%AF%B4%E8%AF%B4/xi-an-vlog/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>Waline+live2D部署</title>
+      <link>https://blog.aboyzy.top/2025/04/17/%E6%95%99%E7%A8%8B/blog-Module/</link>
+      <guid>https://blog.aboyzy.top/2025/04/17/%E6%95%99%E7%A8%8B/blog-Module/</guid>
+      <pubDate>Thu, 17 Apr 2025 08:54:29 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h2 id=&quot;评论系统&quot;&gt;&lt;a href=&quot;#评论系统&quot; class=&quot;headerlink&quot; title=&quot;评论系统&quot;&gt;&lt;/a&gt;评论系统&lt;/h2&gt;&lt;p&gt;官网服务端配置参考文档 &lt;a</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://blog.aboyzy.top/categories/%E6%95%99%E7%A8%8B/">教程</category>
+      
+      
+      
+      <comments>https://blog.aboyzy.top/2025/04/17/%E6%95%99%E7%A8%8B/blog-Module/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>南京游记</title>
+      <link>https://blog.aboyzy.top/2025/04/09/%E8%AF%B4%E8%AF%B4/nanjing/</link>
+      <guid>https://blog.aboyzy.top/2025/04/09/%E8%AF%B4%E8%AF%B4/nanjing/</guid>
+      <pubDate>Wed, 09 Apr 2025 05:16:37 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h1 id=&quot;前情提要&quot;&gt;&lt;a href=&quot;#前情提要&quot; class=&quot;headerlink&quot; title=&quot;前情提要&quot;&gt;&lt;/a&gt;前情提要&lt;/h1&gt;&lt;p&gt;本来是三月中旬的时候刷抖音说樱花开了想去看樱花</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://blog.aboyzy.top/categories/%E8%AF%B4%E8%AF%B4/">说说</category>
+      
+      
+      
+      <comments>https://blog.aboyzy.top/2025/04/09/%E8%AF%B4%E8%AF%B4/nanjing/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>Clash+Yacd docker配置</title>
+      <link>https://blog.aboyzy.top/2025/03/16/%E6%95%99%E7%A8%8B/clash_yacd/</link>
+      <guid>https://blog.aboyzy.top/2025/03/16/%E6%95%99%E7%A8%8B/clash_yacd/</guid>
+      <pubDate>Sun, 16 Mar 2025 08:52:03 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h1 id=&quot;代理服务器设置&quot;&gt;&lt;a href=&quot;#代理服务器设置&quot; class=&quot;headerlink&quot; title=&quot;代理服务器设置&quot;&gt;&lt;/a&gt;代理服务器设置&lt;/h1&gt;&lt;p&gt;仅供自我研究docker 参考使用 请勿传播&lt;/p&gt;
+&lt;h2 id=&quot;安装&quot;&gt;&lt;a</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://blog.aboyzy.top/categories/%E6%95%99%E7%A8%8B/">教程</category>
+      
+      
+      
+      <comments>https://blog.aboyzy.top/2025/03/16/%E6%95%99%E7%A8%8B/clash_yacd/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>2025年后游记</title>
+      <link>https://blog.aboyzy.top/2025/03/09/%E8%AF%B4%E8%AF%B4/2025new-go/</link>
+      <guid>https://blog.aboyzy.top/2025/03/09/%E8%AF%B4%E8%AF%B4/2025new-go/</guid>
+      <pubDate>Sun, 09 Mar 2025 08:50:56 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h1 id=&quot;想法&quot;&gt;&lt;a href=&quot;#想法&quot; class=&quot;headerlink&quot; title=&quot;想法&quot;&gt;&lt;/a&gt;想法&lt;/h1&gt;&lt;p&gt;哦莫 </description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://blog.aboyzy.top/categories/%E8%AF%B4%E8%AF%B4/">说说</category>
+      
+      
+      
+      <comments>https://blog.aboyzy.top/2025/03/09/%E8%AF%B4%E8%AF%B4/2025new-go/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>2024年终总结</title>
+      <link>https://blog.aboyzy.top/2024/12/28/%E8%AF%B4%E8%AF%B4/2024/</link>
+      <guid>https://blog.aboyzy.top/2024/12/28/%E8%AF%B4%E8%AF%B4/2024/</guid>
+      <pubDate>Sat, 28 Dec 2024 05:09:56 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h1 id=&quot;2024-年终感想&quot;&gt;&lt;a href=&quot;#2024-年终感想&quot; class=&quot;headerlink&quot; title=&quot;2024 年终感想&quot;&gt;&lt;/a&gt;2024 年终感想&lt;/h1&gt;&lt;p&gt;时间过的真快啊</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://blog.aboyzy.top/categories/%E8%AF%B4%E8%AF%B4/">说说</category>
+      
+      
+      
+      <comments>https://blog.aboyzy.top/2024/12/28/%E8%AF%B4%E8%AF%B4/2024/#disqus_thread</comments>
+      
+    </item>
+    
+  </channel>
+</rss>

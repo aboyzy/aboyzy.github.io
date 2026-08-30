@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="原因之前使用的一直都是minio 已经不更新补丁了，最近看到Rustfs大家都在推荐，就想试一下，好像是1.0版本构建成功了现在在生产环境使用也是可以的。 迁移过程我是用了一个中转的机器先使用docker部署了测试环境 注意事项需要因为Rustfs的数据目录使用的是10001用户，需要提前将权限设置好。 sudo chown -R 10001:10001 .&#x2F;data rustfs部署123456">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Minio迁移Rustfs">
+<meta property="og:url" content="https://blog.aboyzy.top/2026/07/26/%E6%95%99%E7%A8%8B/Minio_to_Rustfs/index.html">
+<meta property="og:site_name" content="稚的小窝">
+<meta property="og:description" content="原因之前使用的一直都是minio 已经不更新补丁了，最近看到Rustfs大家都在推荐，就想试一下，好像是1.0版本构建成功了现在在生产环境使用也是可以的。 迁移过程我是用了一个中转的机器先使用docker部署了测试环境 注意事项需要因为Rustfs的数据目录使用的是10001用户，需要提前将权限设置好。 sudo chown -R 10001:10001 .&#x2F;data rustfs部署123456">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-07-26T10:02:56.000Z">
+<meta property="article:modified_time" content="2026-08-30T07:29:22.991Z">
+<meta property="article:author" content="稚">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="https://npm.elemecdn.com/aboyzy_blogstatic/img/%E5%A4%B4%E5%83%8F.webp">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="https://npm.elemecdn.com/aboyzy_blogstatic/img/%E5%A4%B4%E5%83%8F.webp" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="https://npm.elemecdn.com/aboyzy_blogstatic/img/%E5%A4%B4%E5%83%8F.webp">
+        
+      
+    
+    <!-- title -->
+    <title>Minio迁移Rustfs</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+
+    <!-- Waline Comments -->
+    
+        <link rel="stylesheet" href="https://s4.zstatic.net/npm/@waline/client@2.15.8/dist/waline.css"/>
+    
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/rss2.xml" title="稚的小窝" type="application/rss+xml">
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="顶部" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/categories/%E8%AF%B4%E8%AF%B4/">说说</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a href="/pages/">导航</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="https://pan.aboyzy.top/">网盘</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="/search/">搜索</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="上一篇" href="/2026/08/02/%E6%95%99%E7%A8%8B/Memos_SQLite_to_PostgreSQL/"><i class="fa-solid fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="下一篇" href="/2026/05/26/%E7%BE%A4%E6%99%96/image-assistant/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="返回顶部" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="分享文章" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="mailto:?subject=Minio迁移Rustfs&body=Check out this article: https://blog.aboyzy.top/2026/07/26/%E6%95%99%E7%A8%8B/Minio_to_Rustfs/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+ </ul>
+
+    </div>
+<!--    -->
+<!--    -->
+<!--      <div id="toc">-->
+<!--        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%9F%E5%9B%A0"><span class="toc-number">1.</span> <span class="toc-text">原因</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%81%E7%A7%BB%E8%BF%87%E7%A8%8B"><span class="toc-number">2.</span> <span class="toc-text">迁移过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-number">3.</span> <span class="toc-text">注意事项</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#rustfs%E9%83%A8%E7%BD%B2"><span class="toc-number">3.1.</span> <span class="toc-text">rustfs部署</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85mc%E8%BF%9B%E8%A1%8C%E8%BF%81%E7%A7%BB"><span class="toc-number">3.2.</span> <span class="toc-text">安装mc进行迁移</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#API%E8%AE%BF%E9%97%AE%E5%AF%86%E9%92%A5%E7%9A%84%E6%9D%83%E9%99%90%E5%8F%82%E8%80%83"><span class="toc-number">3.3.</span> <span class="toc-text">API访问密钥的权限参考</span></a></li></ol></li></ol>-->
+<!--      </div>-->
+<!--    -->
+    <div id="toc">
+  <div id="toc-div" class="toc-article" >
+    
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%9F%E5%9B%A0"><span class="toc-number">1.</span> <span class="toc-text">原因</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%81%E7%A7%BB%E8%BF%87%E7%A8%8B"><span class="toc-number">2.</span> <span class="toc-text">迁移过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-number">3.</span> <span class="toc-text">注意事项</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#rustfs%E9%83%A8%E7%BD%B2"><span class="toc-number">3.1.</span> <span class="toc-text">rustfs部署</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85mc%E8%BF%9B%E8%A1%8C%E8%BF%81%E7%A7%BB"><span class="toc-number">3.2.</span> <span class="toc-text">安装mc进行迁移</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#API%E8%AE%BF%E9%97%AE%E5%AF%86%E9%92%A5%E7%9A%84%E6%9D%83%E9%99%90%E5%8F%82%E8%80%83"><span class="toc-number">3.3.</span> <span class="toc-text">API访问密钥的权限参考</span></a></li></ol></li></ol>
+    
+  </div>
+</div>
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        Minio迁移Rustfs
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">稚</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2026-07-26T10:02:56.000Z" class="dt-published" itemprop="datePublished">2026-07-26</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fa-solid fa-archive"></i>
+        <a class="category-link" href="/categories/%E6%95%99%E7%A8%8B/">教程</a>
+    </div>
+
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <h2 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h2><p>之前使用的一直都是<code>minio</code> 已经不更新补丁了，最近看到<code>Rustfs</code>大家都在推荐，就想试一下，好像是1.0版本构建成功了现在在生产环境使用也是可以的。</p>
+<h2 id="迁移过程"><a href="#迁移过程" class="headerlink" title="迁移过程"></a>迁移过程</h2><p>我是用了一个中转的机器先使用docker部署了测试环境</p>
+<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><p>需要因为Rustfs的数据目录使用的是<code>10001</code>用户，需要提前将权限设置好。</p>
+<p><code>sudo chown -R 10001:10001 ./data</code></p>
+<h3 id="rustfs部署"><a href="#rustfs部署" class="headerlink" title="rustfs部署"></a>rustfs部署</h3><div class="highlight-wrap" data-rel="Dockerfile"><figure class="iseeu highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">services:</span><br><span class="line">  rustfs:</span><br><span class="line">    image: rustfs/rustfs:latest</span><br><span class="line">    container_name: rustfs-server</span><br><span class="line">    security_opt:</span><br><span class="line">      - <span class="string">&quot;no-new-privileges:true&quot;</span></span><br><span class="line">    ports:</span><br><span class="line">      - <span class="string">&quot;9000:9000&quot;</span>   <span class="comment"># S3 API 对外端口</span></span><br><span class="line">      - <span class="string">&quot;9001:9001&quot;</span>   <span class="comment"># 控制台对外端口</span></span><br><span class="line">    environment:</span><br><span class="line">      <span class="comment"># 数据卷（多个路径用逗号分隔）</span></span><br><span class="line">      - RUSTFS_VOLUMES=/data/rustfs0</span><br><span class="line">      <span class="comment"># API 和控制台监听地址</span></span><br><span class="line">      - RUSTFS_ADDRESS=<span class="number">0.0</span>.<span class="number">0.0</span>:<span class="number">9000</span></span><br><span class="line">      - RUSTFS_CONSOLE_ADDRESS=<span class="number">0.0</span>.<span class="number">0.0</span>:<span class="number">9001</span></span><br><span class="line">      - RUSTFS_CONSOLE_ENABLE=true</span><br><span class="line">      <span class="comment"># CORS 设置，控制台与 S3 API 都放开来源</span></span><br><span class="line">      - RUSTFS_CORS_ALLOWED_ORIGINS=*</span><br><span class="line">      - RUSTFS_CONSOLE_CORS_ALLOWED_ORIGINS=*</span><br><span class="line">      <span class="comment"># 访问密钥（生产环境请修改为强密码）</span></span><br><span class="line">      - RUSTFS_ACCESS_KEY=rustfsadmin</span><br><span class="line">      - RUSTFS_SECRET_KEY=rustfsadmin</span><br><span class="line">      <span class="comment"># 日志级别</span></span><br><span class="line">      - RUSTFS_OBS_LOGGER_LEVEL=info</span><br><span class="line"></span><br><span class="line">    volumes:</span><br><span class="line">      <span class="comment"># 存储数据卷（请根据实际情况修改路径）</span></span><br><span class="line">      - ./data/:/data</span><br><span class="line">      <span class="comment"># 日志目录</span></span><br><span class="line">      - ./logs/:/app/logs</span><br><span class="line"></span><br><span class="line">    networks:</span><br><span class="line">      - rustfs-network</span><br><span class="line">    restart: unless-stopped</span><br><span class="line">    <span class="keyword">healthcheck</span><span class="language-bash">:</span></span><br><span class="line">      test: [<span class="string">&quot;CMD&quot;</span>, <span class="string">&quot;sh&quot;</span>, <span class="string">&quot;-c&quot;</span>, <span class="string">&quot;curl -f http://localhost:9000/health &amp;&amp; curl -f http://localhost:9001/health&quot;</span>]</span><br><span class="line">      interval: <span class="number">30</span>s</span><br><span class="line">      timeout: <span class="number">10</span>s</span><br><span class="line">      retries: <span class="number">3</span></span><br><span class="line">      start_period: <span class="number">40</span>s</span><br><span class="line"></span><br><span class="line">networks:</span><br><span class="line">  rustfs-network:</span><br><span class="line">    driver: bridge</span><br></pre></td></tr></table></figure></div>
+
+<p>访问登录界面，输入<code>RUSTFS_ACCESS_KEY</code>的密钥登录API管理界面查看是否配置成功。</p>
+<p>注意：如果你要重置密码 需要先将<code>data/.rustfs.sys/</code> 进行删除 该文件夹为隐藏文件夹。若不删除直接修改访问密钥重构镜像仍然使用的原来的密码</p>
+<h3 id="安装mc进行迁移"><a href="#安装mc进行迁移" class="headerlink" title="安装mc进行迁移"></a>安装<code>mc</code>进行迁移</h3><p>然后在测试机器安装了<code>mc</code>来进行迁移，ubuntu自带的mc好像是个文件管理工具，需要注意一下</p>
+<div class="highlight-wrap" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">sudo curl -sL https://dl.min.io/client/mc/release/linux-amd64/mc -o /usr/local/bin/mc</span><br><span class="line"></span><br><span class="line">sudo chmod +x /usr/local/bin/mc</span><br><span class="line"></span><br><span class="line">mc --version</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">/usr/local/bin# </span><span class="language-bash">mc --version</span></span><br><span class="line">mc version RELEASE.2025-08-13T08-35-41Z (commit-id=7394ce0dd2a80935aded936b09fa12cbb3cb8096)</span><br><span class="line">Runtime: go1.24.6 linux/amd64</span><br><span class="line">Copyright (c) 2015-2025 MinIO, Inc.</span><br><span class="line">License GNU AGPLv3 &lt;https://www.gnu.org/licenses/agpl-3.0.html&gt;</span><br></pre></td></tr></table></figure></div>
+
+<p>然后执行同步。</p>
+<div class="highlight-wrap" data-rel="Sh"><figure class="iseeu highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1. 设置 MinIO 别名</span></span><br><span class="line">mc <span class="built_in">alias</span> <span class="built_in">set</span> minio http://10.0.0.1:9000 aaaaaaaa bbbbbbbb</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. 设置 RustFS 别名  </span></span><br><span class="line">mc <span class="built_in">alias</span> <span class="built_in">set</span> rustfs http://127.0.0.1:9002 rustfsadmin rustfsadmin</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3. 同步所有桶，覆盖同名对象</span></span><br><span class="line"></span><br><span class="line">mc mirror --overwrite minio/ rustfs/ </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">/usr/local/bin# mc <span class="built_in">alias</span> <span class="built_in">set</span> rustfs http://127.0.0.1:9002 rustfsadmin rustfsadmin</span><br><span class="line">Added `rustfs` successfully.</span><br><span class="line"></span><br><span class="line">/usr/local/bin# mc mirror --overwrite minio/ rustfs/</span><br><span class="line">...o/refs/latest: 394.11 MiB / 394.11 MiB ┃▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓┃ 8.38 MiB/s 47s</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
+
+<h3 id="API访问密钥的权限参考"><a href="#API访问密钥的权限参考" class="headerlink" title="API访问密钥的权限参考"></a>API访问密钥的权限参考</h3><div class="highlight-wrap" data-rel="Yaml"><figure class="iseeu highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">&quot;Version&quot;:</span> <span class="string">&quot;2012-10-17&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;Statement&quot;:</span> [</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">&quot;Effect&quot;:</span> <span class="string">&quot;Allow&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;Action&quot;:</span> [</span><br><span class="line">          <span class="string">&quot;s3:ListBucket&quot;</span>,</span><br><span class="line">          <span class="string">&quot;s3:GetBucketLocation&quot;</span></span><br><span class="line">        ],</span><br><span class="line">        <span class="attr">&quot;Resource&quot;:</span> [</span><br><span class="line">          <span class="string">&quot;arn:aws:s3:::siyuan&quot;</span></span><br><span class="line">        ]</span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">&quot;Effect&quot;:</span> <span class="string">&quot;Allow&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;Action&quot;:</span> [</span><br><span class="line">          <span class="string">&quot;s3:GetObject&quot;</span>,</span><br><span class="line">          <span class="string">&quot;s3:PutObject&quot;</span>,</span><br><span class="line">          <span class="string">&quot;s3:DeleteObject&quot;</span></span><br><span class="line">        ],</span><br><span class="line">        <span class="attr">&quot;Resource&quot;:</span> [</span><br><span class="line">          <span class="string">&quot;arn:aws:s3:::siyuan/*&quot;</span></span><br><span class="line">        ]</span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></div>
+
+
+
+
+  </div>
+</article>
+
+
+
+    <div class="blog-post-comments">
+        <div id="waline_thread"></div>
+    </div>
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">首页</a></li>
+        
+          <li><a href="/categories/%E8%AF%B4%E8%AF%B4/">说说</a></li>
+        
+          <li><a href="/archives/">归档</a></li>
+        
+          <li><a href="/pages/">导航</a></li>
+        
+          <li><a target="_blank" rel="noopener" href="https://pan.aboyzy.top/">网盘</a></li>
+        
+          <li><a href="/about/">关于</a></li>
+        
+          <li><a href="/search/">搜索</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%9F%E5%9B%A0"><span class="toc-number">1.</span> <span class="toc-text">原因</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%81%E7%A7%BB%E8%BF%87%E7%A8%8B"><span class="toc-number">2.</span> <span class="toc-text">迁移过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-number">3.</span> <span class="toc-text">注意事项</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#rustfs%E9%83%A8%E7%BD%B2"><span class="toc-number">3.1.</span> <span class="toc-text">rustfs部署</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85mc%E8%BF%9B%E8%A1%8C%E8%BF%81%E7%A7%BB"><span class="toc-number">3.2.</span> <span class="toc-text">安装mc进行迁移</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#API%E8%AE%BF%E9%97%AE%E5%AF%86%E9%92%A5%E7%9A%84%E6%9D%83%E9%99%90%E5%8F%82%E8%80%83"><span class="toc-number">3.3.</span> <span class="toc-text">API访问密钥的权限参考</span></a></li></ol></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="mailto:?subject=Minio迁移Rustfs&body=Check out this article: https://blog.aboyzy.top/2026/07/26/%E6%95%99%E7%A8%8B/Minio_to_Rustfs/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+ </ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2022-2026
+    稚
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/categories/%E8%AF%B4%E8%AF%B4/">说说</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a href="/pages/">导航</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="https://pan.aboyzy.top/">网盘</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="/search/">搜索</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+  <script src="https://s4.zstatic.net/npm/aboyzy-live2d@1.0.1/static/TweenLite.js"></script>
+  <script src="https://s4.zstatic.net/npm/aboyzy-live2d@1.0.1/static/live2Dcubismcore.min.js"></script>
+  <script src="https://s4.zstatic.net/npm/aboyzy-live2d@1.0.1/static/pixi.min.js"></script>
+  <script src="https://s4.zstatic.net/npm/aboyzy-live2d@1.0.1/static/cubism4.min.js"></script>
+  <link href="https://s4.zstatic.net/npm/aboyzy-live2d@1.0.0/static/pio.css" rel="stylesheet" type="text/css"/>
+  <script src="https://s4.zstatic.net/npm/aboyzy-live2d@1.0.1/static/pio.js"></script>
+  <script src="https://s4.zstatic.net/npm/aboyzy-live2d@1.0.1/static/pio_sdk4.js"></script>
+  <script src="https://s4.zstatic.net/npm/aboyzy-live2d@1.0.1/static/load.js"></script>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://s4.zstatic.net/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://s4.zstatic.net/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板！\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功！");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+
+<!-- Waline Comments -->
+
+<script type="module">
+    import { init } from 'https://s4.zstatic.net/npm/@waline/client@2.15.8/dist/waline.mjs';
+
+    var EMOJI = ['//unpkg.com/@waline/emojis@1.2.0/qq']
+    var META = ['nick', 'mail', 'link'];
+    var REQUIREDFIELDS = ['nick', 'mail', 'link'];
+
+    var emoji = 'https://npm.elemecdn.com/@waline/emojis@1.2.0/bilibili'.split(',').filter(function(item){
+        return item !== ''; // filter()返回满足不为空item
+    });
+    emoji = emoji.length == 0 ? EMOJI : emoji;
+
+    var meta = 'nick,mail,link'.split(',').filter(function(item){
+        return META.indexOf(item) > -1; // filter()返回满足META.indexOf(item) > -1为true的item
+    });
+    meta = meta.length == 0 ? META : meta;
+
+    var requiredFields = 'nick,mail'.split(',').filter(function(item){
+        return REQUIREDFIELDS.indexOf(item) > -1; // filter()返回满足META.indexOf(item) > -1为true的item
+    });
+    requiredFields = requiredFields.length == 0 ? REQUIREDFIELDS : requiredFields;
+
+    document.addEventListener('DOMContentLoaded', function () {
+
+        const walineElement = document.getElementById('waline_thread');
+
+        if (walineElement) {
+            init({
+                el: '#waline_thread',
+                serverURL: 'https://waline.aboyzy.top/', // Waline 的服务端地址
+                path: '' == '' ? window.location.pathname : '', // 当前文章页路径，用于区分不同的文章页，以保证正确读取该文章页下的评论列表
+                lang: 'zh-CN' == '' ? 'zh-CN' : 'zh-CN', // 多语言支持，未设置默认英文
+                emoji: emoji,
+                dark: '', // 暗黑模式适配
+                commentSorting: '' == '' ? 'latest' : '', // 评论列表排序方式
+                meta: meta, // 评论者相关属性
+                requiredFields: requiredFields, // 设置必填项，默认匿名
+                login: '', // 登录模式状态
+                wordLimit: '', // 评论字数限制
+                pageSize: '10' == '' ? 10 : '10', // 评论列表分页，每页条数
+                imageUploader: '', // 自定义图片上传方法
+                highlighter: '', // 代码高亮
+                placeholder: '',
+                avatar: 'mm',
+                visitor: 'false',
+                comment_count: 'false',
+            });
+        }
+    });
+</script>
+
+</body>
+</html>

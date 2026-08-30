@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="Gitea配置前需要手动创建data和config文件夹不然会出现权限问题，user的id也需要根据对应的角色进行修改。rootless为非root用户模式，默认以git用户运行。 12345678910111213141516171819services:  server:    image: docker.gitea.com&#x2F;gitea:1.27.1-rootless    user: &amp;#x">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Gitea + Runner 部署配置">
+<meta property="og:url" content="https://blog.aboyzy.top/2026/08/04/%E6%95%99%E7%A8%8B/gitea-and-runner/index.html">
+<meta property="og:site_name" content="稚的小窝">
+<meta property="og:description" content="Gitea配置前需要手动创建data和config文件夹不然会出现权限问题，user的id也需要根据对应的角色进行修改。rootless为非root用户模式，默认以git用户运行。 12345678910111213141516171819services:  server:    image: docker.gitea.com&#x2F;gitea:1.27.1-rootless    user: &amp;#x">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-08-04T12:31:58.000Z">
+<meta property="article:modified_time" content="2026-08-30T07:29:22.991Z">
+<meta property="article:author" content="稚">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="https://npm.elemecdn.com/aboyzy_blogstatic/img/%E5%A4%B4%E5%83%8F.webp">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="https://npm.elemecdn.com/aboyzy_blogstatic/img/%E5%A4%B4%E5%83%8F.webp" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="https://npm.elemecdn.com/aboyzy_blogstatic/img/%E5%A4%B4%E5%83%8F.webp">
+        
+      
+    
+    <!-- title -->
+    <title>Gitea + Runner 部署配置</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+
+    <!-- Waline Comments -->
+    
+        <link rel="stylesheet" href="https://s4.zstatic.net/npm/@waline/client@2.15.8/dist/waline.css"/>
+    
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/rss2.xml" title="稚的小窝" type="application/rss+xml">
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="顶部" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/categories/%E8%AF%B4%E8%AF%B4/">说说</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a href="/pages/">导航</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="https://pan.aboyzy.top/">网盘</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="/search/">搜索</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="上一篇" href="/5210/05/21/blog/"><i class="fa-solid fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="下一篇" href="/2026/08/02/%E6%95%99%E7%A8%8B/Memos_SQLite_to_PostgreSQL/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="返回顶部" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="分享文章" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="mailto:?subject=Gitea + Runner 部署配置&body=Check out this article: https://blog.aboyzy.top/2026/08/04/%E6%95%99%E7%A8%8B/gitea-and-runner/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+ </ul>
+
+    </div>
+<!--    -->
+<!--    -->
+<!--      <div id="toc">-->
+<!--        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Gitea"><span class="toc-number">1.</span> <span class="toc-text">Gitea</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#runner"><span class="toc-number">2.</span> <span class="toc-text">runner</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#labels-%E8%AF%B4%E6%98%8E"><span class="toc-number">2.1.</span> <span class="toc-text">labels 说明</span></a></li></ol></li></ol>-->
+<!--      </div>-->
+<!--    -->
+    <div id="toc">
+  <div id="toc-div" class="toc-article" >
+    
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Gitea"><span class="toc-number">1.</span> <span class="toc-text">Gitea</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#runner"><span class="toc-number">2.</span> <span class="toc-text">runner</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#labels-%E8%AF%B4%E6%98%8E"><span class="toc-number">2.1.</span> <span class="toc-text">labels 说明</span></a></li></ol></li></ol>
+    
+  </div>
+</div>
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        Gitea + Runner 部署配置
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">稚</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2026-08-04T12:31:58.000Z" class="dt-published" itemprop="datePublished">2026-08-04</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fa-solid fa-archive"></i>
+        <a class="category-link" href="/categories/%E6%95%99%E7%A8%8B/">教程</a>
+    </div>
+
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <h2 id="Gitea"><a href="#Gitea" class="headerlink" title="Gitea"></a>Gitea</h2><p>配置前需要手动创建<code>data</code>和<code>config</code>文件夹不然会出现权限问题，<code>user</code>的<code>id</code>也需要根据对应的角色进行修改。<code>rootless</code>为非<code>root</code>用户模式，默认以<code>git</code>用户运行。</p>
+<div class="highlight-wrap" data-rel="Yaml"><figure class="iseeu highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">services:</span></span><br><span class="line">  <span class="attr">server:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">docker.gitea.com/gitea:1.27.1-rootless</span></span><br><span class="line">    <span class="attr">user:</span> <span class="string">&#x27;1000:1000&#x27;</span></span><br><span class="line">    <span class="attr">environment:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">GITEA__database__DB_TYPE=postgres</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">GITEA__database__HOST=$&#123;DB_HOST&#125;</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">GITEA__database__NAME=$&#123;DB_NAME&#125;</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">GITEA__database__USER=$&#123;DB_USER&#125;</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">GITEA__database__PASSWD=$&#123;DB_PASSWORD&#125;</span></span><br><span class="line">    <span class="attr">restart:</span> <span class="string">always</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">./data:/var/lib/gitea</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">./config:/etc/gitea</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">/etc/timezone:/etc/timezone:ro</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">/etc/localtime:/etc/localtime:ro</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">&quot;3000:3000&quot;</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">&quot;2222:2222&quot;</span></span><br></pre></td></tr></table></figure></div>
+
+<p><strong>对应 .env：</strong></p>
+<div class="highlight-wrap" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">DB_HOST=db:5432</span><br><span class="line">DB_NAME=gitea</span><br><span class="line">DB_USER=gitea</span><br><span class="line">DB_PASSWORD=your_secure_password</span><br></pre></td></tr></table></figure></div>
+
+<p><strong>docker-compose 字段说明：</strong></p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>image</code></td>
+<td>Gitea rootless 镜像，官方推荐</td>
+</tr>
+<tr>
+<td><code>user: &#39;1000:1000&#39;</code></td>
+<td>以指定 UID&#x2F;GID 运行，避免 root 权限（需与主机上创建 data&#x2F;config 目录的用户一致）</td>
+</tr>
+<tr>
+<td><code>environment</code></td>
+<td>数据库连接参数，通过 <code>GITEA__</code> 前缀注入</td>
+</tr>
+<tr>
+<td><code>volumes</code></td>
+<td><code>./data</code> 存储仓库数据，<code>./config</code> 存储配置文件；<code>:ro</code> 为只读挂载时区和时间</td>
+</tr>
+<tr>
+<td><code>ports</code></td>
+<td><code>3000</code> 为 Web UI，<code>2222</code> 为 SSH 克隆端口</td>
+</tr>
+<tr>
+<td><code>restart: always</code></td>
+<td>容器异常退出后自动重启</td>
+</tr>
+</tbody></table>
+<h2 id="runner"><a href="#runner" class="headerlink" title="runner"></a>runner</h2><p>以 Docker-in-Docker 方式执行 CI 任务。</p>
+<p>需要提前创建好<code>config.yaml</code>文件和<code>data</code>文件夹</p>
+<p><strong>docker-compose.yaml：</strong></p>
+<div class="highlight-wrap" data-rel="Yaml"><figure class="iseeu highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">services:</span></span><br><span class="line">  <span class="attr">runner:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">gitea/act_runner:nightly</span></span><br><span class="line">    <span class="attr">restart:</span> <span class="string">unless-stopped</span></span><br><span class="line">    <span class="attr">environment:</span></span><br><span class="line">      <span class="attr">HTTP_PROXY:</span></span><br><span class="line">      <span class="attr">HTTPS_PROXY:</span></span><br><span class="line">      <span class="attr">CONFIG_FILE:</span> <span class="string">/config.yaml</span></span><br><span class="line">      <span class="attr">GITEA_INSTANCE_URL:</span> <span class="string">&quot;$&#123;INSTANCE_URL&#125;&quot;</span></span><br><span class="line">      <span class="attr">GITEA_RUNNER_REGISTRATION_TOKEN:</span> <span class="string">&quot;$&#123;REGISTRATION_TOKEN&#125;&quot;</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">./config.yaml:/config.yaml</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">./data:/data</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">/var/run/docker.sock:/var/run/docker.sock</span></span><br></pre></td></tr></table></figure></div>
+
+<p><strong>docker-compose 字段说明：</strong></p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>image: nightly</code></td>
+<td>使用 act_runner 最新构建版本</td>
+</tr>
+<tr>
+<td><code>volumes: /var/run/docker.sock</code></td>
+<td>挂载宿主 Docker socket，实现容器内调度 Docker（Docker-in-Docker）</td>
+</tr>
+<tr>
+<td><code>./data</code></td>
+<td>存储 Runner 注册凭证等运行时数据</td>
+</tr>
+<tr>
+<td><code>CONFIG_FILE</code></td>
+<td>指定 Runner 实例配置文件路径</td>
+</tr>
+<tr>
+<td><code>HTTP_PROXY / HTTPS_PROXY</code></td>
+<td>有代理环境需填入，无代理则留空</td>
+</tr>
+<tr>
+<td><code>GITEA_RUNNER_REGISTRATION_TOKEN</code></td>
+<td>从 Gitea 管理后台获取，用于将 Runner 注册到实例</td>
+</tr>
+</tbody></table>
+<p><strong>对应 .env：</strong></p>
+<div class="highlight-wrap" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># Gitea 实例地址（确保 Runner 容器能访问）</span><br><span class="line">INSTANCE_URL=</span><br><span class="line"></span><br><span class="line"># 从 Gitea 后台获取的全局注册令牌</span><br><span class="line">REGISTRATION_TOKEN=</span><br><span class="line"></span><br><span class="line"># Runner 显示名称（可选，默认取容器 hostname）</span><br><span class="line">RUNNER_NAME=gitea-runner</span><br></pre></td></tr></table></figure></div>
+
+<p><strong>config.yaml（Runner 实例配置）：</strong></p>
+<div class="highlight-wrap" data-rel="Yaml"><figure class="iseeu highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">runner:</span></span><br><span class="line">  <span class="attr">capacity:</span> <span class="number">1</span></span><br><span class="line">  <span class="attr">labels:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">&quot;hexo:docker://node:20-bullseye&quot;</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">&quot;um:docker://node:24.7.0&quot;</span></span><br></pre></td></tr></table></figure></div>
+
+<h3 id="labels-说明"><a href="#labels-说明" class="headerlink" title="labels 说明"></a>labels 说明</h3><p><code>labels</code> 决定 Runner 能处理哪些 <a target="_blank" rel="noopener" href="https://docs.gitea.com/next/usage/actions/act-runner#Labels">niche</a> 标签任务。格式为 <code>name:docker://image</code>。</p>
+<table>
+<thead>
+<tr>
+<th>标签</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>hexo</code></td>
+<td>自定义名称，可按项目需求命名</td>
+</tr>
+<tr>
+<td><code>um</code></td>
+<td>同上，示例别名</td>
+</tr>
+</tbody></table>
+<p>如需无标签 Runner，删除 <code>labels</code> 字段或留空。Runner 会自动注册 <code>ubuntu</code> 等基础标签。</p>
+
+  </div>
+</article>
+
+
+
+    <div class="blog-post-comments">
+        <div id="waline_thread"></div>
+    </div>
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">首页</a></li>
+        
+          <li><a href="/categories/%E8%AF%B4%E8%AF%B4/">说说</a></li>
+        
+          <li><a href="/archives/">归档</a></li>
+        
+          <li><a href="/pages/">导航</a></li>
+        
+          <li><a target="_blank" rel="noopener" href="https://pan.aboyzy.top/">网盘</a></li>
+        
+          <li><a href="/about/">关于</a></li>
+        
+          <li><a href="/search/">搜索</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Gitea"><span class="toc-number">1.</span> <span class="toc-text">Gitea</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#runner"><span class="toc-number">2.</span> <span class="toc-text">runner</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#labels-%E8%AF%B4%E6%98%8E"><span class="toc-number">2.1.</span> <span class="toc-text">labels 说明</span></a></li></ol></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="mailto:?subject=Gitea + Runner 部署配置&body=Check out this article: https://blog.aboyzy.top/2026/08/04/%E6%95%99%E7%A8%8B/gitea-and-runner/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+ </ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2022-2026
+    稚
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/categories/%E8%AF%B4%E8%AF%B4/">说说</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a href="/pages/">导航</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="https://pan.aboyzy.top/">网盘</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="/search/">搜索</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+  <script src="https://s4.zstatic.net/npm/aboyzy-live2d@1.0.1/static/TweenLite.js"></script>
+  <script src="https://s4.zstatic.net/npm/aboyzy-live2d@1.0.1/static/live2Dcubismcore.min.js"></script>
+  <script src="https://s4.zstatic.net/npm/aboyzy-live2d@1.0.1/static/pixi.min.js"></script>
+  <script src="https://s4.zstatic.net/npm/aboyzy-live2d@1.0.1/static/cubism4.min.js"></script>
+  <link href="https://s4.zstatic.net/npm/aboyzy-live2d@1.0.0/static/pio.css" rel="stylesheet" type="text/css"/>
+  <script src="https://s4.zstatic.net/npm/aboyzy-live2d@1.0.1/static/pio.js"></script>
+  <script src="https://s4.zstatic.net/npm/aboyzy-live2d@1.0.1/static/pio_sdk4.js"></script>
+  <script src="https://s4.zstatic.net/npm/aboyzy-live2d@1.0.1/static/load.js"></script>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://s4.zstatic.net/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://s4.zstatic.net/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板！\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功！");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+
+<!-- Waline Comments -->
+
+<script type="module">
+    import { init } from 'https://s4.zstatic.net/npm/@waline/client@2.15.8/dist/waline.mjs';
+
+    var EMOJI = ['//unpkg.com/@waline/emojis@1.2.0/qq']
+    var META = ['nick', 'mail', 'link'];
+    var REQUIREDFIELDS = ['nick', 'mail', 'link'];
+
+    var emoji = 'https://npm.elemecdn.com/@waline/emojis@1.2.0/bilibili'.split(',').filter(function(item){
+        return item !== ''; // filter()返回满足不为空item
+    });
+    emoji = emoji.length == 0 ? EMOJI : emoji;
+
+    var meta = 'nick,mail,link'.split(',').filter(function(item){
+        return META.indexOf(item) > -1; // filter()返回满足META.indexOf(item) > -1为true的item
+    });
+    meta = meta.length == 0 ? META : meta;
+
+    var requiredFields = 'nick,mail'.split(',').filter(function(item){
+        return REQUIREDFIELDS.indexOf(item) > -1; // filter()返回满足META.indexOf(item) > -1为true的item
+    });
+    requiredFields = requiredFields.length == 0 ? REQUIREDFIELDS : requiredFields;
+
+    document.addEventListener('DOMContentLoaded', function () {
+
+        const walineElement = document.getElementById('waline_thread');
+
+        if (walineElement) {
+            init({
+                el: '#waline_thread',
+                serverURL: 'https://waline.aboyzy.top/', // Waline 的服务端地址
+                path: '' == '' ? window.location.pathname : '', // 当前文章页路径，用于区分不同的文章页，以保证正确读取该文章页下的评论列表
+                lang: 'zh-CN' == '' ? 'zh-CN' : 'zh-CN', // 多语言支持，未设置默认英文
+                emoji: emoji,
+                dark: '', // 暗黑模式适配
+                commentSorting: '' == '' ? 'latest' : '', // 评论列表排序方式
+                meta: meta, // 评论者相关属性
+                requiredFields: requiredFields, // 设置必填项，默认匿名
+                login: '', // 登录模式状态
+                wordLimit: '', // 评论字数限制
+                pageSize: '10' == '' ? 10 : '10', // 评论列表分页，每页条数
+                imageUploader: '', // 自定义图片上传方法
+                highlighter: '', // 代码高亮
+                placeholder: '',
+                avatar: 'mm',
+                visitor: 'false',
+                comment_count: 'false',
+            });
+        }
+    });
+</script>
+
+</body>
+</html>
